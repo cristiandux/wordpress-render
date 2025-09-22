@@ -94,6 +94,10 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
 
 define('FORCE_SSL_ADMIN', true);
 
+define('WP_HOME', 'https://cristiandux.com');
+define('WP_SITEURL', 'https://cristiandux.com');
+
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
