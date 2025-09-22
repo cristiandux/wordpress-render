@@ -88,7 +88,6 @@ if ( ! defined( 'WP_DEBUG' ) ) {
 
 define( 'WP_ENVIRONMENT_TYPE', 'local' );
 
-}
 
 define('FORCE_SSL_ADMIN', true);
 
