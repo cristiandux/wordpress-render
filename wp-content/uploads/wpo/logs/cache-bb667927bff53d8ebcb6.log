@@ -1,0 +1,25 @@
+[2025-03-20 23:58:47 : INFO] - Cache for URL: http://crisdux.local/portfolio/b-o/ has been purged, triggered by action: wp_trash_post 
+[2025-03-20 23:58:47 : INFO] - Cache for URL: http://crisdux.local/?post_type=dtr_portfolio&p=869 has been purged, triggered by action: save_post 
+[2025-03-20 23:58:49 : INFO] - Cache for URL: http://crisdux.local/portfolio/cozmetic/ has been purged, triggered by action: wp_trash_post 
+[2025-03-20 23:58:49 : INFO] - Cache for URL: http://crisdux.local/?post_type=dtr_portfolio&p=868 has been purged, triggered by action: save_post 
+[2025-03-20 23:58:51 : INFO] - Cache for URL: http://crisdux.local/portfolio/xendou-2/ has been purged, triggered by action: wp_trash_post 
+[2025-03-20 23:58:51 : INFO] - Cache for URL: http://crisdux.local/?post_type=dtr_portfolio&p=2368 has been purged, triggered by action: save_post 
+[2025-03-20 23:58:52 : INFO] - Cache for URL: http://crisdux.local/portfolio/blvck-2/ has been purged, triggered by action: wp_trash_post 
+[2025-03-20 23:58:52 : INFO] - Cache for URL: http://crisdux.local/?post_type=dtr_portfolio&p=2367 has been purged, triggered by action: save_post 
+[2025-03-20 23:58:53 : INFO] - Cache for URL: http://crisdux.local/portfolio/verdo-2/ has been purged, triggered by action: wp_trash_post 
+[2025-03-20 23:58:53 : INFO] - Cache for URL: http://crisdux.local/?post_type=dtr_portfolio&p=2366 has been purged, triggered by action: save_post 
+[2025-03-20 23:58:54 : INFO] - Cache for URL: http://crisdux.local/portfolio/rombo/ has been purged, triggered by action: wp_trash_post 
+[2025-03-20 23:58:54 : INFO] - Cache for URL: http://crisdux.local/?post_type=dtr_portfolio&p=860 has been purged, triggered by action: save_post 
+[2025-03-21 10:23:17 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-03-21 10:23:17 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-03-21 10:23:17 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-03-21 16:21:56 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-03-21 16:21:56 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-03-21 16:21:57 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-03-21 22:48:23 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-03-21 22:48:24 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-03-21 22:48:24 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-03-21 22:53:10 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-03-21 22:53:10 : INFO] - Cache for URL: http://crisdux.local/portfolio/b-o-2/ has been purged, triggered by action: save_post 
+[2025-03-21 23:23:10 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-03-21 23:23:10 : INFO] - Cache for URL: http://crisdux.local/portfolio/b-o-2/ has been purged, triggered by action: save_post 

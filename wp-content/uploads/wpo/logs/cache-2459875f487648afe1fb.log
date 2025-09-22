@@ -1,0 +1,69 @@
+[2025-09-21 19:59:34 : INFO] - Cache for URL: http://crisdux.local/?elementor_library=default-kit has been purged, triggered by action: save_post 
+[2025-09-21 19:59:34 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: elementor_library and Title: "Default Kit" has been purged, triggered by action: save_post 
+[2025-09-21 19:59:34 : INFO] - Cache for URL: http://crisdux.local/?elementor_library=default-kit has been purged, triggered by action: save_post 
+[2025-09-21 19:59:34 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: elementor_library and Title: "Default Kit" has been purged, triggered by action: save_post 
+[2025-09-21 19:59:34 : INFO] - Cache for URL: http://crisdux.local/?elementor_library=default-kit has been purged, triggered by action: save_post 
+[2025-09-21 19:59:34 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: elementor_library and Title: "Default Kit" has been purged, triggered by action: save_post 
+[2025-09-21 19:59:45 : INFO] - Cache for URL: http://crisdux.local/?elementor_library=default-kit has been purged, triggered by action: save_post 
+[2025-09-21 19:59:45 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: elementor_library and Title: "Default Kit" has been purged, triggered by action: save_post 
+[2025-09-21 19:59:45 : INFO] - Cache for URL: http://crisdux.local/?elementor_library=default-kit has been purged, triggered by action: save_post 
+[2025-09-21 19:59:45 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: elementor_library and Title: "Default Kit" has been purged, triggered by action: save_post 
+[2025-09-21 19:59:45 : INFO] - Cache for URL: http://crisdux.local/?elementor_library=default-kit has been purged, triggered by action: save_post 
+[2025-09-21 19:59:45 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: elementor_library and Title: "Default Kit" has been purged, triggered by action: save_post 
+[2025-09-21 20:40:58 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-09-21 20:40:58 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: page and Title: "Home" has been purged, triggered by action: save_post 
+[2025-09-21 20:40:59 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-09-21 20:40:59 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: page and Title: "Home" has been purged, triggered by action: save_post 
+[2025-09-21 20:40:59 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-09-21 20:40:59 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: page and Title: "Home" has been purged, triggered by action: save_post 
+[2025-09-21 20:43:24 : INFO] - Cache for homepage has been purged due to changes in the Posts page options, triggered by action: update_option_page_for_posts 
+[2025-09-21 20:43:24 : INFO] - Cache for URL: http://crisdux.local/blog/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 20:43:38 : INFO] - Cache for URL: http://crisdux.local/art-direction/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 20:43:47 : INFO] - Cache for URL: http://crisdux.local/digital-branding/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 20:44:10 : INFO] - Cache for URL: http://crisdux.local/sample-page/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 20:44:18 : INFO] - Cache for URL: http://crisdux.local/ux-research/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 20:44:26 : INFO] - Cache for URL: http://crisdux.local/visual-design/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 21:01:55 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-09-21 21:01:55 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: page and Title: "Home" has been purged, triggered by action: save_post 
+[2025-09-21 21:01:55 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-09-21 21:01:55 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: page and Title: "Home" has been purged, triggered by action: save_post 
+[2025-09-21 21:01:56 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-09-21 21:01:56 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: page and Title: "Home" has been purged, triggered by action: save_post 
+[2025-09-21 21:11:41 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-09-21 21:11:41 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: page and Title: "Home" has been purged, triggered by action: save_post 
+[2025-09-21 21:11:42 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-09-21 21:11:42 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: page and Title: "Home" has been purged, triggered by action: save_post 
+[2025-09-21 21:11:42 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-09-21 21:11:42 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: page and Title: "Home" has been purged, triggered by action: save_post 
+[2025-09-21 21:20:58 : INFO] - Cache for URL: http://crisdux.local/15-design-tips-that-always-deliver-growth/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 21:20:58 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:20:58 : INFO] - Cache for URL: http://crisdux.local/essential-social-media-tips-for-small-business/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 21:20:58 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:20:58 : INFO] - Cache for URL: http://crisdux.local/hello-world/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 21:20:58 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:20:58 : INFO] - Cache for URL: http://crisdux.local/how-to-improve-your-b2c-web-design/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 21:20:58 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:20:59 : INFO] - Cache for URL: http://crisdux.local/importance-of-search-engine-optimization-best-practices/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 21:20:59 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:20:59 : INFO] - Cache for URL: http://crisdux.local/the-most-important-aspects-of-a-creative-design/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 21:20:59 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:20:59 : INFO] - Cache for URL: http://crisdux.local/the-ultimate-guide-to-user-on-boarding/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 21:20:59 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:20:59 : INFO] - Cache for URL: http://crisdux.local/visual-communication-in-brand-development/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 21:20:59 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:20:59 : INFO] - Cache for URL: http://crisdux.local/why-dark-mode-websites-are-so-popular/ has been purged, triggered by action: wp_trash_post 
+[2025-09-21 21:20:59 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:21:30 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:21:30 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:21:30 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:21:30 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:21:30 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:21:30 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:21:30 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:21:30 : INFO] - Cache for multiple term taxonomy have been purged due to post terms update, triggered by action: set_object_terms 
+[2025-09-21 21:42:52 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-09-21 21:42:52 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: page and Title: "Home" has been purged, triggered by action: save_post 
+[2025-09-21 21:42:52 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-09-21 21:42:52 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: page and Title: "Home" has been purged, triggered by action: save_post 
+[2025-09-21 21:42:53 : INFO] - Cache for URL: http://crisdux.local/ has been purged, triggered by action: save_post 
+[2025-09-21 21:42:53 : INFO] - Cache for author page URL: http://crisdux.local/author/crisdux/ associated with post_type: page and Title: "Home" has been purged, triggered by action: save_post 

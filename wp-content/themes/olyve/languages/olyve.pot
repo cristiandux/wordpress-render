@@ -1,0 +1,2575 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Olyve\n"
+"POT-Creation-Date: 2024-08-14 12:58+0530\n"
+"PO-Revision-Date: 2024-08-14 12:57+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: 404.php:12 includes/options/theme-options/settings-error-page.php:29
+msgid "We are sorry, but something went wrong."
+msgstr ""
+
+#: 404.php:13 includes/options/theme-options/settings-error-page.php:23
+msgid "Oops..."
+msgstr ""
+
+#: 404.php:14 includes/options/theme-options/settings-error-page.php:35
+msgid "Back To Home"
+msgstr ""
+
+#: comments.php:18
+msgctxt "comments title"
+msgid "Comment (1)"
+msgstr ""
+
+#: comments.php:23
+#, php-format
+msgctxt "comments title"
+msgid "Comment (%1$s) "
+msgid_plural "Comments (%1$s) "
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:54
+msgid "Previous Comments"
+msgstr ""
+
+#: comments.php:59
+msgid "Next Comments"
+msgstr ""
+
+#: comments.php:68
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:80
+msgid "Your Name"
+msgstr ""
+
+#: comments.php:80
+msgid "Your Name*"
+msgstr ""
+
+#: comments.php:83
+msgid "Email Address"
+msgstr ""
+
+#: comments.php:84
+msgid "Email Address*"
+msgstr ""
+
+#: comments.php:87 comments.php:88
+msgid "Website (if any)"
+msgstr ""
+
+#: comments.php:92
+msgid "Leave a Reply"
+msgstr ""
+
+#: comments.php:93
+msgid "Post Comment"
+msgstr ""
+
+#: comments.php:94
+msgctxt "noun"
+msgid "Comment"
+msgstr ""
+
+#: comments.php:95
+msgid "Comment*"
+msgstr ""
+
+#: footer.php:94
+msgid "Scroll To Top"
+msgstr ""
+
+#: functions.php:76
+msgid "Dark"
+msgstr ""
+
+#: functions.php:81
+msgid "White"
+msgstr ""
+
+#: functions.php:86
+msgid "Gray"
+msgstr ""
+
+#: functions.php:98
+msgid "Extra small"
+msgstr ""
+
+#: functions.php:99
+msgctxt "Font size"
+msgid "XS"
+msgstr ""
+
+#: functions.php:104
+msgid "Small"
+msgstr ""
+
+#: functions.php:105
+msgctxt "Font size"
+msgid "S"
+msgstr ""
+
+#: functions.php:110
+msgid "Normal"
+msgstr ""
+
+#: functions.php:111
+msgctxt "Font size"
+msgid "M"
+msgstr ""
+
+#: functions.php:116
+msgid "Large"
+msgstr ""
+
+#: functions.php:117
+msgctxt "Font size"
+msgid "L"
+msgstr ""
+
+#: functions.php:122
+msgid "Extra large"
+msgstr ""
+
+#: functions.php:123
+msgctxt "Font size"
+msgid "XL"
+msgstr ""
+
+#: functions.php:319
+msgid "Pingback:"
+msgstr ""
+
+#: functions.php:322 functions.php:345
+msgid "Edit"
+msgstr ""
+
+#. translators: %s: author.
+#: functions.php:339
+#, php-format
+msgid "<cite class=\"fn custom-fn\">%s</cite>"
+msgstr ""
+
+#. translators: 1: date, 2: time.
+#: functions.php:343
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: functions.php:355
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: functions.php:436
+msgid "Please Select..."
+msgstr ""
+
+#: functions.php:450
+msgid "Olyve Demo Data"
+msgstr ""
+
+#: functions.php:454
+msgid ""
+"Make sure all the required / recommended plugins are <strong>Installed and "
+"Activated.</strong><br><br>Please be patient...click on the Import button "
+"only once and wait, <strong>it may take - FEW - minutes.</"
+"strong><br><br>After import, <strong>error log file may get generated</"
+"strong>. Nothing to panic, go thorough file. <strong>Minor errors like some "
+"media / images / sidebar / widget Failed to import, can be ignored.</strong> "
+"Check if you have posts and pages imported fine.<br><br>Posts, pages, "
+"images, widgets, menus and other theme settings will get imported.<br><br>No "
+"existing posts, pages, categories, images, custom post types or any other "
+"data will be deleted or modified."
+msgstr ""
+
+#: functions.php:484
+msgid "Olyve Demo Import"
+msgstr ""
+
+#: functions.php:485
+msgid "Import Theme Demo Data"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:334
+msgid "Install Required Plugins"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:335
+msgid "Install Plugins"
+msgstr ""
+
+#. translators: %s: plugin name.
+#: includes/class-tgm-plugin-activation.php:337
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#. translators: %s: plugin name.
+#: includes/class-tgm-plugin-activation.php:339
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:340
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#. translators: 1: plugin name(s).
+#: includes/class-tgm-plugin-activation.php:343
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: includes/class-tgm-plugin-activation.php:349
+#, php-format
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: includes/class-tgm-plugin-activation.php:355
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: includes/class-tgm-plugin-activation.php:361
+#, php-format
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: includes/class-tgm-plugin-activation.php:367
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name(s).
+#: includes/class-tgm-plugin-activation.php:373
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-tgm-plugin-activation.php:378
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-tgm-plugin-activation.php:383
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-tgm-plugin-activation.php:388
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-tgm-plugin-activation.php:392
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:393
+#: includes/class-tgm-plugin-activation.php:912
+#: includes/class-tgm-plugin-activation.php:2618
+#: includes/class-tgm-plugin-activation.php:3665
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:394
+#: includes/class-tgm-plugin-activation.php:3244
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:395
+#: includes/class-tgm-plugin-activation.php:3037
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: plugin name.
+#: includes/class-tgm-plugin-activation.php:397
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: includes/class-tgm-plugin-activation.php:399
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+#. translators: 1: dashboard link.
+#: includes/class-tgm-plugin-activation.php:401
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:402
+msgid "Dismiss this notice"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:403
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:607
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:608
+msgid "Update Required"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1019
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1019
+#: includes/class-tgm-plugin-activation.php:1022
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1022
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1206
+#: includes/class-tgm-plugin-activation.php:3033
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr ""
+
+#. translators: %s: version number
+#: includes/class-tgm-plugin-activation.php:2067
+#, php-format
+msgid "TGMPA v%s"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2358
+msgid "Required"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2361
+msgid "Recommended"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2377
+msgid "WordPress Repository"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2380
+msgid "External Source"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2383
+msgid "Pre-Packaged"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2400
+msgid "Not Installed"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2404
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2406
+msgid "Active"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2412
+msgid "Required Update not Available"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2415
+msgid "Requires Update"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2418
+msgid "Update recommended"
+msgstr ""
+
+#. translators: 1: install status, 2: update status
+#: includes/class-tgm-plugin-activation.php:2427
+#, php-format
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#. translators: 1: number of plugins.
+#: includes/class-tgm-plugin-activation.php:2473
+#, php-format
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: includes/class-tgm-plugin-activation.php:2477
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: includes/class-tgm-plugin-activation.php:2481
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: number of plugins.
+#: includes/class-tgm-plugin-activation.php:2485
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-tgm-plugin-activation.php:2567
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2575
+msgid "Installed version:"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2583
+msgid "Minimum required version:"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2595
+msgid "Available version:"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2618
+msgid "No plugins to install, update or activate."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2632
+msgid "Plugin"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2633
+msgid "Source"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2634
+msgid "Type"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2638
+msgid "Version"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2639
+msgid "Status"
+msgstr ""
+
+#. translators: %2$s: plugin name in screen reader markup
+#: includes/class-tgm-plugin-activation.php:2688
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#. translators: %2$s: plugin name in screen reader markup
+#: includes/class-tgm-plugin-activation.php:2693
+#, php-format
+msgid "Update %2$s"
+msgstr ""
+
+#. translators: %2$s: plugin name in screen reader markup
+#: includes/class-tgm-plugin-activation.php:2699
+#, php-format
+msgid "Activate %2$s"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2769
+msgid "Upgrade message from the plugin author:"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2802
+msgid "Install"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2808
+msgid "Update"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2811
+msgid "Activate"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2842
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2844
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2885
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2887
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:2993
+msgid "No plugins were selected to be activated. No action taken."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:3019
+msgid "No plugins are available to be activated at this time."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:3243
+msgid "Plugin activation failed."
+msgstr ""
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: includes/class-tgm-plugin-activation.php:3583
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#. translators: 1: plugin name, 2: error message.
+#: includes/class-tgm-plugin-activation.php:3586
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: includes/class-tgm-plugin-activation.php:3588
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:3592
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: includes/class-tgm-plugin-activation.php:3594
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:3595
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: includes/class-tgm-plugin-activation.php:3597
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:3600
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#. translators: 1: plugin name.
+#: includes/class-tgm-plugin-activation.php:3602
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:3603
+msgid "All installations have been completed."
+msgstr ""
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: includes/class-tgm-plugin-activation.php:3605
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: includes/customizer/customizer.php:22
+msgid "Site Identity"
+msgstr ""
+
+#: includes/customizer/customizer.php:37
+msgid "Select Logo Type"
+msgstr ""
+
+#: includes/customizer/customizer.php:41
+msgid "Image Logo"
+msgstr ""
+
+#: includes/customizer/customizer.php:42
+msgid "Text Logo"
+msgstr ""
+
+#: includes/customizer/customizer.php:43
+msgid "Site Title"
+msgstr ""
+
+#: includes/customizer/customizer.php:58
+msgid "Logo Width"
+msgstr ""
+
+#: includes/customizer/customizer.php:59 includes/customizer/customizer.php:126
+msgid "Logo will resize as per width. Do not add unit."
+msgstr ""
+
+#: includes/customizer/customizer.php:79
+msgid "Logo Height"
+msgstr ""
+
+#: includes/customizer/customizer.php:80 includes/customizer/customizer.php:147
+msgid ""
+"Logo will resize as per width. Height is just to serve for height attribute "
+"criteria. Do not add unit."
+msgstr ""
+
+#: includes/customizer/customizer.php:104
+#: includes/customizer/customizer.php:195
+#: includes/options/theme-options/settings-site-settings.php:61
+msgid "Alt Logo"
+msgstr ""
+
+#: includes/customizer/customizer.php:105
+msgid ""
+"Logo and Alt Logo will work for either for on-load header or on-scroll "
+"header as per header variation. Refresh window if not visible on customizer "
+"edit screen."
+msgstr ""
+
+#: includes/customizer/customizer.php:125
+msgid "Alt Logo Width"
+msgstr ""
+
+#: includes/customizer/customizer.php:146
+msgid "Alt Logo Height"
+msgstr ""
+
+#: includes/customizer/customizer.php:159
+#: includes/customizer/customizer.php:172
+msgid "Olyve Schwarz"
+msgstr ""
+
+#: includes/customizer/customizer.php:168
+msgid "Text next to Image Logo"
+msgstr ""
+
+#: includes/customizer/customizer.php:169
+msgid "This is the text next to image logo."
+msgstr ""
+
+#: includes/customizer/customizer.php:189
+msgid "Logo Image For - Responsive Header"
+msgstr ""
+
+#: includes/customizer/customizer.php:190
+msgid ""
+"You can choose any one of the - Logo & Alt Logo - for small screen headers"
+msgstr ""
+
+#: includes/customizer/customizer.php:194
+#: includes/customizer/customizer.php:201
+#: includes/customizer/customizer.php:214 template-parts/header/logo-alt.php:16
+#: template-parts/header/logo.php:14
+msgid "Logo"
+msgstr ""
+
+#: includes/customizer/customizer.php:210
+msgid "Text for - Only text Logo (Without Image)"
+msgstr ""
+
+#: includes/customizer/customizer.php:211
+msgid "Use this if need logo text other than Site Title."
+msgstr ""
+
+#: includes/customizer/customizer.php:222
+msgid "Body background Image"
+msgstr ""
+
+#: includes/customizer/customizer.php:227
+msgid "Body background Color"
+msgstr ""
+
+#: includes/helper-functions/excerpt.php:40
+msgid "This is a password protected post."
+msgstr ""
+
+#: includes/helper-functions/excerpt.php:101
+#: includes/options/theme-options/settings-blog-general.php:142
+msgid "Continue Reading"
+msgstr ""
+
+#: includes/helper-functions/helper-functions.php:115
+msgid ""
+"<strong>Important</strong> : Update Olyve Core Plugin. Go To : Appearance / "
+"Install Plugins"
+msgstr ""
+
+#: includes/helper-functions/helper-functions.php:134
+msgid ""
+"<strong>Important</strong> : Update Olyve Elementor Addons Plugin Plugin. Go "
+"To : Appearance / Install Plugins"
+msgstr ""
+
+#: includes/helper-functions/helper-functions.php:147
+msgid "** Theme SetUp Guide for New Buyers **"
+msgstr ""
+
+#: includes/helper-functions/helper-functions.php:148
+msgid "Step 1: Install All Required / Recommended Plugins"
+msgstr ""
+
+#: includes/helper-functions/helper-functions.php:149
+msgid ""
+"There is a link to install plugins in below Notice OR <strong>Visit : "
+"Appearance > Install Plugins</strong>"
+msgstr ""
+
+#: includes/helper-functions/helper-functions.php:150
+msgid "Step 2: Import Theme Demo Data"
+msgstr ""
+
+#: includes/helper-functions/helper-functions.php:151
+msgid ""
+"As WordPress Themes do not carry data with them...Import Demo Data to make "
+"your link look like Theme Demo.<br> <strong>Visit : Appearance > Import "
+"Theme Demo Data</strong><br>You need - One Click Demo Import Plugin - active "
+"to see this option. This plugin is already in recommeded list, so will get "
+"install along with other plugins (in step 1)."
+msgstr ""
+
+#: includes/helper-functions/helper-functions.php:152
+msgid "Step 3: Online Help Documentation"
+msgstr ""
+
+#: includes/helper-functions/helper-functions.php:153
+msgid ""
+"Find online help document here : <br><a class=\"button button-primary\" href="
+"\"https://docs.tanshcreative.com/olyve\" target=\"_blank\">Online Help "
+"Documentation</a>"
+msgstr ""
+
+#: includes/helper-functions/helper-functions.php:154
+msgid "Step 4: Disable this Notification"
+msgstr ""
+
+#: includes/helper-functions/helper-functions.php:155
+msgid ""
+"If you have finished importing demo data...<strong>Permanently Disable</"
+"strong> this Demo Import and Import Plugin Install Notice via theme options: "
+"<strong>Theme Options > Demo Notification</strong>"
+msgstr ""
+
+#: includes/helper-functions/pagination.php:11
+#: includes/helper-functions/pagination.php:38
+#: includes/options/theme-options/settings-paginations.php:122
+msgid "Next Post"
+msgstr ""
+
+#: includes/helper-functions/pagination.php:18
+#: includes/helper-functions/pagination.php:31
+#: includes/options/theme-options/settings-paginations.php:116
+msgid "Previous Post"
+msgstr ""
+
+#: includes/options/options-config.php:34
+#: includes/options/options-config.php:36
+msgid "Theme Options"
+msgstr ""
+
+#: includes/options/options-config.php:138
+msgid "Theme Documentation"
+msgstr ""
+
+#: includes/options/options-config.php:151
+#: includes/options/theme-options/settings-pagetitle-typography.php:14
+#: includes/options/theme-options/settings-responsive-header.php:69
+#: includes/options/theme-options/settings-topbar.php:59
+msgid "Typography"
+msgstr ""
+
+#: includes/options/options-config.php:161
+msgid "Header"
+msgstr ""
+
+#: includes/options/options-config.php:176
+msgid "Page Title Section"
+msgstr ""
+
+#: includes/options/options-config.php:188
+msgid "Footer"
+msgstr ""
+
+#: includes/options/options-config.php:200
+#: includes/options/theme-options/settings-blog-general.php:23
+#: template-parts/page-title/page-header.php:19
+msgid "Blog"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:14
+msgid "Theme Base Colors"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:23
+msgid "Main Base Colors"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:24
+msgid "Used for backgrounds"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:30
+msgid "Primary"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:31
+msgid "Themes widely used color - for body background etc."
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:42
+msgid "Secondary"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:43
+msgid ""
+"Mostly used for - elements backgrounds - to differentiate from body "
+"background."
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:53
+msgid "Gradient Colors"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:54
+msgid ""
+"Gradient which is used for buttons, theme headings element and some minor "
+"elements"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:60
+msgid "Gradient Start Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:71
+msgid "Gradient End Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:81
+msgid "Common Border Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:86
+msgid "Main Border Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:96
+msgid "Basic Text Colors"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:97
+msgid ""
+"If needed, can be overridden individually for body, headings, links etc. in "
+"respective section."
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:102
+msgid "Text Color - One"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:103
+msgid "Mostly used for body text"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:111
+msgid "Text Color - Two"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:112
+msgid "Mostly used for headings"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:120
+msgid "Text Color - Three"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:121
+msgid "Used for default link, in very few instances for headings"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:129
+msgid "Text Color - Four"
+msgstr ""
+
+#: includes/options/theme-options/settings-basecolors.php:130
+msgid "Mostly used for text on contrast backgrounds"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:14
+msgid "Main Blog Page / Archives"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:22
+msgid "Blog Page Title Text"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:29
+msgid "Blog Main Page and Archives Pages Layout"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:35
+#: includes/options/theme-options/settings-blog-single.php:29
+msgid "Change Layout"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:38
+#: includes/options/theme-options/settings-blog-single.php:33
+#: includes/options/theme-options/settings-general.php:102
+msgid "Full Width"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:42
+#: includes/options/theme-options/settings-blog-single.php:37
+#: includes/options/theme-options/settings-general.php:106
+msgid "Right Sidebar"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:46
+#: includes/options/theme-options/settings-blog-single.php:41
+#: includes/options/theme-options/settings-general.php:110
+msgid "Left Sidebar"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:56
+msgid "Posts Layout Style"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:57
+msgid "Choose how posts are arranged on blog and archives pages"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:62
+msgid "Change - Posts Layout Style"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:64
+#: includes/options/theme-options/settings-blog-general.php:96
+#: includes/options/theme-options/settings-blog-single.php:65
+msgid "Default"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:65
+msgid "Masonry Grid - 2 column"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:66
+msgid "Grid - 2 column"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:67
+msgid "Masonry Grid - 3 column"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:68
+msgid "Grid - 3 column"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:75
+msgid "Standard First Post"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:81
+#: includes/options/theme-options/settings-blog-single.php:51
+msgid "Enable / Disable Elements"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:82
+msgid ""
+"Will work for elements on blog and archive pages. Settings for single posts "
+"are separate."
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:87
+#: includes/options/theme-options/settings-blog-single.php:56
+#: includes/options/theme-options/settings-cpt.php:27
+#: includes/options/theme-options/settings-cpt.php:45
+msgid "Featured Image"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:93
+#: includes/options/theme-options/settings-blog-single.php:62
+msgid "Featured Image Corners"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:95
+#: includes/options/theme-options/settings-blog-single.php:64
+msgid "Rounded Corners"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:103
+#: includes/options/theme-options/settings-blog-single.php:72
+msgid "Date"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:109
+#: includes/options/theme-options/settings-blog-single.php:78
+msgid "Author"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:115
+#: includes/options/theme-options/settings-blog-single.php:84
+msgid "Category"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:121
+msgid "Excerpt"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:127
+msgid "Excerpt Length"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:128
+msgid ""
+"If excerpt is provided in excerpt box it will be displayed by default "
+"irrespective of excerpt length settings<br><br><strong>40 or any other "
+"number&nbsp;&nbsp;</strong> - To show that much words<br><strong>1&nbsp;"
+"&nbsp;&nbsp;&nbsp;</strong> - For complete post content<br><strong>999</"
+"strong> - For upto more tag - Default"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:135
+msgid "Read more link"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-general.php:141
+msgid "Read more link text"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:14
+msgid "Single Post"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:22
+msgid "Single Post Layout"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:23
+msgid "Change only if some other layout is required for all single posts"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:30
+msgid ""
+"If need different layout just for any specific post(s), can be done in the "
+"settings of respective post."
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:90
+msgid "Comment Number"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:96
+msgid "Tags"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:102
+msgid "Date Title"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:108
+msgid "Tags Title"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:114
+msgid "Author Title"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:120
+#: includes/options/theme-options/settings-blog-single.php:125
+msgid "Social Share"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:131
+msgid "Share Title"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:137
+msgid "Twitter in Share"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:143
+msgid "Twitter Handle Text"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:149
+msgid "Facebook in Share"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:155
+msgid "Pinterest in Share"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:161
+msgid "Google in Share"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-single.php:167
+msgid "Linkedin in Share"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:14
+msgid "Blog Typography"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:23
+msgid "For Posts on - Blog Main Page / Archives Pages"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:28
+#: includes/options/theme-options/settings-blog-typography.php:119
+msgid "Post Title"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:43
+#: includes/options/theme-options/settings-blog-typography.php:134
+msgid "Meta"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:59
+#: includes/options/theme-options/settings-blog-typography.php:150
+msgid "Meta: Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:70
+#: includes/options/theme-options/settings-blog-typography.php:161
+msgid "Meta Icon: Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:81
+#: includes/options/theme-options/settings-blog-typography.php:172
+msgid "Meta: Hover Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:92
+#: includes/options/theme-options/settings-blog-typography.php:183
+msgid "Category - Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:103
+#: includes/options/theme-options/settings-blog-typography.php:194
+msgid "Category - Border Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:114
+msgid "For : Single Post"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:205
+msgid "Single Post Title - Sizes For Small Screens"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:206
+#: includes/options/theme-options/settings-general-typography.php:270
+#: includes/options/theme-options/settings-pagetitle-typography.php:53
+msgid "Set only if required"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:211
+#: includes/options/theme-options/settings-general-typography.php:43
+#: includes/options/theme-options/settings-general-typography.php:79
+#: includes/options/theme-options/settings-general-typography.php:114
+#: includes/options/theme-options/settings-general-typography.php:149
+#: includes/options/theme-options/settings-general-typography.php:184
+#: includes/options/theme-options/settings-general-typography.php:219
+#: includes/options/theme-options/settings-general-typography.php:254
+#: includes/options/theme-options/settings-pagetitle-typography.php:37
+#: includes/options/theme-options/settings-pagetitle-typography.php:58
+msgid "Font Size"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:212
+#: includes/options/theme-options/settings-general-typography.php:44
+#: includes/options/theme-options/settings-general-typography.php:80
+#: includes/options/theme-options/settings-general-typography.php:115
+#: includes/options/theme-options/settings-general-typography.php:150
+#: includes/options/theme-options/settings-general-typography.php:185
+#: includes/options/theme-options/settings-general-typography.php:220
+#: includes/options/theme-options/settings-general-typography.php:255
+#: includes/options/theme-options/settings-general-typography.php:277
+#: includes/options/theme-options/settings-general-typography.php:292
+#: includes/options/theme-options/settings-general-typography.php:307
+#: includes/options/theme-options/settings-general-typography.php:322
+#: includes/options/theme-options/settings-general-typography.php:337
+#: includes/options/theme-options/settings-general-typography.php:352
+#: includes/options/theme-options/settings-pagetitle-typography.php:38
+#: includes/options/theme-options/settings-pagetitle-typography.php:59
+msgid "Make sure to give unit like px,em,rem"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:213
+#: includes/options/theme-options/settings-general-typography.php:45
+#: includes/options/theme-options/settings-general-typography.php:81
+#: includes/options/theme-options/settings-general-typography.php:116
+#: includes/options/theme-options/settings-general-typography.php:151
+#: includes/options/theme-options/settings-general-typography.php:186
+#: includes/options/theme-options/settings-general-typography.php:221
+#: includes/options/theme-options/settings-general-typography.php:256
+#: includes/options/theme-options/settings-general-typography.php:278
+#: includes/options/theme-options/settings-general-typography.php:293
+#: includes/options/theme-options/settings-general-typography.php:308
+#: includes/options/theme-options/settings-general-typography.php:323
+#: includes/options/theme-options/settings-general-typography.php:338
+#: includes/options/theme-options/settings-general-typography.php:353
+#: includes/options/theme-options/settings-pagetitle-typography.php:39
+#: includes/options/theme-options/settings-pagetitle-typography.php:60
+msgid "Example: 16px"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:219
+#: includes/options/theme-options/settings-general-typography.php:51
+#: includes/options/theme-options/settings-general-typography.php:87
+#: includes/options/theme-options/settings-general-typography.php:122
+#: includes/options/theme-options/settings-general-typography.php:157
+#: includes/options/theme-options/settings-general-typography.php:192
+#: includes/options/theme-options/settings-general-typography.php:227
+#: includes/options/theme-options/settings-general-typography.php:262
+#: includes/options/theme-options/settings-pagetitle-typography.php:45
+#: includes/options/theme-options/settings-pagetitle-typography.php:66
+msgid "Line Height"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:225
+msgid "All Meta titles"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:226
+msgid ""
+"This will work for titles to meta - date (e.g.published on), author (e.g. "
+"article by), tags and share"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:231
+#: includes/options/theme-options/settings-buttons-typography.php:41
+#: includes/options/theme-options/settings-header-button.php:41
+#: includes/options/theme-options/settings-menubar.php:27
+#: includes/options/theme-options/settings-menubar.php:46
+msgid "Font Settings"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:246
+msgid "Comment Section"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:251
+msgid "Comment Section Title"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:266
+msgid "Cancel Reply Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:277
+msgid "Comment Meta Data"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:292
+msgid "Comment Meta Data: Hover Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:303
+msgid "Post Tags / Tagcloud Tags"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:308
+#: includes/options/theme-options/settings-footer-typography.php:22
+#: includes/options/theme-options/settings-footer-typography.php:145
+#: includes/options/theme-options/settings-header-main-row.php:80
+#: includes/options/theme-options/settings-pagetitle-typography.php:78
+#: includes/options/theme-options/settings-paginations.php:127
+#: includes/options/theme-options/settings-responsive-header.php:74
+#: includes/options/theme-options/settings-topbar.php:64
+msgid "Font"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:324
+#: includes/options/theme-options/settings-footer-scrolltop.php:60
+#: includes/options/theme-options/settings-paginations.php:143
+#: includes/options/theme-options/settings-widgets.php:159
+#: includes/options/theme-options/settings-widgets.php:194
+msgid "Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:331
+#: includes/options/theme-options/settings-footer-scrolltop.php:38
+#: includes/options/theme-options/settings-header-button.php:62
+#: includes/options/theme-options/settings-header-main-row.php:22
+#: includes/options/theme-options/settings-paginations.php:39
+#: includes/options/theme-options/settings-paginations.php:77
+#: includes/options/theme-options/settings-widgets.php:148
+#: includes/options/theme-options/settings-widgets.php:183
+msgid "Background Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-blog-typography.php:342
+#: includes/options/theme-options/settings-paginations.php:61
+#: includes/options/theme-options/settings-paginations.php:99
+#: includes/options/theme-options/settings-responsive-header.php:58
+#: includes/options/theme-options/settings-widgets.php:166
+#: includes/options/theme-options/settings-widgets.php:201
+msgid "Border Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-buttons-typography.php:14
+msgid "Links / Buttons Typography"
+msgstr ""
+
+#: includes/options/theme-options/settings-buttons-typography.php:23
+msgid "Text Link"
+msgstr ""
+
+#: includes/options/theme-options/settings-buttons-typography.php:36
+msgid "Buttons Typography"
+msgstr ""
+
+#: includes/options/theme-options/settings-buttons-typography.php:55
+#: includes/options/theme-options/settings-header-button.php:55
+msgid "Font Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-cpt.php:14
+msgid "Custom Post Types"
+msgstr ""
+
+#: includes/options/theme-options/settings-cpt.php:22
+msgid "Portfolio Post"
+msgstr ""
+
+#: includes/options/theme-options/settings-cpt.php:33
+msgid "Portfolio Post Slug"
+msgstr ""
+
+#: includes/options/theme-options/settings-cpt.php:34
+#: includes/options/theme-options/settings-cpt.php:52
+msgid ""
+"This will be reflected in post URL text.<br>On change it may give 404 error "
+"for portfolio posts.<br><br>Flushing permalinks will make it work<br>(Re-"
+"save the permalink structure under : WP Admin Menu / Settings / Permalink )."
+msgstr ""
+
+#: includes/options/theme-options/settings-cpt.php:35
+msgid "portfolio"
+msgstr ""
+
+#: includes/options/theme-options/settings-cpt.php:40
+msgid "Testimonial Post"
+msgstr ""
+
+#: includes/options/theme-options/settings-cpt.php:51
+msgid "Testimonial Post Slug"
+msgstr ""
+
+#: includes/options/theme-options/settings-cpt.php:53
+msgid "testimonial"
+msgstr ""
+
+#: includes/options/theme-options/settings-error-page.php:14
+msgid "404 Page"
+msgstr ""
+
+#: includes/options/theme-options/settings-error-page.php:22
+msgid "404 Sub Text"
+msgstr ""
+
+#: includes/options/theme-options/settings-error-page.php:28
+msgid "404 Text"
+msgstr ""
+
+#: includes/options/theme-options/settings-error-page.php:34
+msgid "Back to Home Link Text"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:14
+#: includes/options/theme-options/settings-general.php:14
+#: includes/options/theme-options/settings-header-general.php:14
+#: includes/options/theme-options/settings-pagetitle-general.php:14
+msgid "General Settings"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:22
+#: includes/options/theme-options/settings-footer-styles.php:22
+msgid "Complete Footer Section"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:28
+#: includes/options/theme-options/settings-footer-general.php:33
+msgid "Main Footer Columns Row"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:39
+msgid "Number of Columns"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:41
+msgid "Single Column"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:42
+msgid "Two Equal Columns"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:43
+msgid "Three Equal Columns"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:44
+msgid "Four Equal Columns"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:45
+msgid "6 + 3 + 3"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:46
+msgid "3 + 6 + 3"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:47
+msgid "4 + 5 + 3"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:48
+msgid "2 + 4 + 3 + 3"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:55
+#: includes/options/theme-options/settings-footer-general.php:82
+msgid "Padding"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:71
+msgid "Copyright Settings"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-general.php:76
+#: includes/options/theme-options/settings-footer-styles.php:46
+#: includes/options/theme-options/settings-footer-typography.php:140
+msgid "Copyright"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-scrolltop.php:14
+msgid "Scroll Top"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-scrolltop.php:22
+msgid "Scroll to Top"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-scrolltop.php:28
+msgid "Scroll To Top on Small Screens"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-scrolltop.php:30
+msgid "Show"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-scrolltop.php:31
+msgid "Hide"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-scrolltop.php:49
+msgid "On Hover: Background Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-styles.php:14
+msgid "Footer Styles"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-styles.php:30
+#: includes/options/theme-options/settings-footer-styles.php:51
+#: includes/options/theme-options/settings-header-main-row.php:40
+#: includes/options/theme-options/settings-header-onscroll.php:32
+#: includes/options/theme-options/settings-pagetitle-general.php:30
+#: includes/options/theme-options/settings-responsive-header.php:31
+#: includes/options/theme-options/settings-topbar.php:25
+msgid "Background"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-styles.php:35
+#: includes/options/theme-options/settings-footer-styles.php:65
+msgid "Border Top"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-typography.php:14
+msgid "Footer Typography"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-typography.php:37
+#: includes/options/theme-options/settings-footer-typography.php:160
+msgid "Link Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-typography.php:45
+msgid "Headings in Footer"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-typography.php:50
+#: includes/options/theme-options/settings-general-typography.php:64
+msgid "H1"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-typography.php:65
+#: includes/options/theme-options/settings-general-typography.php:99
+msgid "H2"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-typography.php:80
+#: includes/options/theme-options/settings-general-typography.php:134
+msgid "H3"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-typography.php:95
+#: includes/options/theme-options/settings-general-typography.php:169
+msgid "H4"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-typography.php:110
+#: includes/options/theme-options/settings-general-typography.php:204
+msgid "H5"
+msgstr ""
+
+#: includes/options/theme-options/settings-footer-typography.php:125
+#: includes/options/theme-options/settings-general-typography.php:239
+msgid "H6"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:14
+msgid "General Typography"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:23
+msgid "Body Typography"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:28
+msgid "Body Font"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:59
+msgid "H1 Typography"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:94
+msgid "H2 Typography"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:129
+msgid "H3 Typography"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:164
+msgid "H4 Typography"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:199
+msgid "H5 Typography"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:234
+msgid "H6 Typography"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:269
+msgid "Heading Sizes For Small Screens"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:276
+msgid "H1 - Font Size"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:284
+msgid "H1 - Line Height"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:291
+msgid "H2 - Font Size"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:299
+msgid "H2 - Line Height"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:306
+msgid "H3 - Font Size"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:314
+msgid "H3 - Line Height"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:321
+msgid "H4 - Font Size"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:329
+msgid "H4- Line Height"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:336
+msgid "H5 - Font Size"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:344
+msgid "H5 - Line Height"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:351
+msgid "H6 - Font Size"
+msgstr ""
+
+#: includes/options/theme-options/settings-general-typography.php:359
+msgid "H6 - Line Height"
+msgstr ""
+
+#: includes/options/theme-options/settings-general.php:24
+msgid ""
+"<strong>Keep these blank</strong> unless required to change theme defaults."
+msgstr ""
+
+#: includes/options/theme-options/settings-general.php:38
+msgid "Padding to Non Elementor Pages"
+msgstr ""
+
+#: includes/options/theme-options/settings-general.php:39
+msgid "This will work only for Non Eementor pages"
+msgstr ""
+
+#: includes/options/theme-options/settings-general.php:58
+msgid "Padding to Single Posts"
+msgstr ""
+
+#: includes/options/theme-options/settings-general.php:59
+msgid "This will work for single posts"
+msgstr ""
+
+#: includes/options/theme-options/settings-general.php:78
+msgid "Padding to Elementor Single Posts"
+msgstr ""
+
+#: includes/options/theme-options/settings-general.php:79
+msgid "This will work for single posts edited with elementor"
+msgstr ""
+
+#: includes/options/theme-options/settings-general.php:90
+msgid "Global - Default Page Layout"
+msgstr ""
+
+#: includes/options/theme-options/settings-general.php:91
+msgid ""
+"<strong>It is advisable to keep it default i.e. Full Width.</strong> Change "
+"only if some other layout is required all over the site."
+msgstr ""
+
+#: includes/options/theme-options/settings-general.php:97
+msgid "Change - Default Page Layout"
+msgstr ""
+
+#: includes/options/theme-options/settings-general.php:98
+msgid ""
+"If need different layout just for any specific page(s), can be done in the "
+"settings of respective page."
+msgstr ""
+
+#: includes/options/theme-options/settings-general.php:121
+msgid "Others"
+msgstr ""
+
+#: includes/options/theme-options/settings-general.php:127
+msgid "Comments on pages"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-button.php:14
+msgid "Button In Header"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-button.php:22
+msgid "Button Text"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-button.php:23
+#: template-parts/header/header-v2.php:26
+msgid "Contact Us"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-button.php:28
+msgid "Link"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-button.php:29
+msgid "This must be a URL."
+msgstr ""
+
+#: includes/options/theme-options/settings-header-button.php:36
+msgid "Button Style"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:23
+msgid "Global - Default Header Layout"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:24
+msgid "<strong>This will be applied all over the site</strong>"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:30
+msgid "Change - Header Layout"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:33
+msgid "Style 1 - Classic"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:37
+msgid "Style 2 - Left Menu"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:41
+msgid "Style 3 - Top Fixed"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:45
+msgid "Style 4 - Theme Default"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:55
+msgid "Enable / Disable Header elements"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:56
+msgid ""
+"Elements are - <strong>available / unavailable</strong> as per the - "
+"<strong>Header Variation - selected</strong>"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:61
+msgid "Menubar"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:67
+msgid "Button in Header"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:73
+msgid "Search Icon"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:88
+msgid "Margin Left to Search Icon"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:89
+msgid "Provide only if required, like in case hiding widget area."
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:97
+#: includes/options/theme-options/settings-topbar.php:14
+msgid "Topbar"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:103
+msgid ""
+"Header widgets will show up only if widgets are added in resp  widget area. "
+"Add widgets in respective widget area if required"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:104
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">Click to add widgets</a>"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:110
+msgid "Header Widget Area - One"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:116
+msgid "Header Widget Area - Two"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-general.php:122
+msgid "Header Widget Area - Three"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-main-row.php:14
+msgid "Header Main Row"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-main-row.php:54
+#: includes/options/theme-options/settings-header-onscroll.php:46
+#: includes/options/theme-options/settings-pagetitle-general.php:58
+#: includes/options/theme-options/settings-topbar.php:39
+msgid "Padding - Top & Bottom"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-main-row.php:63
+#: includes/options/theme-options/settings-topbar.php:48
+msgid "Border Bottom"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-main-row.php:74
+msgid "Typography for - Widgets in Main Header Row"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-main-row.php:75
+msgid ""
+"If any widget added in Main Header Row ( Row With Menubar)<br>Will Work For "
+"Widgets other than Custom Social Icon Widget"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-main-row.php:93
+msgid "Links"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-onscroll.php:14
+msgid "Header: On Scroll"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-onscroll.php:22
+msgid "Enable Header On Scroll"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-onscroll.php:23
+msgid "Except for top fixed header variaion"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-search.php:14
+msgid "Search In Header"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-search.php:22
+#: includes/options/theme-options/settings-header-search.php:34
+msgid "Icon Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-header-search.php:29
+msgid "Search Icon on - Header On Page Scroll"
+msgstr ""
+
+#: includes/options/theme-options/settings-import.php:14
+msgid "Demo Notification"
+msgstr ""
+
+#: includes/options/theme-options/settings-import.php:22
+msgid "Notice - To Import Demo Data and Demo Data Import Plugin Install"
+msgstr ""
+
+#: includes/options/theme-options/settings-import.php:23
+msgid ""
+"If you are done with demo import. You can delete - One Click Demo Import - "
+"Plugin.<br><br>On removal of plugin it will keep giving notice to install "
+"plugin.<br>Switch that notice off here, as not required anymore."
+msgstr ""
+
+#: includes/options/theme-options/settings-import.php:28
+msgid "Demo Notice On/Off"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:14
+msgid "Menu"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:22
+msgid "Main Menu - Font Settings"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:41
+msgid "Dropdown - Font Settings"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:60
+msgid "Default Menu Color Settings"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:61
+msgid "<strong>This is menu ---> on page load</strong>"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:66
+#: includes/options/theme-options/settings-menubar.php:142
+msgid "Link colors"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:73
+#: includes/options/theme-options/settings-menubar.php:149
+msgid "Active Link Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:83
+#: includes/options/theme-options/settings-menubar.php:159
+msgid "Dropdown - Background Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:93
+#: includes/options/theme-options/settings-menubar.php:169
+msgid "Dropdown - Border Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:103
+#: includes/options/theme-options/settings-menubar.php:179
+msgid "Dropdown Link - Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:113
+#: includes/options/theme-options/settings-menubar.php:189
+msgid "Dropdown Link - Hover / Active Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:124
+#: includes/options/theme-options/settings-menubar.php:199
+msgid "Dropdown Link - Hover / Active Background Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:136
+msgid "Alt Menu Color Settings"
+msgstr ""
+
+#: includes/options/theme-options/settings-menubar.php:137
+msgid "<strong>This is menu ---> on page scroll</strong>"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-general.php:22
+msgid "Page Title Section Styles"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-general.php:35
+msgid "Overlay Background Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-general.php:67
+msgid "Border"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-general.php:78
+#: includes/options/theme-options/settings-pagetitle-misc.php:55
+#: includes/options/theme-options/settings-pagetitle-misc.php:79
+#: includes/options/theme-options/settings-pagetitle-misc.php:103
+#: includes/options/theme-options/settings-pagetitle-misc.php:127
+#: includes/options/theme-options/settings-pagetitle-misc.php:150
+msgid "Breadcrumb"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-general.php:83
+msgid "Select Breadcrumb via which plugin"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-general.php:85
+msgid "Yoast SEO"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-general.php:86
+msgid "Breadcrumb NavXT"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-general.php:103
+msgid "Margin Bottom"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-misc.php:14
+msgid "Align / On / Off"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-misc.php:22
+#: includes/options/theme-options/settings-pagetitle-misc.php:27
+msgid "Text Align"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-misc.php:29
+msgid "Left"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-misc.php:30
+msgid "Right"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-misc.php:31
+msgid "Center"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-misc.php:38
+msgid "For Pages"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-misc.php:43
+#: includes/options/theme-options/settings-pagetitle-misc.php:67
+#: includes/options/theme-options/settings-pagetitle-misc.php:91
+#: includes/options/theme-options/settings-pagetitle-misc.php:115
+#: includes/options/theme-options/settings-pagetitle-misc.php:138
+msgid "Complete Page Title Section"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-misc.php:49
+#: includes/options/theme-options/settings-pagetitle-misc.php:73
+#: includes/options/theme-options/settings-pagetitle-misc.php:97
+#: includes/options/theme-options/settings-pagetitle-misc.php:121
+#: includes/options/theme-options/settings-pagetitle-misc.php:144
+msgid "Page Title Text"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-misc.php:62
+msgid "For Archives Pages"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-misc.php:86
+msgid "For Single Posts"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-misc.php:110
+msgid "For Portfolio Single Post"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-misc.php:133
+msgid "For Testimonial Single Post"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-typography.php:22
+msgid "Page Title / Archives Page Title"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-typography.php:52
+msgid "Page Title / Archives Page Title - Sizes For Small Screens"
+msgstr ""
+
+#: includes/options/theme-options/settings-pagetitle-typography.php:73
+msgid "Breadcrumb - Typography"
+msgstr ""
+
+#: includes/options/theme-options/settings-paginations.php:14
+msgid "Paginations"
+msgstr ""
+
+#: includes/options/theme-options/settings-paginations.php:23
+msgid "Archive Pages Pagination Style"
+msgstr ""
+
+#: includes/options/theme-options/settings-paginations.php:25
+msgid "Default - Numbered"
+msgstr ""
+
+#: includes/options/theme-options/settings-paginations.php:26
+msgid "Prev / Next"
+msgstr ""
+
+#: includes/options/theme-options/settings-paginations.php:34
+msgid "Numbered Pager"
+msgstr ""
+
+#: includes/options/theme-options/settings-paginations.php:50
+#: includes/options/theme-options/settings-paginations.php:88
+#: includes/options/theme-options/settings-widgets.php:22
+msgid "Text Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-paginations.php:72
+msgid "Arrow (Prev/Next) Pager"
+msgstr ""
+
+#: includes/options/theme-options/settings-paginations.php:110
+msgid "Single Post Pagination"
+msgstr ""
+
+#: includes/options/theme-options/settings-paginations.php:115
+msgid "Previous Nav Text"
+msgstr ""
+
+#: includes/options/theme-options/settings-paginations.php:121
+msgid "Next Nav Text"
+msgstr ""
+
+#: includes/options/theme-options/settings-plugin-misc.php:14
+msgid "Plugin Misc Settings"
+msgstr ""
+
+#: includes/options/theme-options/settings-plugin-misc.php:23
+msgid ""
+"Below settings do not need to any alteration...except in very rare cases. "
+"Keep as it is :)"
+msgstr ""
+
+#: includes/options/theme-options/settings-plugin-misc.php:28
+msgid "Elementor Settings"
+msgstr ""
+
+#: includes/options/theme-options/settings-plugin-misc.php:33
+msgid "Auto Set Elementor Default Settings"
+msgstr ""
+
+#: includes/options/theme-options/settings-plugin-misc.php:34
+msgid ""
+"We need to enable elementor manually for post types and disable it for "
+"default font and colors. These settings are set by default."
+msgstr ""
+
+#: includes/options/theme-options/settings-plugin-misc.php:41
+msgid ""
+"Theme is built with Elementor Free Version, Paid version is not required to "
+"edit any theme element"
+msgstr ""
+
+#: includes/options/theme-options/settings-plugin-misc.php:46
+msgid ""
+"Pro Version Elements in Locked state and Pro Advertise Banners - For Free "
+"Version"
+msgstr ""
+
+#: includes/options/theme-options/settings-plugin-misc.php:47
+msgid ""
+"Locked elements cannot be used with free version. So by default this is kept "
+"off."
+msgstr ""
+
+#: includes/options/theme-options/settings-plugin-misc.php:48
+msgid ""
+"If Elementor Pro is active then Pro elements will show up irrespective of "
+"this setting."
+msgstr ""
+
+#: includes/options/theme-options/settings-responsive-header.php:14
+msgid "Responsive Header"
+msgstr ""
+
+#: includes/options/theme-options/settings-responsive-header.php:23
+msgid "Header For Small Screens"
+msgstr ""
+
+#: includes/options/theme-options/settings-responsive-header.php:36
+msgid "Hamburger Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-responsive-header.php:47
+msgid "Drop Menu Background Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-responsive-header.php:89
+msgid "Link Hover / Active Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-responsive-header.php:100
+msgid "Link Border Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-responsive-header.php:111
+msgid "Arrow Background Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-responsive-header.php:122
+msgid "Arrow Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-search.php:14
+msgid "Search Settings"
+msgstr ""
+
+#: includes/options/theme-options/settings-search.php:22
+msgid "Search Form Field Text"
+msgstr ""
+
+#: includes/options/theme-options/settings-search.php:23 searchform.php:8
+msgid "Search..."
+msgstr ""
+
+#: includes/options/theme-options/settings-search.php:28
+msgid "Modal Search Title"
+msgstr ""
+
+#: includes/options/theme-options/settings-search.php:29
+#: template-parts/header/search-modal.php:12
+msgid "What you are looking for?"
+msgstr ""
+
+#: includes/options/theme-options/settings-site-settings.php:14
+msgid "Logo / Favicon"
+msgstr ""
+
+#: includes/options/theme-options/settings-site-settings.php:23
+msgid "Logo and Favicon needs to be set via customizer in - Site Identity"
+msgstr ""
+
+#: includes/options/theme-options/settings-site-settings.php:30
+msgid "Rest all global settings are - here - in theme options panel."
+msgstr ""
+
+#: includes/options/theme-options/settings-site-settings.php:35
+#, php-format
+msgid ""
+"<a class=\"button button-primary\" href=\"%s\" target=\"_blank\">Click To - "
+"Set Logo and Favicon</a>"
+msgstr ""
+
+#: includes/options/theme-options/settings-site-settings.php:36
+msgid ""
+"<br>Above button will take you to the customizer logo section directly."
+"<br>By any chance if it does not work, please find the logo settings here: "
+"<strong>Appearance > Customize > Site Identity</strong><br><a href=\"https://"
+"docs.tanshcreative.com/how-to-set-logo/\" target=\"_blank\">Check help "
+"document if required</a>"
+msgstr ""
+
+#: includes/options/theme-options/settings-site-settings.php:43
+msgid "Typography for: Text Logo / Text next to Image Logo"
+msgstr ""
+
+#: includes/options/theme-options/settings-site-settings.php:48
+msgid "Default Logo"
+msgstr ""
+
+#: includes/options/theme-options/settings-topbar.php:79
+msgid "Links in Topbar"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:14
+msgid "Widgets Styles"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:40
+msgid "Border Bottom To Archive Widget"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:51
+msgid "Latest Post Widget : Post Title"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:65
+msgid "Archive / Category Widget"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:79
+msgid "Navigation Menu Widget in Sidebar"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:93
+msgid "For Widgets in Page / Post Sidebar Only"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:98
+msgid "Heading in Sidebar"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:109
+msgid "Latest Post Widget : Post Title Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:120
+msgid "Archive / Category Widget - Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:131
+msgid "Archive / Category Widget - Hover Color"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:142
+#: includes/options/theme-options/settings-widgets.php:177
+msgid "Social Icons Widget"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:143
+msgid ""
+"Color Scheme For Light Backgrounds. Applicable for - Circle and Square style."
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:178
+msgid ""
+"Color Scheme For Dark Backgrounds. Applicable for - Circle and Square style."
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:212
+msgid "Widget Gruop In Sidebar"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:217
+msgid "Enable Style to Group in Sidebar"
+msgstr ""
+
+#: includes/options/theme-options/settings-widgets.php:223
+msgid "Background Color - For Group"
+msgstr ""
+
+#: includes/widgets/sidebars.php:13
+msgid "Blog Sidebar"
+msgstr ""
+
+#: includes/widgets/sidebars.php:15
+msgid ""
+"This area will be shown as a post sidebar. Widgets will be stacked in this "
+"column."
+msgstr ""
+
+#: includes/widgets/sidebars.php:24
+msgid "Header Widget Area-One"
+msgstr ""
+
+#: includes/widgets/sidebars.php:26
+msgid ""
+"Widgets in this column will appear for : All Header Variations in Main "
+"header row right side."
+msgstr ""
+
+#: includes/widgets/sidebars.php:35
+msgid "Header Widget Area-Two"
+msgstr ""
+
+#: includes/widgets/sidebars.php:37
+msgid ""
+"Widgets in this column will appear in : For Header Variations 1 / 2 in "
+"Topbar left side, and For Header Variation 4 in main header right side."
+msgstr ""
+
+#: includes/widgets/sidebars.php:46
+msgid "Header Widget Area-Three"
+msgstr ""
+
+#: includes/widgets/sidebars.php:48
+msgid ""
+"Widgets in this column will appear in : For Header Variations 1 / 2 in "
+"Topbar right side."
+msgstr ""
+
+#: includes/widgets/sidebars.php:58
+msgid "Footer - Column 1"
+msgstr ""
+
+#: includes/widgets/sidebars.php:60
+msgid "Widgets in this column will appear in first footer column."
+msgstr ""
+
+#: includes/widgets/sidebars.php:71
+msgid "Footer - Column 2"
+msgstr ""
+
+#: includes/widgets/sidebars.php:73
+msgid "Widgets in this column will appear in second footer column."
+msgstr ""
+
+#: includes/widgets/sidebars.php:84
+msgid "Footer - Column 3"
+msgstr ""
+
+#: includes/widgets/sidebars.php:86
+msgid "Widgets in this column will appear in third footer column."
+msgstr ""
+
+#: includes/widgets/sidebars.php:96
+msgid "Footer - Column 4"
+msgstr ""
+
+#: includes/widgets/sidebars.php:98
+msgid "Widgets in this column will appear in fourth footer column."
+msgstr ""
+
+#: includes/widgets/sidebars.php:108
+msgid "Copyright Column 1"
+msgstr ""
+
+#: includes/widgets/sidebars.php:110
+msgid "Widgets in this column will appear in copyright section."
+msgstr ""
+
+#: includes/widgets/sidebars.php:119
+msgid "Page Sidebar"
+msgstr ""
+
+#: includes/widgets/sidebars.php:121
+msgid ""
+"This area will be shown as a page sidebar. Widgets will be stacked in this "
+"column."
+msgstr ""
+
+#: page.php:25 template-no-page-header.php:26
+#: template-parts/post/content/entry-content.php:22
+#: template-parts/post/content/single-content.php:18
+msgid "Pages:"
+msgstr ""
+
+#: searchform.php:12
+msgid "Search Button"
+msgstr ""
+
+#: template-parts/header/header-v1.php:51
+#: template-parts/header/header-v2.php:52
+#: template-parts/header/header-v3.php:35
+#: template-parts/header/header-v4.php:47
+msgid "Search Modal Button"
+msgstr ""
+
+#: template-parts/header/responsive-header.php:17
+msgid "Menu Button"
+msgstr ""
+
+#: template-parts/page-title/page-header.php:34
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr ""
+
+#: template-parts/page-title/page-header.php:37
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#. translators: %s: search query.
+#: template-parts/page-title/page-header.php:52
+#, php-format
+msgid " Search Results : %s"
+msgstr ""
+
+#: template-parts/page/content-none.php:12
+msgid "Nothing Found"
+msgstr ""
+
+#. translators: 1: link to WP admin new post page.
+#: template-parts/page/content-none.php:19
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/page/content-none.php:30
+msgid ""
+"Sorry, no results were found for your search terms. Please try again with "
+"different keywords."
+msgstr ""
+
+#: template-parts/page/content-none.php:35
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Try with search."
+msgstr ""
+
+#: template-parts/page/content-search.php:8
+msgid "Read More"
+msgstr ""
+
+#: template-parts/post/author-bio.php:17
+msgid "avatar"
+msgstr ""
+
+#: template-parts/post/author-bio.php:23
+msgid "user-url"
+msgstr ""
+
+#: template-parts/post/author-bio.php:29
+msgid "Twitter"
+msgstr ""
+
+#: template-parts/post/author-bio.php:32
+msgid "Facebook"
+msgstr ""
+
+#: template-parts/post/author-bio.php:35
+msgid "Instagram"
+msgstr ""
+
+#: template-parts/post/author-bio.php:38
+msgid "Pinterest"
+msgstr ""
+
+#: template-parts/post/author-bio.php:41
+msgid "Linkedin"
+msgstr ""
+
+#: template-parts/post/author-bio.php:44
+msgid "Mail"
+msgstr ""
+
+#: template-parts/post/meta/blog-single-meta.php:23
+msgid "0 Comments"
+msgstr ""
+
+#: template-parts/post/meta/blog-single-meta.php:23
+msgid "1 Comment"
+msgstr ""
+
+#: template-parts/post/meta/blog-single-meta.php:23
+msgid "% Comments"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Olyve"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://olyve.tanshcreative.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Olyve is a WordPress Theme designed and developed by tansh"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "tansh"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://themeforest.net/user/tansh"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Fullwidth Page - Without Page Title Section"
+msgstr ""

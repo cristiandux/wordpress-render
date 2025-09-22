@@ -1,0 +1,44 @@
+
+---Downloaded files---
+The import files for: Olyve Demo Data were successfully downloaded!
+Initial max execution time = 1200
+Files info:
+Site URL = http://crisdux.local
+Data file = C:\Users\Cristian\Local Sites\crisdux\app\public/wp-content/themes/olyve/includes/imports/content.xml
+Widget file = C:\Users\Cristian\Local Sites\crisdux\app\public/wp-content/themes/olyve/includes/imports/widgets.wie
+Customizer file = C:\Users\Cristian\Local Sites\crisdux\app\public/wp-content/themes/olyve/includes/imports/customizer.dat
+Redux files:
+olyve_theme_mod -> C:\Users\Cristian\Local Sites\crisdux\app\public/wp-content/themes/olyve/includes/imports/redux.json 
+
+
+---Importing widgets---
+Blog Sidebar : 
+
+Block - No Title - Widget already exists
+Block - No Title - Widget already exists
+Block - No Title - Widget already exists
+Block - No Title - Widget already exists
+Block - No Title - Widget already exists
+Block - No Title - Widget already exists
+Block - No Title - Widget already exists
+
+Copyright Column 1 : 
+
+Block - No Title - Widget already exists
+Block - No Title - Widget already exists
+Navigation Menu - No Title - Imported
+Block - No Title - Widget already exists
+Custom: Social Network - No Title - Widget already exists
+Block - No Title - Widget already exists
+Block - No Title - Widget already exists
+
+
+
+---Importing Redux settings---
+Redux settings import for: olyve_theme_mod finished successfully!
+
+---Importing customizer settings---
+Customizer settings import finished!
+
+---ocdi/after_import---
+

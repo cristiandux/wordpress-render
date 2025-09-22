@@ -1,0 +1,365 @@
+<?php
+/**
+ * Redux Settings
+ *
+ * @package OlyveTheme
+ * @version 1.0.0
+ */
+// Exit if accessed directly
+defined( 'ABSPATH' ) || exit;
+
+Redux::set_section(
+	$opt_name,
+	array(
+		'title'      => esc_html__( 'General Typography', 'olyve' ),
+		'id'         => 'olyve_general_typography_settings',
+        'icon'       => 'dashicons dashicons-arrow-right-alt',
+		'subsection' => true,
+		'fields'     => array(
+            // body
+            array(
+				'id'    => 'olyve_info_body_typo',
+				'type'  => 'info',
+                'title' => esc_html__( 'Body Typography', 'olyve' ),
+			),  
+            array(
+				'id'                => 'olyve_body_typo',
+				'type'              => 'typography',
+				'title'             => esc_html__( 'Body Font', 'olyve' ),
+				'google'            => true,
+                'font-backup'       => true,
+                'all-styles'        => true,
+				'all-subsets'       => true,
+                'text-align'        => false,
+				'letter-spacing'    => true, 
+                'font-size'         => false,
+                'line-height'       => false,
+                'units'             => 'px',
+				'output'            => array( 'body' ),
+			),
+            array(
+				'id'       => 'olyve_body_font_size',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Font Size', 'olyve' ),
+				'subtitle' => esc_html__( 'Make sure to give unit like px,em,rem', 'olyve' ),
+				'desc'     => esc_html__( 'Example: 16px', 'olyve' ),
+				'default'  => '',
+			),
+            array(
+				'id'       => 'olyve_body_line_height',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Line Height', 'olyve' ),
+				'default'  => '',
+			),
+            
+            // h1
+            array(
+				'id'    => 'olyve_info_h1_typo',
+				'type'  => 'info',
+                'title' => esc_html__( 'H1 Typography', 'olyve' ),
+			),  
+            array(
+				'id'                => 'olyve_h1_typo',
+				'type'              => 'typography',
+				'title'             => esc_html__( 'H1', 'olyve' ),
+				'google'            => true,
+                'font-backup'       => true,
+                'all-styles'        => true,
+				'all-subsets'       => true,
+                'text-align'        => false,
+				'letter-spacing'    => true, 
+                'font-size'         => false,
+                'line-height'       => false,
+                'units'             => 'px',
+				'output'            => array( 'h1, .elementor-widget-heading h1.elementor-heading-title' ),
+			),
+            array(
+				'id'       => 'olyve_h1_font_size',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Font Size', 'olyve' ),
+				'subtitle' => esc_html__( 'Make sure to give unit like px,em,rem', 'olyve' ),
+				'desc'     => esc_html__( 'Example: 16px', 'olyve' ),
+				'default'  => '',
+			),
+            array(
+				'id'       => 'olyve_h1_line_height',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Line Height', 'olyve' ),
+				'default'  => '',
+			),
+            // h2
+            array(
+				'id'    => 'olyve_info_h2_typo',
+				'type'  => 'info',
+                'title' => esc_html__( 'H2 Typography', 'olyve' ),
+			),  
+            array(
+				'id'                => 'olyve_h2_typo',
+				'type'              => 'typography',
+				'title'             => esc_html__( 'H2', 'olyve' ),
+				'google'            => true,
+                'font-backup'       => true,
+                'all-styles'        => true,
+				'all-subsets'       => true,
+                'text-align'        => false,
+				'letter-spacing'    => true, 
+                'font-size'         => false,
+                'line-height'       => false,
+                'units'             => 'px',
+				'output'            => array( 'h2, .elementor-widget-heading h2.elementor-heading-title' ),
+			),
+            array(
+				'id'       => 'olyve_h2_font_size',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Font Size', 'olyve' ),
+				'subtitle' => esc_html__( 'Make sure to give unit like px,em,rem', 'olyve' ),
+				'desc'     => esc_html__( 'Example: 16px', 'olyve' ),
+				'default'  => '',
+			),
+            array(
+				'id'       => 'olyve_h2_line_height',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Line Height', 'olyve' ),
+				'default'  => '',
+			),
+            // h3
+            array(
+				'id'    => 'olyve_info_h3_typo',
+				'type'  => 'info',
+                'title' => esc_html__( 'H3 Typography', 'olyve' ),
+			),  
+            array(
+				'id'                => 'olyve_h3_typo',
+				'type'              => 'typography',
+				'title'             => esc_html__( 'H3', 'olyve' ),
+				'google'            => true,
+                'font-backup'       => true,
+                'all-styles'        => true,
+				'all-subsets'       => true,
+                'text-align'        => false,
+				'letter-spacing'    => true, 
+                'font-size'         => false,
+                'line-height'       => false,
+                'units'             => 'px',
+				'output'            => array( 'h3, .elementor-widget-heading h3.elementor-heading-title' ),
+			),
+            array(
+				'id'       => 'olyve_h3_font_size',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Font Size', 'olyve' ),
+				'subtitle' => esc_html__( 'Make sure to give unit like px,em,rem', 'olyve' ),
+				'desc'     => esc_html__( 'Example: 16px', 'olyve' ),
+				'default'  => '',
+			),
+            array(
+				'id'       => 'olyve_h3_line_height',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Line Height', 'olyve' ),
+				'default'  => '',
+			),
+            // h4
+            array(
+				'id'    => 'olyve_info_h4_typo',
+				'type'  => 'info',
+                'title' => esc_html__( 'H4 Typography', 'olyve' ),
+			),  
+            array(
+				'id'                => 'olyve_h4_typo',
+				'type'              => 'typography',
+				'title'             => esc_html__( 'H4', 'olyve' ),
+				'google'            => true,
+                'font-backup'       => true,
+                'all-styles'        => true,
+				'all-subsets'       => true,
+                'text-align'        => false,
+				'letter-spacing'    => true, 
+                'font-size'         => false,
+                'line-height'       => false,
+                'units'             => 'px',
+				'output'            => array( 'h4, .elementor-widget-heading h4.elementor-heading-title' ),
+			),
+            array(
+				'id'       => 'olyve_h4_font_size',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Font Size', 'olyve' ),
+				'subtitle' => esc_html__( 'Make sure to give unit like px,em,rem', 'olyve' ),
+				'desc'     => esc_html__( 'Example: 16px', 'olyve' ),
+				'default'  => '',
+			),
+            array(
+				'id'       => 'olyve_h4_line_height',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Line Height', 'olyve' ),
+				'default'  => '',
+			),
+            // h5
+            array(
+				'id'    => 'olyve_info_h5_typo',
+				'type'  => 'info',
+                'title' => esc_html__( 'H5 Typography', 'olyve' ),
+			),  
+            array(
+				'id'                => 'olyve_h5_typo',
+				'type'              => 'typography',
+				'title'             => esc_html__( 'H5', 'olyve' ),
+				'google'            => true,
+                'font-backup'       => true,
+                'all-styles'        => true,
+				'all-subsets'       => true,
+                'text-align'        => false,
+				'letter-spacing'    => true, 
+                'font-size'         => false,
+                'line-height'       => false,
+                'units'             => 'px',
+				'output'            => array( 'h5, .elementor-widget-heading h5.elementor-heading-title' ),
+			),
+            array(
+				'id'       => 'olyve_h5_font_size',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Font Size', 'olyve' ),
+				'subtitle' => esc_html__( 'Make sure to give unit like px,em,rem', 'olyve' ),
+				'desc'     => esc_html__( 'Example: 16px', 'olyve' ),
+				'default'  => '',
+			),
+            array(
+				'id'       => 'olyve_h5_line_height',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Line Height', 'olyve' ),
+				'default'  => '',
+			),
+            // h6
+            array(
+				'id'    => 'olyve_info_h6_typo',
+				'type'  => 'info',
+                'title' => esc_html__( 'H6 Typography', 'olyve' ),
+			),  
+            array(
+				'id'                => 'olyve_h6_typo',
+				'type'              => 'typography',
+				'title'             => esc_html__( 'H6', 'olyve' ),
+				'google'            => true,
+                'font-backup'       => true,
+                'all-styles'        => true,
+				'all-subsets'       => true,
+                'text-align'        => false,
+				'letter-spacing'    => true, 
+                'font-size'         => false,
+                'line-height'       => false,
+                'units'             => 'px',
+				'output'            => array( 'h6, .elementor-widget-heading h6.elementor-heading-title' ),
+			),
+            array(
+				'id'       => 'olyve_h6_font_size',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Font Size', 'olyve' ),
+				'subtitle' => esc_html__( 'Make sure to give unit like px,em,rem', 'olyve' ),
+				'desc'     => esc_html__( 'Example: 16px', 'olyve' ),
+				'default'  => '',
+			),
+            array(
+				'id'       => 'olyve_h6_line_height',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Line Height', 'olyve' ),
+				'default'  => '',
+			),
+            // info
+            array(
+				'id'    => 'olyve_info_sm_headings',
+				'type'  => 'info',
+                'title' => esc_html__( 'Heading Sizes For Small Screens', 'olyve' ),
+				'desc'  =>  wp_kses( __('Set only if required', 'olyve'), array( 'br' => array(), 'strong' => array(), ) ),
+			),  
+            // h1
+            array(
+				'id'       => 'olyve_h1_size_mobile',
+				'type'     => 'text',
+				'title'    => esc_html__( 'H1 - Font Size', 'olyve' ),
+				'subtitle' => esc_html__( 'Make sure to give unit like px,em,rem', 'olyve' ),
+				'desc'     => esc_html__( 'Example: 16px', 'olyve' ),
+				'default'  => '',
+			),
+            array(
+				'id'       => 'olyve_h1_lh_mobile',
+				'type'     => 'text',
+				'title'    => esc_html__( 'H1 - Line Height', 'olyve' ),
+				'default'  => '',
+			),           
+            // h2
+            array(
+				'id'       => 'olyve_h2_size_mobile',
+				'type'     => 'text',
+				'title'    => esc_html__( 'H2 - Font Size', 'olyve' ),
+				'subtitle' => esc_html__( 'Make sure to give unit like px,em,rem', 'olyve' ),
+				'desc'     => esc_html__( 'Example: 16px', 'olyve' ),
+				'default'  => '',
+			),
+            array(
+				'id'       => 'olyve_h2_lh_mobile',
+				'type'     => 'text',
+				'title'    => esc_html__( 'H2 - Line Height', 'olyve' ),
+				'default'  => '',
+			), 
+            // h3
+            array(
+				'id'       => 'olyve_h3_size_mobile',
+				'type'     => 'text',
+				'title'    => esc_html__( 'H3 - Font Size', 'olyve' ),
+				'subtitle' => esc_html__( 'Make sure to give unit like px,em,rem', 'olyve' ),
+				'desc'     => esc_html__( 'Example: 16px', 'olyve' ),
+				'default'  => '',
+			),
+            array(
+				'id'       => 'olyve_h3_lh_mobile',
+				'type'     => 'text',
+				'title'    => esc_html__( 'H3 - Line Height', 'olyve' ),
+				'default'  => '',
+			),            
+            // h4
+            array(
+				'id'       => 'olyve_h4_size_mobile',
+				'type'     => 'text',
+				'title'    => esc_html__( 'H4 - Font Size', 'olyve' ),
+				'subtitle' => esc_html__( 'Make sure to give unit like px,em,rem', 'olyve' ),
+				'desc'     => esc_html__( 'Example: 16px', 'olyve' ),
+				'default'  => '',
+			),
+            array(
+				'id'       => 'olyve_h4_lh_mobile',
+				'type'     => 'text',
+				'title'    => esc_html__( 'H4- Line Height', 'olyve' ),
+				'default'  => '',
+			),        
+            // h5
+            array(
+				'id'       => 'olyve_h5_size_mobile',
+				'type'     => 'text',
+				'title'    => esc_html__( 'H5 - Font Size', 'olyve' ),
+				'subtitle' => esc_html__( 'Make sure to give unit like px,em,rem', 'olyve' ),
+				'desc'     => esc_html__( 'Example: 16px', 'olyve' ),
+				'default'  => '',
+			),
+            array(
+				'id'       => 'olyve_h5_lh_mobile',
+				'type'     => 'text',
+				'title'    => esc_html__( 'H5 - Line Height', 'olyve' ),
+				'default'  => '',
+			),        
+            // h6
+             array(
+				'id'       => 'olyve_h6_size_mobile',
+				'type'     => 'text',
+				'title'    => esc_html__( 'H6 - Font Size', 'olyve' ),
+				'subtitle' => esc_html__( 'Make sure to give unit like px,em,rem', 'olyve' ),
+				'desc'     => esc_html__( 'Example: 16px', 'olyve' ),
+				'default'  => '',
+			),
+            array(
+				'id'       => 'olyve_h6_lh_mobile',
+				'type'     => 'text',
+				'title'    => esc_html__( 'H6 - Line Height', 'olyve' ),
+				'default'  => '',
+			), 
+       
+		),
+	)
+);

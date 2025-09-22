@@ -1,0 +1,4 @@
+/*
+Adds Right To Left (RTL) support.
+*/
+body { direction: rtl; unicode-bidi: embed; }

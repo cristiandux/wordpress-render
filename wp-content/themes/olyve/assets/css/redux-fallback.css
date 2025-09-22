@@ -1,0 +1,27 @@
+/* CSS if no redux installed */
+body { font-size: 18px; line-height: 1.6; }
+h1, .elementor-widget-heading h1.elementor-heading-title { font-size: 3.444em; line-height: 1.1; }
+h2, .elementor-widget-heading h2.elementor-heading-title { font-size: 2.667em; line-height: 1.2; }
+h3, .elementor-widget-heading h3.elementor-heading-title { font-size: 2em; line-height: 1.2; }
+h4, .elementor-widget-heading h4.elementor-heading-title { font-size: 1.667em; line-height: 1.4; }
+h5, .elementor-widget-heading h5.elementor-heading-title { font-size: 1.333em; line-height: 1.2; }
+h6, .elementor-widget-heading h6.elementor-heading-title { font-size: 1em; line-height: 1.2; }
+.dtr-page-title { line-height: 1em; }
+.logo-default, .logo-default:hover { font-family: "Inter Tight", sans-serif; line-height: 24px; font-weight: 500; font-style: normal; font-size: 24px; }
+.logo-alt, .logo-alt:hover { font-family: "Inter Tight", sans-serif; line-height: 24px; font-weight: 500; font-style: normal; font-size: 24px; }
+body { font-family: "Inter Tight", sans-serif; font-weight: 400; font-style: normal; }
+h1, .elementor-widget-heading h1.elementor-heading-title { font-family: "Inter Tight", sans-serif; letter-spacing: -1px; font-weight: 400; font-style: normal; }
+h2, .elementor-widget-heading h2.elementor-heading-title { font-family: "Inter Tight", sans-serif; font-weight: 400; font-style: normal; }
+h3, .elementor-widget-heading h3.elementor-heading-title { font-family: "Inter Tight", sans-serif; font-weight: 400; font-style: normal; }
+h4, .elementor-widget-heading h4.elementor-heading-title { font-family: "Inter Tight", sans-serif; font-weight: 400; font-style: normal; }
+h5, .elementor-widget-heading h5.elementor-heading-title { font-family: "Inter Tight", sans-serif; font-weight: 400; font-style: normal; }
+h6, .elementor-widget-heading h6.elementor-heading-title { font-family: "Inter Tight", sans-serif; font-weight: 500; font-style: normal; }
+.dtr-btn, button, .wp-block-button__link, .dtr-form-btn, .dtr-form .dtr-btn, input[type="submit"], input[type="reset"], button[type="submit"], #submit { font-family: "Inter Tight", sans-serif; line-height: 22px; font-weight: 500; font-style: normal; font-size: 18px; }
+#dtr-header-global { background-repeat: no-repeat; background-position: center center; background-size: cover; }
+.main-navigation .sf-menu li a { font-family: "Inter Tight", sans-serif; line-height: 18px; font-weight: 500; font-style: normal; font-size: 18px; }
+.dtr-header-btn { font-family: "Inter Tight", sans-serif; line-height: 22px; font-weight: 500; font-style: normal; font-size: 18px; }
+.dtr-page-title--section { background-size: cover; }
+.dtr-page-title { color: #bbbaa6; }
+.dtr-copyright__content { padding-top: 20px; padding-bottom: 20px; }
+.wp-block-categories-list a, .wp-block-archives-list a { font-family: "Inter Tight", sans-serif; line-height: 18px; font-weight: 500; font-style: normal; font-size: 18px; }
+#dtr-secondary-section .widget_nav_menu a, .elementor-widget-wp-widget-nav_menu a { line-height: 20px; font-size: 20px; }

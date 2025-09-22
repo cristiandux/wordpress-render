@@ -1,0 +1,4 @@
+.redux-container .redux-main .form-table tr th, .redux-container .redux-main .form-table tr td { padding-top: 20px !important; padding-bottom: 20px !important; }
+.redux-container .redux-field-container { padding: 0 !important; }
+.redux-notice-field { margin: 0; border: 0; -webkit-box-shadow: none; box-shadow: none; padding: 3px 10px; background-color: #ddd; }
+#footer-thankyou, .redux-main #redux-sticky #info_bar .expand_options { display: none; }
