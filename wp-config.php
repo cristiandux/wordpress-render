@@ -43,9 +43,8 @@ if ( !defined('WP_DEBUG') ) {
     define('WP_DEBUG', false);
 }
 
-// No forzar aquí, lo manejamos en Cloudflare
-define('WP_HOME', getenv('WP_HOME') ?: 'http://localhost');
-define('WP_SITEURL', getenv('WP_SITEURL') ?: 'http://localhost');
+define('WP_HOME', 'https://cristiandux.com');
+define('WP_SITEURL', 'https://cristiandux.com');
 
 /* That's all, stop editing! Happy publishing. */
 
