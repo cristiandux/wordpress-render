@@ -43,17 +43,12 @@ if ( !defined('WP_DEBUG') ) {
     define('WP_DEBUG', false);
 }
 
-define('WP_HOME', 'https://cristiandux.com');
-define('WP_SITEURL', 'https://cristiandux.com');
 
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
-}
-if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
-    $_SERVER['HTTPS'] = 'on';
 }
 
 /** Sets up WordPress vars and included files. */
