@@ -42,9 +42,10 @@ $table_prefix = 'wp_';
 if ( !defined('WP_DEBUG') ) {
     define('WP_DEBUG', false);
 }
+
+// Deja que Cloudflare maneje HTTPS (no fuerces aquí)
 define('WP_HOME', 'https://cristiandux.com');
 define('WP_SITEURL', 'https://cristiandux.com');
-
 
 /* That's all, stop editing! Happy publishing. */
 
