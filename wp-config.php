@@ -39,13 +39,13 @@ define( 'WP_CACHE_KEY_SALT', '}QZ*gl.npXB1Dp(jAm-*~gEsG;am5NYjmXNu:%Yo[=+}UO ~*!
 $table_prefix = 'wp_';
 
 /* Custom values */
-if ( ! defined( 'WP_DEBUG' ) ) {
-	define( 'WP_DEBUG', false );
+if ( !defined('WP_DEBUG') ) {
+    define('WP_DEBUG', false);
 }
 
-// 🚨 Comentamos las URL hasta que el dominio esté bien configurado
-// define( 'WP_HOME', 'https://cristiandux.com' );
-// define( 'WP_SITEURL', 'https://cristiandux.com' );
+// No forzar aquí, lo manejamos en Cloudflare
+define('WP_HOME', getenv('WP_HOME') ?: 'http://localhost');
+define('WP_SITEURL', getenv('WP_SITEURL') ?: 'http://localhost');
 
 /* That's all, stop editing! Happy publishing. */
 
