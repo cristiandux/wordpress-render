@@ -43,8 +43,9 @@ if ( ! defined( 'WP_DEBUG' ) ) {
 	define( 'WP_DEBUG', false );
 }
 
-define( 'WP_HOME', 'https://cristiandux.com' );
-define( 'WP_SITEURL', 'https://cristiandux.com' );
+// 🚨 Comentamos las URL hasta que el dominio esté bien configurado
+// define( 'WP_HOME', 'https://cristiandux.com' );
+// define( 'WP_SITEURL', 'https://cristiandux.com' );
 
 /* That's all, stop editing! Happy publishing. */
 
