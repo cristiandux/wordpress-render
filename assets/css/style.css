@@ -20,7 +20,7 @@
   --radius-lg:     20px;
   --radius-pill:   9999px;
   --transition:    0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  --nav-h:         88px;
+  --nav-h:         104px;
   --shadow:        0 8px 40px rgba(0,0,0,.45);
 }
 
@@ -112,10 +112,9 @@ p { margin-bottom: 0; }
   align-items: center;
 }
 .nav-logo img {
-  height: 52px;
+  height: 88px;
   width: auto;
   object-fit: contain;
-  /* elimina fondo blanco del PNG en fondo oscuro */
   mix-blend-mode: screen;
   filter: contrast(1.1) brightness(1.15);
   transition: transform var(--transition), filter var(--transition);
