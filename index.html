@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cristian — UX Designer & Creative Developer. Diseño experiencias digitales memorables, minimalistas y orientadas al usuario.">
+  <meta property="og:title" content="Cristian DUX — UX Designer & Creative Developer">
+  <meta property="og:description" content="Portfolio de diseño UX, branding y desarrollo creativo.">
+  <meta property="og:image" content="assets/images/hero-photo.jpg">
+  <title>Cristian DUX — UX Designer & Creative Developer</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav id="nav" role="navigation" aria-label="Navegación principal">
+  <div class="nav-inner">
+
+    <a href="#hero" class="nav-logo" aria-label="Inicio">
+      <img src="assets/images/logo.png" alt="Cristian DUX logo" width="120" height="40">
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#about">Sobre mí</a></li>
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+
+    <a href="#contact" class="nav-cta">
+      Trabajemos juntos
+      <span aria-hidden="true">→</span>
+    </a>
+
+    <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<nav class="nav-mobile" aria-label="Menú móvil" role="navigation">
+  <a href="#about">Sobre mí</a>
+  <a href="#services">Servicios</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#blog">Blog</a>
+  <a href="#contact">Contacto</a>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero" aria-labelledby="hero-title">
+  <div class="hero-bg">
+    <div class="hero-bg-glow"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-label fade-in">
+        Disponible para proyectos
+      </div>
+
+      <h1 class="hero-title fade-in fade-in-delay-1" id="hero-title">
+        Diseño que<br>
+        <em class="line-accent">conecta</em><br>
+        y convierte.
+      </h1>
+
+      <p class="hero-desc fade-in fade-in-delay-2">
+        Soy Cristian, UX Designer &amp; Creative Developer. Creo experiencias digitales
+        que equilibran estética, funcionalidad y propósito de negocio.
+      </p>
+
+      <div class="hero-actions fade-in fade-in-delay-3">
+        <a href="#portfolio" class="btn-primary">
+          Ver portfolio
+          <span class="btn-icon" aria-hidden="true">↗</span>
+        </a>
+        <a href="#contact" class="btn-ghost">
+          Hablemos
+        </a>
+      </div>
+
+      <div class="hero-stats fade-in fade-in-delay-4">
+        <div class="hero-stat">
+          <div class="hero-stat-num">+50</div>
+          <div class="hero-stat-label">Proyectos</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">5+</div>
+          <div class="hero-stat-label">Años exp.</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Satisfacción</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap fade-in fade-in-delay-2">
+      <div class="hero-photo-frame">
+        <img src="assets/images/hero-photo.jpg"
+             alt="Foto de Cristian"
+             width="480" height="640"
+             loading="eager">
+      </div>
+      <div class="hero-photo-badge">
+        <div class="hero-photo-badge-num">✦ DUX</div>
+        <div class="hero-photo-badge-text">Design · UX · Xperience</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-text">Scroll</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     MARQUEE
+     ============================================================ -->
+<div class="marquee-section" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">UX Design</span>
+    <span class="marquee-item">UI Design</span>
+    <span class="marquee-item">Branding</span>
+    <span class="marquee-item">Web Design</span>
+    <span class="marquee-item">Interaction Design</span>
+    <span class="marquee-item">Design Systems</span>
+    <span class="marquee-item">Figma</span>
+    <span class="marquee-item">Framer</span>
+    <span class="marquee-item">Webflow</span>
+    <span class="marquee-item">Creative Dev</span>
+    <!-- repeat for seamless loop -->
+    <span class="marquee-item">UX Design</span>
+    <span class="marquee-item">UI Design</span>
+    <span class="marquee-item">Branding</span>
+    <span class="marquee-item">Web Design</span>
+    <span class="marquee-item">Interaction Design</span>
+    <span class="marquee-item">Design Systems</span>
+    <span class="marquee-item">Figma</span>
+    <span class="marquee-item">Framer</span>
+    <span class="marquee-item">Webflow</span>
+    <span class="marquee-item">Creative Dev</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section id="about" class="section" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-images fade-in">
+        <div class="about-img-main">
+          <img src="assets/images/about-img1.jpg"
+               alt="Imagen de perfil — Cristian DUX"
+               width="560" height="700"
+               loading="lazy">
+        </div>
+        <div class="about-img-float">
+          <img src="assets/images/about-img2.jpg"
+               alt="En proceso de diseño"
+               width="200" height="200"
+               loading="lazy">
+        </div>
+      </div>
+
+      <div class="about-text">
+        <span class="section-tag fade-in">Sobre mí</span>
+        <h2 class="section-title fade-in fade-in-delay-1" id="about-title">
+          Diseño con propósito,<br>construyo con precisión.
+        </h2>
+        <p class="about-desc fade-in fade-in-delay-2">
+          Soy un diseñador UX y desarrollador creativo con más de 5 años transformando
+          ideas complejas en experiencias digitales intuitivas. Me especializo en productos
+          que combinan diseño centrado en el usuario con tecnología moderna.
+          <br><br>
+          Trabajo con startups, agencias y marcas consolidadas para crear interfaces
+          que no solo se ven bien, sino que <strong style="color:var(--text-heading)">funcionan y convierten</strong>.
+        </p>
+
+        <div class="about-tools fade-in fade-in-delay-2">
+          <div class="about-tools-label">Herramientas</div>
+          <div class="about-tools-grid">
+            <div class="tool-chip">
+              <img src="assets/images/icon-figma.png" alt="Figma" width="18" height="18" loading="lazy">
+              Figma
+            </div>
+            <div class="tool-chip">
+              <img src="assets/images/icon-framer.png" alt="Framer" width="18" height="18" loading="lazy">
+              Framer
+            </div>
+            <div class="tool-chip">
+              <img src="assets/images/icon-webflow.png" alt="Webflow" width="18" height="18" loading="lazy">
+              Webflow
+            </div>
+            <div class="tool-chip">
+              <img src="assets/images/icon-sketch.png" alt="Sketch" width="18" height="18" loading="lazy">
+              Sketch
+            </div>
+            <div class="tool-chip">
+              <img src="assets/images/icon-ai.png" alt="Adobe Illustrator" width="18" height="18" loading="lazy">
+              Illustrator
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-list fade-in fade-in-delay-3">
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">UX / Product Design</span>
+              <span class="skill-pct">95%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:95%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">UI & Visual Design</span>
+              <span class="skill-pct">92%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:92%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Branding & Identity</span>
+              <span class="skill-pct">88%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:88%"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Front-end Development</span>
+              <span class="skill-pct">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width:80%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:36px" class="fade-in fade-in-delay-4">
+          <a href="#contact" class="btn-primary">Trabaja conmigo <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS BAND
+     ============================================================ -->
+<section id="stats" aria-label="Estadísticas">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-in">
+        <div class="stat-num">
+          <span class="counter" data-target="50" data-suffix="+">0+</span>
+        </div>
+        <div class="stat-label">Proyectos completados</div>
+        <div class="stat-divider"></div>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-1">
+        <div class="stat-num">
+          <span class="counter" data-target="35" data-suffix="+">0+</span>
+        </div>
+        <div class="stat-label">Clientes satisfechos</div>
+        <div class="stat-divider"></div>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-2">
+        <div class="stat-num">
+          <span class="counter" data-target="5" data-suffix="+">0+</span>
+        </div>
+        <div class="stat-label">Años de experiencia</div>
+        <div class="stat-divider"></div>
+      </div>
+      <div class="stat-item fade-in fade-in-delay-3">
+        <div class="stat-num">
+          <span class="counter" data-target="100" data-suffix="%">0%</span>
+        </div>
+        <div class="stat-label">Entrega a tiempo</div>
+        <div class="stat-divider"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+<section id="services" class="section" aria-labelledby="services-title">
+  <div class="container">
+    <div class="services-header">
+      <span class="section-tag fade-in">Servicios</span>
+      <h2 class="section-title fade-in fade-in-delay-1" id="services-title">
+        Lo que puedo hacer<br>por tu negocio
+      </h2>
+      <p class="fade-in fade-in-delay-2">
+        Ofrezco servicios de diseño y desarrollo orientados a resultados,
+        desde la estrategia hasta la entrega final.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <article class="service-card fade-in">
+        <span class="service-num">01</span>
+        <div class="service-icon" aria-hidden="true">◎</div>
+        <h3 class="service-title">UX & Product Design</h3>
+        <p class="service-desc">
+          Diseño interfaces centradas en el usuario, con research, wireframes,
+          prototipos interactivos y test de usabilidad.
+        </p>
+      </article>
+
+      <article class="service-card fade-in fade-in-delay-1">
+        <span class="service-num">02</span>
+        <div class="service-icon" aria-hidden="true">◈</div>
+        <h3 class="service-title">Branding & Identidad Visual</h3>
+        <p class="service-desc">
+          Construyo identidades de marca coherentes: logotipos, sistemas de diseño,
+          guías de estilo y materiales de comunicación.
+        </p>
+      </article>
+
+      <article class="service-card fade-in fade-in-delay-2">
+        <span class="service-num">03</span>
+        <div class="service-icon" aria-hidden="true">⬡</div>
+        <h3 class="service-title">Web Design & Desarrollo</h3>
+        <p class="service-desc">
+          Sitios web de alto rendimiento con Framer, Webflow o código puro.
+          Rápidos, accesibles y optimizados para conversión.
+        </p>
+      </article>
+
+      <article class="service-card fade-in fade-in-delay-1">
+        <span class="service-num">04</span>
+        <div class="service-icon" aria-hidden="true">◇</div>
+        <h3 class="service-title">Design Systems</h3>
+        <p class="service-desc">
+          Sistemas de diseño escalables y documentados que mantienen consistencia
+          en todos los touchpoints de tu producto digital.
+        </p>
+      </article>
+
+      <article class="service-card fade-in fade-in-delay-2">
+        <span class="service-num">05</span>
+        <div class="service-icon" aria-hidden="true">▸</div>
+        <h3 class="service-title">Motion & Micro-interacciones</h3>
+        <p class="service-desc">
+          Animaciones y transiciones que dan vida a la interfaz, mejoran la
+          experiencia y refuerzan la narrativa de marca.
+        </p>
+      </article>
+
+      <article class="service-card fade-in fade-in-delay-3">
+        <span class="service-num">06</span>
+        <div class="service-icon" aria-hidden="true">✦</div>
+        <h3 class="service-title">Consultoría UX</h3>
+        <p class="service-desc">
+          Auditorías de usabilidad, análisis heurístico y estrategia de producto
+          para mejorar la experiencia de tus usuarios actuales.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PORTFOLIO
+     ============================================================ -->
+<section id="portfolio" class="section" aria-labelledby="portfolio-title">
+  <div class="container">
+
+    <div class="portfolio-header">
+      <div>
+        <span class="section-tag fade-in">Portfolio</span>
+        <h2 class="section-title fade-in fade-in-delay-1" id="portfolio-title">
+          Trabajos seleccionados
+        </h2>
+      </div>
+      <div class="portfolio-filters fade-in fade-in-delay-2" role="group" aria-label="Filtros de portfolio">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="ux">UX Design</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+      </div>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <article class="portfolio-item wide fade-in"
+               data-category="ux"
+               data-src="assets/images/folio-1.jpg"
+               data-title="App Redesign — Mobile Banking"
+               role="button"
+               tabindex="0"
+               aria-label="Ver proyecto: App Redesign Mobile Banking">
+        <img src="assets/images/folio-1.jpg"
+             alt="App Redesign — Mobile Banking"
+             loading="lazy" width="800" height="400">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <div class="portfolio-cat">UX Design</div>
+            <div class="portfolio-title">App Redesign — Mobile Banking</div>
+          </div>
+        </div>
+        <div class="portfolio-arrow" aria-hidden="true">↗</div>
+      </article>
+
+      <article class="portfolio-item fade-in fade-in-delay-1"
+               data-category="branding"
+               data-src="assets/images/folio-2.jpg"
+               data-title="Identidad Visual — Floristería"
+               role="button"
+               tabindex="0"
+               aria-label="Ver proyecto: Identidad Visual Floristería">
+        <img src="assets/images/folio-2.jpg"
+             alt="Identidad Visual — Floristería"
+             loading="lazy" width="400" height="300">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <div class="portfolio-cat">Branding</div>
+            <div class="portfolio-title">Identidad Visual — Floristería</div>
+          </div>
+        </div>
+        <div class="portfolio-arrow" aria-hidden="true">↗</div>
+      </article>
+
+      <article class="portfolio-item fade-in fade-in-delay-2"
+               data-category="web"
+               data-src="assets/images/folio-3.jpg"
+               data-title="Landing Page — SaaS Platform"
+               role="button"
+               tabindex="0"
+               aria-label="Ver proyecto: Landing Page SaaS">
+        <img src="assets/images/folio-3.jpg"
+             alt="Landing Page — SaaS Platform"
+             loading="lazy" width="400" height="300">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <div class="portfolio-cat">Web Design</div>
+            <div class="portfolio-title">Landing Page — SaaS Platform</div>
+          </div>
+        </div>
+        <div class="portfolio-arrow" aria-hidden="true">↗</div>
+      </article>
+
+      <article class="portfolio-item fade-in fade-in-delay-1"
+               data-category="branding"
+               data-src="assets/images/folio-7.png"
+               data-title="Logotipo — Floristería Elegante"
+               role="button"
+               tabindex="0"
+               aria-label="Ver proyecto: Logotipo Floristería">
+        <img src="assets/images/folio-7.png"
+             alt="Logotipo — Floristería Elegante"
+             loading="lazy" width="400" height="300"
+             style="object-fit:contain; padding:20px; background:var(--bg-card)">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <div class="portfolio-cat">Branding</div>
+            <div class="portfolio-title">Logotipo — Floristería</div>
+          </div>
+        </div>
+        <div class="portfolio-arrow" aria-hidden="true">↗</div>
+      </article>
+
+      <article class="portfolio-item fade-in fade-in-delay-2"
+               data-category="ux"
+               data-src="assets/images/folio-4.jpg"
+               data-title="E-commerce UX — Fashion Brand"
+               role="button"
+               tabindex="0"
+               aria-label="Ver proyecto: E-commerce UX">
+        <img src="assets/images/folio-4.jpg"
+             alt="E-commerce UX — Fashion Brand"
+             loading="lazy" width="400" height="300">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <div class="portfolio-cat">UX Design</div>
+            <div class="portfolio-title">E-commerce UX — Fashion</div>
+          </div>
+        </div>
+        <div class="portfolio-arrow" aria-hidden="true">↗</div>
+      </article>
+
+      <article class="portfolio-item wide fade-in fade-in-delay-1"
+               data-category="web"
+               data-src="assets/images/folio-5.jpg"
+               data-title="Portfolio Web — Filmmaker"
+               role="button"
+               tabindex="0"
+               aria-label="Ver proyecto: Portfolio Filmmaker">
+        <img src="assets/images/folio-5.jpg"
+             alt="Portfolio Web — Filmmaker"
+             loading="lazy" width="800" height="400">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <div class="portfolio-cat">Web Design</div>
+            <div class="portfolio-title">Portfolio Web — Filmmaker</div>
+          </div>
+        </div>
+        <div class="portfolio-arrow" aria-hidden="true">↗</div>
+      </article>
+
+    </div>
+
+    <div class="portfolio-cta fade-in">
+      <a href="#contact" class="btn-ghost">
+        ¿Tienes un proyecto en mente? Hablemos →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section id="testimonials" class="section" aria-labelledby="testm-title">
+  <div class="container">
+    <div class="testimonials-header">
+      <span class="section-tag fade-in">Testimonios</span>
+      <h2 class="section-title fade-in fade-in-delay-1" id="testm-title">
+        Lo que dicen mis clientes
+      </h2>
+    </div>
+
+    <div class="swiper swiper-testimonials fade-in fade-in-delay-2">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <article class="testm-card">
+            <div class="testm-stars" aria-label="5 estrellas">★★★★★</div>
+            <div class="testm-quote">"</div>
+            <p class="testm-text">
+              Cristian transformó completamente la UX de nuestra app. Los usuarios
+              ahora completan los flujos clave un 60% más rápido. Su proceso
+              metodológico y atención al detalle son excepcionales.
+            </p>
+            <div class="testm-author">
+              <div class="testm-avatar">
+                <img src="assets/images/testm-1.jpg" alt="María García" loading="lazy" width="48" height="48">
+              </div>
+              <div>
+                <div class="testm-name">María García</div>
+                <div class="testm-role">Product Manager — Fintech startup</div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="testm-card">
+            <div class="testm-stars" aria-label="5 estrellas">★★★★★</div>
+            <div class="testm-quote">"</div>
+            <p class="testm-text">
+              La identidad visual que creó para nuestra marca es perfecta.
+              Capturó exactamente lo que necesitábamos: elegante, moderno y memorable.
+              El proceso fue fluido y los resultados superaron expectativas.
+            </p>
+            <div class="testm-author">
+              <div class="testm-avatar">
+                <img src="assets/images/testm-2.jpg" alt="Carlos Ruiz" loading="lazy" width="48" height="48">
+              </div>
+              <div>
+                <div class="testm-name">Carlos Ruiz</div>
+                <div class="testm-role">CEO — Estudio de arquitectura</div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="testm-card">
+            <div class="testm-stars" aria-label="5 estrellas">★★★★★</div>
+            <div class="testm-quote">"</div>
+            <p class="testm-text">
+              Trabajar con Cristian fue una experiencia increíble. Entregó un
+              design system completo que nuestro equipo de dev adoptó sin fricción.
+              Muy recomendable para proyectos de producto serios.
+            </p>
+            <div class="testm-author">
+              <div class="testm-avatar">
+                <img src="assets/images/testm-3.jpg" alt="Laura Martínez" loading="lazy" width="48" height="48">
+              </div>
+              <div>
+                <div class="testm-name">Laura Martínez</div>
+                <div class="testm-role">CTO — SaaS B2B empresa</div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="testm-card">
+            <div class="testm-stars" aria-label="5 estrellas">★★★★★</div>
+            <div class="testm-quote">"</div>
+            <p class="testm-text">
+              Nos rediseñó el e-commerce completo en tiempo récord. Las conversiones
+              aumentaron un 40% en el primer mes. Entiende perfectamente
+              la psicología del usuario y los objetivos de negocio.
+            </p>
+            <div class="testm-author">
+              <div class="testm-avatar">
+                <img src="assets/images/testm-1.jpg" alt="Andrés López" loading="lazy" width="48" height="48">
+              </div>
+              <div>
+                <div class="testm-name">Andrés López</div>
+                <div class="testm-role">Director — Fashion e-commerce</div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev" aria-label="Anterior"></div>
+      <div class="swiper-button-next" aria-label="Siguiente"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     BLOG
+     ============================================================ -->
+<section id="blog" class="section" aria-labelledby="blog-title">
+  <div class="container">
+
+    <div class="blog-header">
+      <div>
+        <span class="section-tag fade-in">Blog</span>
+        <h2 class="section-title fade-in fade-in-delay-1" id="blog-title">
+          Últimos artículos
+        </h2>
+      </div>
+      <a href="#blog" class="btn-ghost fade-in">Ver todos →</a>
+    </div>
+
+    <div class="swiper swiper-blog fade-in fade-in-delay-2">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <article class="blog-card">
+            <div class="blog-card-img">
+              <img src="assets/images/post-1.jpg"
+                   alt="Principios de UX Writing" loading="lazy" width="640" height="360">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-meta">
+                <span class="blog-cat">UX Design</span>
+                <time class="blog-date" datetime="2025-03-15">15 Mar 2025</time>
+              </div>
+              <h3 class="blog-card-title">
+                Los 7 principios de UX Writing que transforman interfaces
+              </h3>
+              <p class="blog-card-excerpt">
+                El texto en una interfaz no es decoración, es diseño.
+                Aprende cómo las palabras correctas reducen la fricción y aumentan la confianza.
+              </p>
+              <span class="blog-read-more">Leer más <span aria-hidden="true">→</span></span>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="blog-card">
+            <div class="blog-card-img">
+              <img src="assets/images/post-2.jpg"
+                   alt="Design Systems en 2025" loading="lazy" width="640" height="360">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-meta">
+                <span class="blog-cat">Design Systems</span>
+                <time class="blog-date" datetime="2025-02-28">28 Feb 2025</time>
+              </div>
+              <h3 class="blog-card-title">
+                Cómo construir un Design System que tu equipo realmente use
+              </h3>
+              <p class="blog-card-excerpt">
+                La mayoría de design systems fracasan por adopción, no por calidad.
+                Estrategias probadas para que el tuyo funcione en producción.
+              </p>
+              <span class="blog-read-more">Leer más <span aria-hidden="true">→</span></span>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="blog-card">
+            <div class="blog-card-img">
+              <img src="assets/images/post-3.jpg"
+                   alt="Framer vs Webflow 2025" loading="lazy" width="640" height="360">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-meta">
+                <span class="blog-cat">Herramientas</span>
+                <time class="blog-date" datetime="2025-01-20">20 Ene 2025</time>
+              </div>
+              <h3 class="blog-card-title">
+                Framer vs Webflow en 2025: ¿cuál elegir para tu proyecto?
+              </h3>
+              <p class="blog-card-excerpt">
+                Comparativa honesta después de usar ambas herramientas en proyectos reales.
+                Casos de uso, limitaciones y cuándo cada una brilla.
+              </p>
+              <span class="blog-read-more">Leer más <span aria-hidden="true">→</span></span>
+            </div>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="blog-card">
+            <div class="blog-card-img">
+              <img src="assets/images/folio-detail-1.jpg"
+                   alt="Minimalismo en UX" loading="lazy" width="640" height="360">
+            </div>
+            <div class="blog-card-body">
+              <div class="blog-meta">
+                <span class="blog-cat">UI Design</span>
+                <time class="blog-date" datetime="2024-12-10">10 Dic 2024</time>
+              </div>
+              <h3 class="blog-card-title">
+                Minimalismo en UX: menos elementos, más impacto
+              </h3>
+              <p class="blog-card-excerpt">
+                El minimalismo no es eliminar elementos, es eliminar lo innecesario.
+                Guía práctica para diseñar interfaces de alto impacto visual.
+              </p>
+              <span class="blog-read-more">Leer más <span aria-hidden="true">→</span></span>
+            </div>
+          </article>
+        </div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev" aria-label="Anterior"></div>
+      <div class="swiper-button-next" aria-label="Siguiente"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact" class="section" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <span class="section-tag fade-in">Contacto</span>
+        <h2 class="section-title fade-in fade-in-delay-1" id="contact-title">
+          ¿Tienes un proyecto?<br>Hablemos.
+        </h2>
+        <p class="fade-in fade-in-delay-2">
+          Estoy disponible para proyectos freelance, colaboraciones y consultoría.
+          Cuéntame tu idea y te respondo en menos de 24 horas.
+        </p>
+
+        <div class="contact-details fade-in fade-in-delay-2">
+          <div class="contact-item">
+            <div class="contact-item-icon" aria-hidden="true">✉</div>
+            <div class="contact-item-text">
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-val">hola@cristiandux.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon" aria-hidden="true">📍</div>
+            <div class="contact-item-text">
+              <div class="contact-item-label">Ubicación</div>
+              <div class="contact-item-val">España · Disponible remoto</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon" aria-hidden="true">⏰</div>
+            <div class="contact-item-text">
+              <div class="contact-item-label">Respuesta</div>
+              <div class="contact-item-val">Menos de 24 horas</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-social fade-in fade-in-delay-3">
+          <a href="#" class="social-btn" aria-label="LinkedIn" rel="noopener noreferrer">in</a>
+          <a href="#" class="social-btn" aria-label="Behance" rel="noopener noreferrer">Be</a>
+          <a href="#" class="social-btn" aria-label="Dribbble" rel="noopener noreferrer">Dr</a>
+          <a href="#" class="social-btn" aria-label="Twitter / X" rel="noopener noreferrer">𝕏</a>
+        </div>
+      </div>
+
+      <div class="contact-form fade-in fade-in-delay-2">
+        <!-- Cambia el action de Formspree con tu endpoint real:
+             https://formspree.io/f/TU_ID -->
+        <form id="contact-form"
+              action="https://formspree.io/f/REPLACE_WITH_YOUR_ID"
+              method="POST"
+              novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" class="form-label">Nombre</label>
+              <input type="text" id="name" name="name"
+                     class="form-input"
+                     placeholder="Tu nombre"
+                     required
+                     autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="email"
+                     class="form-input"
+                     placeholder="tu@email.com"
+                     required
+                     autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label">Asunto</label>
+            <input type="text" id="subject" name="subject"
+                   class="form-input"
+                   placeholder="¿En qué puedo ayudarte?"
+                   required>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Mensaje</label>
+            <textarea id="message" name="message"
+                      class="form-textarea"
+                      placeholder="Cuéntame sobre tu proyecto, presupuesto y plazos..."
+                      required
+                      rows="5"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">
+            <span>Enviar mensaje</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+
+        <div id="form-success" class="form-success" role="alert">
+          ✓ ¡Mensaje enviado! Te respondo antes de 24 horas.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+
+    <div class="footer-inner">
+      <a href="#hero" class="footer-logo" aria-label="Volver al inicio">
+        <img src="assets/images/logo.png" alt="Cristian DUX" width="100" height="32">
+      </a>
+      <nav class="footer-links" aria-label="Links footer">
+        <a href="#about">Sobre mí</a>
+        <a href="#services">Servicios</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+      <div class="contact-social">
+        <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+        <a href="#" class="social-btn" aria-label="Behance">Be</a>
+        <a href="#" class="social-btn" aria-label="Dribbble">Dr</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Cristian DUX. Todos los derechos reservados.</p>
+      <p class="footer-made">Diseñado y desarrollado con <span>♥</span> — sin WordPress</p>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ============================================================
+     LIGHTBOX
+     ============================================================ -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada">
+  <button class="lightbox-close" aria-label="Cerrar">✕</button>
+  <img src="" alt="" loading="lazy">
+</div>
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

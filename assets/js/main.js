@@ -1,0 +1,296 @@
+/* ============================================
+   CRISTIAN DUX — Portfolio JS
+   Vanilla JS — no jQuery — no WP deps
+   ============================================ */
+
+(function () {
+  "use strict";
+
+  /* ---- Nav: scroll behaviour ---- */
+  const nav = document.getElementById("nav");
+  const navLinks = document.querySelectorAll(".nav-links a, .nav-mobile a");
+  const sections = document.querySelectorAll("section[id]");
+
+  function onScroll() {
+    // sticky style
+    if (window.scrollY > 40) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+
+    // scrollspy
+    let current = "";
+    sections.forEach((sec) => {
+      if (window.scrollY >= sec.offsetTop - 120) {
+        current = sec.getAttribute("id");
+      }
+    });
+    navLinks.forEach((a) => {
+      a.classList.remove("active");
+      if (a.getAttribute("href") === "#" + current) {
+        a.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---- Mobile menu ---- */
+  const hamburger = document.querySelector(".nav-hamburger");
+  const mobileMenu = document.querySelector(".nav-mobile");
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("open");
+      mobileMenu.classList.toggle("open");
+      document.body.style.overflow = mobileMenu.classList.contains("open")
+        ? "hidden"
+        : "";
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        hamburger.classList.remove("open");
+        mobileMenu.classList.remove("open");
+        document.body.style.overflow = "";
+      });
+    });
+  }
+
+  /* ---- Smooth scroll for anchor links ---- */
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        e.preventDefault();
+        const navH = nav ? nav.offsetHeight : 76;
+        const top = target.getBoundingClientRect().top + window.scrollY - navH;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    });
+  });
+
+  /* ---- Intersection Observer: fade-in ---- */
+  const fadeEls = document.querySelectorAll(".fade-in");
+  const fadeObs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          fadeObs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+  );
+  fadeEls.forEach((el) => fadeObs.observe(el));
+
+  /* ---- Skill bar animation ---- */
+  const skillFills = document.querySelectorAll(".skill-fill");
+  const skillObs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animated");
+          skillObs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+  skillFills.forEach((el) => skillObs.observe(el));
+
+  /* ---- Counter animation ---- */
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const duration = 1800;
+    const start = performance.now();
+    const suffix = el.dataset.suffix || "";
+
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const counters = document.querySelectorAll(".counter");
+  const counterObs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+  counters.forEach((el) => counterObs.observe(el));
+
+  /* ---- Portfolio filter ---- */
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.dataset.filter;
+
+      portfolioItems.forEach((item) => {
+        const cat = item.dataset.category;
+        const show = filter === "all" || cat === filter;
+
+        item.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+        if (show) {
+          item.style.opacity = "1";
+          item.style.transform = "scale(1)";
+          item.style.pointerEvents = "all";
+        } else {
+          item.style.opacity = "0.15";
+          item.style.transform = "scale(0.97)";
+          item.style.pointerEvents = "none";
+        }
+      });
+    });
+  });
+
+  /* ---- Lightbox ---- */
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = lightbox ? lightbox.querySelector("img") : null;
+  const lightboxClose = lightbox ? lightbox.querySelector(".lightbox-close") : null;
+
+  document.querySelectorAll(".portfolio-item[data-src]").forEach((item) => {
+    item.addEventListener("click", () => {
+      if (lightbox && lightboxImg) {
+        lightboxImg.src = item.dataset.src;
+        lightboxImg.alt = item.dataset.title || "";
+        lightbox.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+    });
+  });
+
+  function closeLightbox() {
+    if (lightbox) {
+      lightbox.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+  }
+
+  if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+  if (lightbox) {
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
+  });
+
+  /* ---- Swiper: Testimonials ---- */
+  if (typeof Swiper !== "undefined") {
+    new Swiper(".swiper-testimonials", {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-testimonials .swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-testimonials .swiper-button-next",
+        prevEl: ".swiper-testimonials .swiper-button-prev",
+      },
+      breakpoints: {
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1100: { slidesPerView: 3 },
+      },
+    });
+
+    /* ---- Swiper: Blog ---- */
+    new Swiper(".swiper-blog", {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      loop: true,
+      autoplay: {
+        delay: 4500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-blog .swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-blog .swiper-button-next",
+        prevEl: ".swiper-blog .swiper-button-prev",
+      },
+      breakpoints: {
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1100: { slidesPerView: 3 },
+      },
+    });
+  }
+
+  /* ---- Contact form (Formspree) ---- */
+  const form = document.getElementById("contact-form");
+  const formSuccess = document.getElementById("form-success");
+
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const submitBtn = form.querySelector(".form-submit");
+      const originalText = submitBtn.innerHTML;
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Enviando...</span>';
+
+      try {
+        const data = new FormData(form);
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" },
+        });
+
+        if (response.ok) {
+          form.style.display = "none";
+          if (formSuccess) formSuccess.style.display = "block";
+        } else {
+          throw new Error("Error en el servidor");
+        }
+      } catch {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        alert("Hubo un error. Inténtalo de nuevo o contacta directamente por email.");
+      }
+    });
+  }
+
+  /* ---- Hero parallax (subtle) ---- */
+  const heroBg = document.querySelector(".hero-bg-glow");
+  if (heroBg) {
+    window.addEventListener(
+      "mousemove",
+      (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 40;
+        const y = (e.clientY / window.innerHeight - 0.5) * 40;
+        heroBg.style.transform = `translate(${x}px, ${y}px)`;
+      },
+      { passive: true }
+    );
+  }
+})();
