@@ -320,7 +320,7 @@ p { margin-bottom: 0; }
   display: block;
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: var(--accent);
+  background: #ff3b3b;
   animation: pulse-dot 2s infinite;
 }
 @keyframes pulse-dot {
