@@ -357,3 +357,44 @@
     );
   }
 })();
+
+/* ---- Scroll emoji S-path ---- */
+(function () {
+  const el = document.querySelector(".scroll-emoji");
+  if (!el) return;
+
+  // S-curve waypoints: [x vw, y vh]
+  const path = [
+    [8,  8],   // top-left
+    [68, 28],  // swing right
+    [10, 58],  // swing left
+    [65, 82],  // bottom-right
+  ];
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function smoothstep(t) { return t * t * (3 - 2 * t); }
+
+  function getPoint(progress) {
+    const segs = path.length - 1;
+    const raw  = progress * segs;
+    const seg  = Math.min(Math.floor(raw), segs - 1);
+    const t    = smoothstep(raw - seg);
+    return [
+      lerp(path[seg][0], path[seg + 1][0], t),
+      lerp(path[seg][1], path[seg + 1][1], t),
+    ];
+  }
+
+  function update() {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const progress  = maxScroll > 0 ? Math.min(window.scrollY / maxScroll, 1) : 0;
+    const [x, y]    = getPoint(progress);
+    const rotate    = -10 + progress * 20; // slight tilt along path
+    el.style.left      = x + "vw";
+    el.style.top       = y + "vh";
+    el.style.transform = `rotate(${rotate}deg)`;
+  }
+
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+})();

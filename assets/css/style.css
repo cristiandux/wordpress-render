@@ -1139,6 +1139,30 @@ p { margin-bottom: 0; }
 /* ============================================
    FOOTER
    ============================================ */
+
+/* ============================================
+   SCROLL EMOJI
+   ============================================ */
+.scroll-emoji {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  will-change: transform;
+  opacity: 0.13;
+  transition: opacity 0.3s ease;
+}
+.scroll-emoji-cam {
+  font-size: 4.5rem;
+  display: inline-block;
+}
+.scroll-emoji-star {
+  font-size: 1.5rem;
+  vertical-align: super;
+  margin-left: -6px;
+  display: inline-block;
+}
 #footer {
   padding: 60px 0 40px;
   border-top: 1px solid var(--border);
