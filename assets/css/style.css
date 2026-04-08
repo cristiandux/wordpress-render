@@ -295,10 +295,10 @@ p { margin-bottom: 0; }
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 32px;
+  padding: 40px 32px;
   display: grid;
-  grid-template-columns: 1fr 480px;
-  gap: 60px;
+  grid-template-columns: 1fr 360px;
+  gap: 48px;
   align-items: center;
 }
 .hero-label {
@@ -328,11 +328,11 @@ p { margin-bottom: 0; }
   50% { opacity: 0.3; }
 }
 .hero-title {
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 .hero-title .line-accent {
   color: var(--accent);
@@ -343,7 +343,7 @@ p { margin-bottom: 0; }
   color: var(--text-muted);
   max-width: 480px;
   line-height: 1.75;
-  margin-bottom: 44px;
+  margin-bottom: 28px;
 }
 .hero-actions {
   display: flex;
@@ -388,8 +388,8 @@ p { margin-bottom: 0; }
 .hero-stats {
   display: flex;
   gap: 40px;
-  margin-top: 60px;
-  padding-top: 40px;
+  margin-top: 32px;
+  padding-top: 24px;
   border-top: 1px solid var(--border);
 }
 .hero-stat-num {
@@ -413,6 +413,7 @@ p { margin-bottom: 0; }
   border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 3/4;
+  max-height: calc(100svh - var(--nav-h) - 80px);
 }
 .hero-photo-frame img {
   width: 100%;
@@ -489,9 +490,9 @@ p { margin-bottom: 0; }
 }
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
+  grid-template-columns: 420px 1fr;
+  gap: 64px;
+  align-items: center;
 }
 .about-images {
   position: relative;
@@ -623,7 +624,7 @@ p { margin-bottom: 0; }
 .services-header p { color: var(--text-muted); line-height: 1.7; }
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 .service-card {
@@ -1284,7 +1285,8 @@ p { margin-bottom: 0; }
    RESPONSIVE
    ============================================ */
 @media (max-width: 1100px) {
-  .hero-inner { grid-template-columns: 1fr 380px; gap: 40px; }
+  .hero-inner { grid-template-columns: 1fr 320px; gap: 36px; }
+  .about-grid { grid-template-columns: 360px 1fr; gap: 48px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
   .portfolio-item.wide { grid-column: span 2; }
@@ -1294,11 +1296,31 @@ p { margin-bottom: 0; }
 @media (max-width: 900px) {
   .nav-links, .nav-cta { display: none; }
   .nav-hamburger { display: flex; }
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-photo-wrap { order: -1; max-width: 360px; margin: 0 auto; }
-  .hero-stats { justify-content: center; }
+  .hero-inner { grid-template-columns: 1fr 180px; gap: 20px; padding: 20px 20px; align-items: start; }
+  .hero-photo-wrap { order: 0; max-width: 180px; margin: 0; }
+  .hero-photo-frame { max-height: none; aspect-ratio: 3/4; }
+  .hero-photo-badge { display: none; }
+  .hero-label { margin-bottom: 12px; padding: 4px 12px; font-size: 0.7rem; }
+  .hero-title { font-size: clamp(1.6rem, 5vw, 2.2rem); margin-bottom: 10px; }
+  .hero-desc { font-size: 0.85rem; line-height: 1.5; margin-bottom: 14px; }
+  .hero-actions { gap: 10px; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost { padding: 10px 18px; font-size: 0.8rem; }
+  .hero-stats { margin-top: 16px; padding-top: 14px; gap: 24px; }
+  .hero-stat-num { font-size: 1.4rem; }
+  .hero-stat-label { font-size: 0.7rem; }
+  .hero-scroll { display: none; }
+  :root { --nav-h: 72px; }
+  #hero { min-height: 100svh; padding-top: var(--nav-h); align-items: stretch; }
+  .hero-inner { align-items: stretch; flex: 1; padding-bottom: 16px; }
+  .hero-content { display: flex; flex-direction: column; justify-content: center; }
+  .hero-photo-frame { aspect-ratio: auto; height: 100%; border-radius: var(--radius-md); }
+  .hero-photo-frame img { height: 100%; object-fit: cover; object-position: top center; }
+  .nav-logo { width: 120px; height: 56px; }
+  .nav-logo img { width: 280px; height: 280px; }
   .about-grid { grid-template-columns: 1fr; gap: 60px; }
-  .about-img-float { right: 0; }
+  .about-img-float { right: 0; width: 120px; bottom: -20px; }
+  .about-img-main { aspect-ratio: 16/10; }
   .contact-grid { grid-template-columns: 1fr; gap: 60px; }
   .footer-inner { flex-direction: column; text-align: center; }
   .footer-links { justify-content: center; }
@@ -1307,14 +1329,27 @@ p { margin-bottom: 0; }
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
   .section { padding: 80px 0; }
-  .hero-inner { padding: 60px 20px; }
-  .services-grid { grid-template-columns: 1fr; }
+  .hero-inner { grid-template-columns: 1fr 160px; gap: 16px; padding: 16px 16px; }
+  .hero-photo-wrap { max-width: 160px; }
+  .hero-label { display: none; }
+  .hero-title { font-size: clamp(1.3rem, 4.5vw, 1.7rem); margin-bottom: 6px; }
+  .hero-desc { font-size: 0.75rem; margin-bottom: 8px; line-height: 1.4; }
+  .hero-actions { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 8px; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost { padding: 8px 14px; font-size: 0.7rem; }
+  .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; padding-top: 8px; }
+  .hero-stat-num { font-size: 1.1rem; }
+  .hero-stat-label { font-size: 0.65rem; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .service-card { padding: 20px 16px; }
+  .service-icon { font-size: 1.4rem; }
+  .service-title { font-size: 1rem; }
+  .service-desc { font-size: 0.8rem; line-height: 1.5; }
+  .service-num { font-size: 0.7rem; }
   .portfolio-grid { grid-template-columns: 1fr; }
   .portfolio-item.wide { grid-column: auto; aspect-ratio: 4/3; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .form-row { grid-template-columns: 1fr; }
-  .hero-stats { flex-wrap: wrap; gap: 20px; }
-  .hero-actions { flex-direction: column; align-items: flex-start; }
   .blog-header { flex-direction: column; align-items: flex-start; }
   .portfolio-header { flex-direction: column; align-items: flex-start; }
   .footer-bottom { flex-direction: column; text-align: center; }
