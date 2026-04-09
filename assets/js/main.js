@@ -232,11 +232,17 @@
 
   document.querySelectorAll(".portfolio-item[data-src]").forEach((item) => {
     item.addEventListener("click", () => {
-      if (lightbox && lightboxImg) {
-        lightboxImg.src = item.dataset.src;
-        lightboxImg.alt = item.dataset.title || "";
-        lightbox.classList.add("open");
-        document.body.style.overflow = "hidden";
+      if (!item.classList.contains("folio-active")) {
+        // Primer clic: revela color
+        item.classList.add("folio-active");
+      } else {
+        // Segundo clic: abre lightbox
+        if (lightbox && lightboxImg) {
+          lightboxImg.src = item.dataset.src;
+          lightboxImg.alt = item.dataset.title || "";
+          lightbox.classList.add("open");
+          document.body.style.overflow = "hidden";
+        }
       }
     });
   });
