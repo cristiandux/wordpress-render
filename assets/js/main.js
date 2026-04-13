@@ -405,82 +405,140 @@
   update();
 })();
 
-/* ---- Hero 3D avatar — mouse-driven rotation ---- */
+/* ---- Hero 3D avatar video — mouse/touch-scrubbed head rotation ---- */
 (function () {
   const wrap  = document.getElementById("hero-photo-3d");
-  if (!wrap) { console.warn("[hero-3d] wrap not found"); return; }
-  const stage = wrap.querySelector(".hero-photo-3d-stage");
-  if (!stage) { console.warn("[hero-3d] stage not found"); return; }
+  const video = document.getElementById("hero-3d-video");
+  if (!wrap || !video) { console.warn("[hero-3d] wrap or video not found"); return; }
   console.log("[hero-3d] module loaded");
 
-  const MAX_ROT_Y = 32;  // deg, horizontal rotation (yaw)
-  const MAX_ROT_X = 22;  // deg, vertical rotation (pitch)
-  const EASE      = 0.14;
+  // Disable native controls and keep it muted/looping for mobile autoplay
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
 
-  let targetX = 0, targetY = 0;
-  let curX    = 0, curY    = 0;
-  let hovering = false;
-  let lastInput = performance.now();
-  let idleT = 0;
+  let duration   = 0;     // set once metadata loads
+  let interacting = false; // mouse is over / being used
+  let lastInput   = performance.now();
+  let targetNorm  = 0.5;  // 0..1 target position across video duration
+  let curNorm     = 0.5;  // eased value
+  let wasPlaying  = true;
+  const EASE = 0.18;
 
-  function setTargetFromPoint(clientX, clientY) {
+  // Try to play autoloop (for idle state)
+  function tryPlay() {
+    const p = video.play();
+    if (p && typeof p.catch === "function") p.catch(() => {});
+  }
+
+  video.addEventListener("loadedmetadata", () => {
+    duration = video.duration || 0;
+    tryPlay();
+  });
+  video.addEventListener("canplay", tryPlay);
+  video.addEventListener("canplaythrough", tryPlay);
+
+  // Some browsers pause when the tab hides — resume on focus
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && !interacting) tryPlay();
+  });
+
+  function normFromClientX(clientX) {
     const rect = wrap.getBoundingClientRect();
-    const nx = ((clientX - rect.left) / rect.width)  * 2 - 1;
-    const ny = ((clientY - rect.top)  / rect.height) * 2 - 1;
-    targetY =  Math.max(-1, Math.min(1, nx)) * MAX_ROT_Y;
-    targetX = -Math.max(-1, Math.min(1, ny)) * MAX_ROT_X;
+    const n = (clientX - rect.left) / rect.width;
+    return Math.max(0, Math.min(1, n));
+  }
+  function normFromWindow(clientX) {
+    const n = clientX / window.innerWidth;
+    return Math.max(0, Math.min(1, n));
   }
 
-  function setTargetFromWindow(clientX, clientY) {
-    const nx = (clientX / window.innerWidth)  * 2 - 1;
-    const ny = (clientY / window.innerHeight) * 2 - 1;
-    targetY =  nx * MAX_ROT_Y * 0.7;
-    targetX = -ny * MAX_ROT_X * 0.7;
+  function startScrub() {
+    if (interacting) return;
+    interacting = true;
+    wasPlaying = !video.paused;
+    video.pause();
+  }
+  function endScrub() {
+    interacting = false;
+    if (wasPlaying) tryPlay();
   }
 
-  // Single RAF loop — always running. Cheap, and guarantees visible motion.
-  function loop(t) {
-    // Idle orbit if no pointer input for > 1.2s
-    if (!hovering && t - lastInput > 1200) {
-      idleT += 0.015;
-      targetY = Math.sin(idleT) * 14;
-      targetX = Math.cos(idleT * 0.7) * 9;
+  // Main RAF loop: ease currentTime toward target while scrubbing,
+  // or let the video autoplay when idle.
+  function loop() {
+    if (interacting && duration > 0) {
+      curNorm += (targetNorm - curNorm) * EASE;
+      const t = curNorm * duration;
+      // Avoid overshooting exact duration (some browsers loop weirdly)
+      const safe = Math.max(0, Math.min(duration - 0.05, t));
+      // Only seek if the delta is meaningful — reduces decoder load on mobile
+      if (Math.abs(video.currentTime - safe) > 0.02) {
+        try { video.currentTime = safe; } catch (e) {}
+      }
     }
-    curX += (targetX - curX) * EASE;
-    curY += (targetY - curY) * EASE;
-    stage.style.transform =
-      `translateZ(0) rotateX(${curX.toFixed(2)}deg) rotateY(${curY.toFixed(2)}deg)`;
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
 
-  // Strong effect while the pointer is over the card
-  wrap.addEventListener("pointerenter", () => { hovering = true; });
-  wrap.addEventListener("pointermove", (e) => {
+  // --- Pointer (mouse + pen + touch via Pointer Events) on the element ---
+  wrap.addEventListener("pointerenter", (e) => {
+    startScrub();
+    targetNorm = normFromClientX(e.clientX);
     lastInput = performance.now();
-    setTargetFromPoint(e.clientX, e.clientY);
   });
-  wrap.addEventListener("pointerleave", () => { hovering = false; });
-
-  // Subtle follow anywhere on the page
-  window.addEventListener("pointermove", (e) => {
+  wrap.addEventListener("pointermove", (e) => {
+    startScrub();
+    targetNorm = normFromClientX(e.clientX);
     lastInput = performance.now();
-    if (!hovering) setTargetFromWindow(e.clientX, e.clientY);
+  });
+  wrap.addEventListener("pointerdown", (e) => {
+    startScrub();
+    wrap.setPointerCapture && wrap.setPointerCapture(e.pointerId);
+    targetNorm = normFromClientX(e.clientX);
+  });
+  wrap.addEventListener("pointerup", (e) => {
+    wrap.releasePointerCapture && wrap.releasePointerCapture(e.pointerId);
+    endScrub();
+  });
+  wrap.addEventListener("pointercancel", endScrub);
+  wrap.addEventListener("pointerleave", endScrub);
+
+  // --- Subtle follow anywhere on the page (desktop, mouse only) ---
+  window.addEventListener("pointermove", (e) => {
+    if (e.pointerType && e.pointerType !== "mouse") return;
+    if (interacting) return;
+    // Only scrub if the video is loaded enough
+    if (duration <= 0) return;
+    targetNorm = normFromWindow(e.clientX);
+    // Nudge the video toward target without fully pausing autoplay
+    const safeT = Math.max(0, Math.min(duration - 0.05, targetNorm * duration));
+    if (Math.abs(video.currentTime - safeT) > 0.15) {
+      try { video.currentTime = safeT; } catch (err) {}
+    }
+    lastInput = performance.now();
   }, { passive: true });
 
-  // Device orientation — subtle tilt on mobile
+  // --- Device orientation (mobile tilt fallback) ---
   window.addEventListener("deviceorientation", (e) => {
-    if (hovering) return;
-    if (e.beta == null || e.gamma == null) return;
+    if (interacting) return;
+    if (e.gamma == null || duration <= 0) return;
+    // gamma is device left-right tilt, roughly -45..45
+    const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 30));
+    const n  = (nx + 1) / 2;
+    const safeT = Math.max(0, Math.min(duration - 0.05, n * duration));
+    if (Math.abs(video.currentTime - safeT) > 0.2) {
+      try { video.currentTime = safeT; } catch (err) {}
+    }
     lastInput = performance.now();
-    const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 45));
-    const ny = Math.max(-1, Math.min(1, ((e.beta  || 0) - 45) / 45));
-    targetY =  nx * MAX_ROT_Y * 0.9;
-    targetX = -ny * MAX_ROT_X * 0.9;
   });
 
-  // Initial kick so the 3D effect is obvious on load
-  targetY = 20; targetX = -10;
-  setTimeout(() => { targetY = -15; targetX = 6;  }, 500);
-  setTimeout(() => { targetY = 0;   targetX = 0;  lastInput = performance.now(); }, 1100);
+  // Make sure the video plays once the user first interacts (iOS quirk)
+  const unlock = () => {
+    tryPlay();
+    window.removeEventListener("touchstart", unlock);
+    window.removeEventListener("click", unlock);
+  };
+  window.addEventListener("touchstart", unlock, { passive: true, once: true });
+  window.addEventListener("click", unlock, { once: true });
 })();
