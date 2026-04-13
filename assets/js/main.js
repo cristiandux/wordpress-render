@@ -412,32 +412,27 @@
   const stage = wrap.querySelector(".hero-photo-3d-stage");
   if (!stage) return;
 
-  // Respect reduced motion
-  const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (mql.matches) return;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const MAX_ROT_Y = 28; // deg, horizontal rotation (yaw)
-  const MAX_ROT_X = 18; // deg, vertical rotation (pitch)
+  const MAX_ROT_Y = reduceMotion ? 6 : 28; // deg, horizontal rotation (yaw)
+  const MAX_ROT_X = reduceMotion ? 4 : 18; // deg, vertical rotation (pitch)
   const EASE      = 0.12;
 
   let targetX = 0, targetY = 0;
   let curX    = 0, curY    = 0;
-  let rafId   = null;
   let running = false;
   let hovering = false;
 
   function setTargetFromPoint(clientX, clientY) {
     const rect = wrap.getBoundingClientRect();
-    // Normalized -1..1 relative to element center
     const nx = ((clientX - rect.left) / rect.width)  * 2 - 1;
     const ny = ((clientY - rect.top)  / rect.height) * 2 - 1;
-    targetY =  nx * MAX_ROT_Y;  // mouse X -> rotateY
-    targetX = -ny * MAX_ROT_X;  // mouse Y -> rotateX (invert so it tilts naturally)
+    targetY =  nx * MAX_ROT_Y;
+    targetX = -ny * MAX_ROT_X;
     ensureRunning();
   }
 
   function setTargetFromWindow(clientX, clientY) {
-    // Fallback: use whole viewport when pointer is outside the element
     const nx = (clientX / window.innerWidth)  * 2 - 1;
     const ny = (clientY / window.innerHeight) * 2 - 1;
     targetY =  nx * MAX_ROT_Y * 0.6;
@@ -448,46 +443,59 @@
   function ensureRunning() {
     if (running) return;
     running = true;
-    rafId = requestAnimationFrame(loop);
+    requestAnimationFrame(loop);
   }
 
   function loop() {
     curX += (targetX - curX) * EASE;
     curY += (targetY - curY) * EASE;
-    stage.style.transform = `rotateX(${curX.toFixed(2)}deg) rotateY(${curY.toFixed(2)}deg)`;
+    stage.style.transform = `rotateX(${curX.toFixed(2)}deg) rotateY(${curY.toFixed(2)}deg) translateZ(0)`;
 
     const dx = Math.abs(targetX - curX);
     const dy = Math.abs(targetY - curY);
-    if (dx < 0.05 && dy < 0.05 && !hovering && Math.abs(targetX) < 0.05 && Math.abs(targetY) < 0.05) {
+    if (dx < 0.02 && dy < 0.02 && !hovering && Math.abs(targetX) < 0.02 && Math.abs(targetY) < 0.02) {
       running = false;
-      rafId = null;
-      stage.style.transform = `rotateX(0deg) rotateY(0deg)`;
       return;
     }
-    rafId = requestAnimationFrame(loop);
+    requestAnimationFrame(loop);
   }
 
-  // Pointer inside the element — stronger effect
+  // Strong effect while the pointer is over the card
   wrap.addEventListener("pointerenter", () => {
     hovering = true;
-    wrap.classList.add("is-active");
+    wrap.classList.remove("is-settling");
   });
   wrap.addEventListener("pointermove", (e) => {
     setTargetFromPoint(e.clientX, e.clientY);
   });
   wrap.addEventListener("pointerleave", () => {
     hovering = false;
-    wrap.classList.remove("is-active");
-    targetX = 0;
-    targetY = 0;
-    ensureRunning();
+    wrap.classList.add("is-settling");
+    setTimeout(() => wrap.classList.remove("is-settling"), 500);
   });
 
-  // Global pointer move — subtle follow when mouse is anywhere on the page
+  // Subtle follow anywhere on the page
   window.addEventListener("pointermove", (e) => {
     if (hovering) return;
     setTargetFromWindow(e.clientX, e.clientY);
   }, { passive: true });
+
+  // Gentle idle wobble when no pointer input happens for a while
+  let lastInput = Date.now();
+  let idleT = 0;
+  function markInput() { lastInput = Date.now(); }
+  window.addEventListener("pointermove", markInput, { passive: true });
+  window.addEventListener("pointerdown", markInput, { passive: true });
+  function idle() {
+    if (!hovering && Date.now() - lastInput > 1500) {
+      idleT += 0.014;
+      targetY = Math.sin(idleT) * 6;
+      targetX = Math.cos(idleT * 0.7) * 4;
+      ensureRunning();
+    }
+    requestAnimationFrame(idle);
+  }
+  requestAnimationFrame(idle);
 
   // Device orientation — subtle tilt on mobile
   window.addEventListener("deviceorientation", (e) => {
@@ -499,4 +507,9 @@
     targetX = -ny * MAX_ROT_X * 0.8;
     ensureRunning();
   });
+
+  // Kick off an initial animation so you can see it's alive even before moving
+  targetY = 10; targetX = -6;
+  ensureRunning();
+  setTimeout(() => { if (!hovering) { targetY = 0; targetX = 0; ensureRunning(); } }, 900);
 })();
