@@ -408,108 +408,79 @@
 /* ---- Hero 3D avatar — mouse-driven rotation ---- */
 (function () {
   const wrap  = document.getElementById("hero-photo-3d");
-  if (!wrap) return;
+  if (!wrap) { console.warn("[hero-3d] wrap not found"); return; }
   const stage = wrap.querySelector(".hero-photo-3d-stage");
-  if (!stage) return;
+  if (!stage) { console.warn("[hero-3d] stage not found"); return; }
+  console.log("[hero-3d] module loaded");
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  const MAX_ROT_Y = reduceMotion ? 6 : 28; // deg, horizontal rotation (yaw)
-  const MAX_ROT_X = reduceMotion ? 4 : 18; // deg, vertical rotation (pitch)
-  const EASE      = 0.12;
+  const MAX_ROT_Y = 32;  // deg, horizontal rotation (yaw)
+  const MAX_ROT_X = 22;  // deg, vertical rotation (pitch)
+  const EASE      = 0.14;
 
   let targetX = 0, targetY = 0;
   let curX    = 0, curY    = 0;
-  let running = false;
   let hovering = false;
+  let lastInput = performance.now();
+  let idleT = 0;
 
   function setTargetFromPoint(clientX, clientY) {
     const rect = wrap.getBoundingClientRect();
     const nx = ((clientX - rect.left) / rect.width)  * 2 - 1;
     const ny = ((clientY - rect.top)  / rect.height) * 2 - 1;
-    targetY =  nx * MAX_ROT_Y;
-    targetX = -ny * MAX_ROT_X;
-    ensureRunning();
+    targetY =  Math.max(-1, Math.min(1, nx)) * MAX_ROT_Y;
+    targetX = -Math.max(-1, Math.min(1, ny)) * MAX_ROT_X;
   }
 
   function setTargetFromWindow(clientX, clientY) {
     const nx = (clientX / window.innerWidth)  * 2 - 1;
     const ny = (clientY / window.innerHeight) * 2 - 1;
-    targetY =  nx * MAX_ROT_Y * 0.6;
-    targetX = -ny * MAX_ROT_X * 0.6;
-    ensureRunning();
+    targetY =  nx * MAX_ROT_Y * 0.7;
+    targetX = -ny * MAX_ROT_X * 0.7;
   }
 
-  function ensureRunning() {
-    if (running) return;
-    running = true;
-    requestAnimationFrame(loop);
-  }
-
-  function loop() {
+  // Single RAF loop — always running. Cheap, and guarantees visible motion.
+  function loop(t) {
+    // Idle orbit if no pointer input for > 1.2s
+    if (!hovering && t - lastInput > 1200) {
+      idleT += 0.015;
+      targetY = Math.sin(idleT) * 14;
+      targetX = Math.cos(idleT * 0.7) * 9;
+    }
     curX += (targetX - curX) * EASE;
     curY += (targetY - curY) * EASE;
-    stage.style.transform = `rotateX(${curX.toFixed(2)}deg) rotateY(${curY.toFixed(2)}deg) translateZ(0)`;
-
-    const dx = Math.abs(targetX - curX);
-    const dy = Math.abs(targetY - curY);
-    if (dx < 0.02 && dy < 0.02 && !hovering && Math.abs(targetX) < 0.02 && Math.abs(targetY) < 0.02) {
-      running = false;
-      return;
-    }
+    stage.style.transform =
+      `translateZ(0) rotateX(${curX.toFixed(2)}deg) rotateY(${curY.toFixed(2)}deg)`;
     requestAnimationFrame(loop);
   }
+  requestAnimationFrame(loop);
 
   // Strong effect while the pointer is over the card
-  wrap.addEventListener("pointerenter", () => {
-    hovering = true;
-    wrap.classList.remove("is-settling");
-  });
+  wrap.addEventListener("pointerenter", () => { hovering = true; });
   wrap.addEventListener("pointermove", (e) => {
+    lastInput = performance.now();
     setTargetFromPoint(e.clientX, e.clientY);
   });
-  wrap.addEventListener("pointerleave", () => {
-    hovering = false;
-    wrap.classList.add("is-settling");
-    setTimeout(() => wrap.classList.remove("is-settling"), 500);
-  });
+  wrap.addEventListener("pointerleave", () => { hovering = false; });
 
   // Subtle follow anywhere on the page
   window.addEventListener("pointermove", (e) => {
-    if (hovering) return;
-    setTargetFromWindow(e.clientX, e.clientY);
+    lastInput = performance.now();
+    if (!hovering) setTargetFromWindow(e.clientX, e.clientY);
   }, { passive: true });
-
-  // Gentle idle wobble when no pointer input happens for a while
-  let lastInput = Date.now();
-  let idleT = 0;
-  function markInput() { lastInput = Date.now(); }
-  window.addEventListener("pointermove", markInput, { passive: true });
-  window.addEventListener("pointerdown", markInput, { passive: true });
-  function idle() {
-    if (!hovering && Date.now() - lastInput > 1500) {
-      idleT += 0.014;
-      targetY = Math.sin(idleT) * 6;
-      targetX = Math.cos(idleT * 0.7) * 4;
-      ensureRunning();
-    }
-    requestAnimationFrame(idle);
-  }
-  requestAnimationFrame(idle);
 
   // Device orientation — subtle tilt on mobile
   window.addEventListener("deviceorientation", (e) => {
     if (hovering) return;
     if (e.beta == null || e.gamma == null) return;
+    lastInput = performance.now();
     const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 45));
     const ny = Math.max(-1, Math.min(1, ((e.beta  || 0) - 45) / 45));
-    targetY =  nx * MAX_ROT_Y * 0.8;
-    targetX = -ny * MAX_ROT_X * 0.8;
-    ensureRunning();
+    targetY =  nx * MAX_ROT_Y * 0.9;
+    targetX = -ny * MAX_ROT_X * 0.9;
   });
 
-  // Kick off an initial animation so you can see it's alive even before moving
-  targetY = 10; targetX = -6;
-  ensureRunning();
-  setTimeout(() => { if (!hovering) { targetY = 0; targetX = 0; ensureRunning(); } }, 900);
+  // Initial kick so the 3D effect is obvious on load
+  targetY = 20; targetX = -10;
+  setTimeout(() => { targetY = -15; targetX = 6;  }, 500);
+  setTimeout(() => { targetY = 0;   targetX = 0;  lastInput = performance.now(); }, 1100);
 })();

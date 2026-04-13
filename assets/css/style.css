@@ -419,26 +419,18 @@ p { margin-bottom: 0; }
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
+  /* Keep the SVG filter node inside the box without stretching the layout */
+  overflow: visible;
 }
 .hero-photo-3d-stage {
   position: relative;
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transform: rotateX(0deg) rotateY(0deg);
-  /* No CSS transition: JS does the lerp in RAF — a transition would
-     fight with each frame update and cancel the movement. */
+  /* No CSS transition here: JS does the lerp per frame — a transition
+     would fight with each frame update and cancel the movement. */
   will-change: transform;
-  border-radius: var(--radius-lg);
-  background: radial-gradient(120% 90% at 50% 30%, #efece4 0%, #dcd8cf 70%, #c9c4b8 100%);
-  box-shadow:
-    0 30px 60px -20px rgba(0,0,0,0.55),
-    0 10px 25px -10px rgba(0,0,0,0.45),
-    inset 0 0 0 1px rgba(255,255,255,0.35);
-  overflow: hidden;
-}
-.hero-photo-3d.is-settling .hero-photo-3d-stage {
-  transition: transform 0.45s cubic-bezier(.22,.61,.36,1);
+  background: transparent;
 }
 .hero-photo-3d-img {
   position: absolute;
@@ -448,21 +440,23 @@ p { margin-bottom: 0; }
   object-fit: contain;
   object-position: center;
   pointer-events: none;
-  transform: translateZ(40px);
-  filter: drop-shadow(0 22px 40px rgba(0,0,0,0.35));
-  mix-blend-mode: multiply;
+  transform: translateZ(50px);
+  /* Chroma-key: knock out the near-white background baked into the PNG
+     and add a drop shadow once the background is transparent. */
+  filter: url(#chroma-key-white) drop-shadow(0 24px 32px rgba(0,0,0,0.55));
+  -webkit-filter: url(#chroma-key-white) drop-shadow(0 24px 32px rgba(0,0,0,0.55));
 }
 .hero-photo-3d-shadow {
   position: absolute;
-  left: 8%;
-  right: 8%;
-  bottom: -4%;
-  height: 14%;
+  left: 12%;
+  right: 12%;
+  bottom: 2%;
+  height: 10%;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 70%);
-  transform: translateZ(-80px);
-  filter: blur(10px);
-  opacity: 0.85;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 70%);
+  transform: translateZ(-120px);
+  filter: blur(14px);
+  opacity: 0.8;
   pointer-events: none;
 }
 @media (prefers-reduced-motion: reduce) {
