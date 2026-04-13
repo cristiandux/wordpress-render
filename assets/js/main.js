@@ -410,23 +410,32 @@
   const wrap  = document.getElementById("hero-photo-3d");
   const video = document.getElementById("hero-3d-video");
   if (!wrap || !video) { console.warn("[hero-3d] wrap or video not found"); return; }
-  console.log("[hero-3d] module loaded (always-on scrub)");
+  console.log("[hero-3d] module loaded (always-on scrub + tilt)");
 
   video.muted = true;
   video.loop = true;
   video.playsInline = true;
   video.controls = false;
 
-  // Idle settings
-  const IDLE_MS = 2500;     // after this long with no mouse movement, resume autoplay loop
-  const EASE    = 0.15;     // smoothness of the scrub
+  const stage = wrap.querySelector(".hero-photo-3d-stage");
 
-  let duration   = 0;
-  let targetNorm = 0.5;     // 0..1 — set by mouse X
-  let curNorm    = 0.5;     // eased value
-  let lastInput  = 0;       // time of last pointer movement
-  let scrubbing  = false;   // true when we are actively seeking (paused)
-  let ready      = false;
+  // Tuning
+  const IDLE_MS    = 2500;  // after this long with no mouse movement, resume autoplay
+  const EASE       = 0.35;  // scrub smoothness (higher = snappier)
+  const EASE_TILT  = 0.12;  // vertical CSS tilt easing
+  const MAX_TILT_X = 10;    // deg — up/down head nod (CSS rotateX)
+  // If mouse direction and head direction are reversed, flip this to -1.
+  // Set to -1 because your render goes from "head right" (t=0) to "head left" (t=end)
+  const X_DIR      = -1;
+
+  let duration    = 0;
+  let targetNorm  = 0.5;
+  let curNorm     = 0.5;
+  let targetTiltX = 0;      // deg (driven by mouse Y)
+  let curTiltX    = 0;
+  let lastInput   = 0;
+  let scrubbing   = false;
+  let ready       = false;
 
   function tryPlay() {
     const p = video.play();
@@ -436,7 +445,6 @@
   video.addEventListener("loadedmetadata", () => {
     duration = video.duration || 0;
     ready = duration > 0;
-    // initial seek to middle so the head starts looking forward
     try { video.currentTime = duration * 0.5; } catch (e) {}
     tryPlay();
   });
@@ -445,49 +453,56 @@
     if (!document.hidden && !scrubbing) tryPlay();
   });
 
+  // Apply X_DIR at the end so UX stays consistent regardless of video encoding
+  function mapX(rawNorm) {
+    return X_DIR > 0 ? rawNorm : (1 - rawNorm);
+  }
   function normFromWindow(clientX) {
-    return Math.max(0, Math.min(1, clientX / window.innerWidth));
+    return mapX(Math.max(0, Math.min(1, clientX / window.innerWidth)));
   }
   function normFromWrap(clientX) {
     const rect = wrap.getBoundingClientRect();
-    return Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    return mapX(Math.max(0, Math.min(1, (clientX - rect.left) / rect.width)));
+  }
+  function tiltFromY(clientY) {
+    // -1..1 relative to viewport vertical center
+    const n = (clientY / window.innerHeight) * 2 - 1;
+    return Math.max(-1, Math.min(1, n)) * MAX_TILT_X;
   }
 
-  // Central input handler — updates targetNorm and scrub state
-  function onPointerInput(clientX, overElement) {
+  function onPointerInput(clientX, clientY, overElement) {
     if (!ready) return;
-    // When the pointer is over the avatar, map the card's own width 1:1
-    // (full head swing across the element). Otherwise map the whole
-    // viewport width (subtler but still continuous).
-    targetNorm = overElement ? normFromWrap(clientX) : normFromWindow(clientX);
-    lastInput = performance.now();
-    if (!scrubbing) {
-      scrubbing = true;
-      video.pause();
-    }
+    targetNorm  = overElement ? normFromWrap(clientX) : normFromWindow(clientX);
+    targetTiltX = -tiltFromY(clientY); // mouse down -> head looks down (negative rotateX = look down)
+    lastInput   = performance.now();
+    if (!scrubbing) { scrubbing = true; video.pause(); }
   }
 
-  // RAF loop: always runs; eases currentTime toward targetNorm while
-  // scrubbing; returns to autoplay after IDLE_MS of no mouse movement.
+  // RAF loop: always runs. Eases currentTime toward target + applies CSS tilt.
   function loop(t) {
-    if (!ready) { requestAnimationFrame(loop); return; }
-
-    if (scrubbing) {
-      curNorm += (targetNorm - curNorm) * EASE;
-      const tt = Math.max(0, Math.min(duration - 0.05, curNorm * duration));
-      if (Math.abs(video.currentTime - tt) > 0.015) {
-        try { video.currentTime = tt; } catch (e) {}
-      }
-      // Go idle if the mouse hasn't moved for a while
-      if (t - lastInput > IDLE_MS) {
-        scrubbing = false;
+    if (ready) {
+      if (scrubbing) {
+        curNorm += (targetNorm - curNorm) * EASE;
+        const tt = Math.max(0, Math.min(duration - 0.05, curNorm * duration));
+        // Tighter threshold — respond as soon as there's a meaningful delta
+        if (Math.abs(video.currentTime - tt) > 0.008) {
+          try { video.currentTime = tt; } catch (e) {}
+        }
+        if (t - lastInput > IDLE_MS) {
+          scrubbing = false;
+          curNorm = video.currentTime / duration;
+          tryPlay();
+        }
+      } else {
         curNorm = video.currentTime / duration;
-        tryPlay();
       }
-    } else {
-      // While autoplay loop runs, keep curNorm in sync so the hand-off
-      // back to scrubbing is smooth.
-      curNorm = video.currentTime / duration;
+    }
+
+    // CSS tilt (always active so vertical mouse movement is always visible)
+    curTiltX += (targetTiltX - curTiltX) * EASE_TILT;
+    if (stage) {
+      stage.style.transform =
+        `translateZ(0) rotateX(${curTiltX.toFixed(2)}deg)`;
     }
     requestAnimationFrame(loop);
   }
@@ -497,20 +512,18 @@
   window.addEventListener("pointermove", (e) => {
     if (e.pointerType && e.pointerType !== "mouse" && e.pointerType !== "pen") return;
     const overEl = wrap.contains(e.target) || e.target === wrap;
-    onPointerInput(e.clientX, overEl);
+    onPointerInput(e.clientX, e.clientY, overEl);
   }, { passive: true });
 
-  // Touch — only when the finger is over the avatar (otherwise we'd fight
-  // the page's vertical scroll). Dragging horizontally on the avatar
-  // scrubs the head.
+  // Touch — horizontal drag over the avatar scrubs
   wrap.addEventListener("pointerdown", (e) => {
     if (e.pointerType === "touch") {
       wrap.setPointerCapture && wrap.setPointerCapture(e.pointerId);
     }
-    onPointerInput(e.clientX, true);
+    onPointerInput(e.clientX, e.clientY, true);
   });
   wrap.addEventListener("pointermove", (e) => {
-    if (e.pointerType === "touch") onPointerInput(e.clientX, true);
+    if (e.pointerType === "touch") onPointerInput(e.clientX, e.clientY, true);
   });
   wrap.addEventListener("pointerup", (e) => {
     if (e.pointerType === "touch") {
@@ -524,7 +537,10 @@
     if (e.gamma == null || !ready) return;
     const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 30));
     const n  = (nx + 1) / 2;
-    targetNorm = n;
+    targetNorm = mapX(n);
+    // Also tilt vertically with beta (front-back tilt)
+    const ny = Math.max(-1, Math.min(1, ((e.beta || 0) - 45) / 45));
+    targetTiltX = -ny * MAX_TILT_X;
     lastInput = performance.now();
     scrubbing = true;
     video.pause();
