@@ -417,7 +417,8 @@ p { margin-bottom: 0; }
   cursor: ew-resize;
   user-select: none;
   -webkit-user-select: none;
-  touch-action: none; /* capture horizontal drags for scrubbing on mobile */
+  /* Allow vertical scroll of the page, capture horizontal drag for scrubbing */
+  touch-action: pan-y;
   overflow: visible;
 }
 .hero-photo-3d-stage {

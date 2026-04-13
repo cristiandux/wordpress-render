@@ -405,27 +405,29 @@
   update();
 })();
 
-/* ---- Hero 3D avatar video — mouse/touch-scrubbed head rotation ---- */
+/* ---- Hero 3D avatar video — mouse-scrubbed head rotation (always on) ---- */
 (function () {
   const wrap  = document.getElementById("hero-photo-3d");
   const video = document.getElementById("hero-3d-video");
   if (!wrap || !video) { console.warn("[hero-3d] wrap or video not found"); return; }
-  console.log("[hero-3d] module loaded");
+  console.log("[hero-3d] module loaded (always-on scrub)");
 
-  // Disable native controls and keep it muted/looping for mobile autoplay
   video.muted = true;
   video.loop = true;
   video.playsInline = true;
+  video.controls = false;
 
-  let duration   = 0;     // set once metadata loads
-  let interacting = false; // mouse is over / being used
-  let lastInput   = performance.now();
-  let targetNorm  = 0.5;  // 0..1 target position across video duration
-  let curNorm     = 0.5;  // eased value
-  let wasPlaying  = true;
-  const EASE = 0.18;
+  // Idle settings
+  const IDLE_MS = 2500;     // after this long with no mouse movement, resume autoplay loop
+  const EASE    = 0.15;     // smoothness of the scrub
 
-  // Try to play autoloop (for idle state)
+  let duration   = 0;
+  let targetNorm = 0.5;     // 0..1 — set by mouse X
+  let curNorm    = 0.5;     // eased value
+  let lastInput  = 0;       // time of last pointer movement
+  let scrubbing  = false;   // true when we are actively seeking (paused)
+  let ready      = false;
+
   function tryPlay() {
     const p = video.play();
     if (p && typeof p.catch === "function") p.catch(() => {});
@@ -433,112 +435,103 @@
 
   video.addEventListener("loadedmetadata", () => {
     duration = video.duration || 0;
+    ready = duration > 0;
+    // initial seek to middle so the head starts looking forward
+    try { video.currentTime = duration * 0.5; } catch (e) {}
     tryPlay();
   });
-  video.addEventListener("canplay", tryPlay);
-  video.addEventListener("canplaythrough", tryPlay);
-
-  // Some browsers pause when the tab hides — resume on focus
+  video.addEventListener("canplay", () => { if (!scrubbing) tryPlay(); });
   document.addEventListener("visibilitychange", () => {
-    if (!document.hidden && !interacting) tryPlay();
+    if (!document.hidden && !scrubbing) tryPlay();
   });
 
-  function normFromClientX(clientX) {
-    const rect = wrap.getBoundingClientRect();
-    const n = (clientX - rect.left) / rect.width;
-    return Math.max(0, Math.min(1, n));
-  }
   function normFromWindow(clientX) {
-    const n = clientX / window.innerWidth;
-    return Math.max(0, Math.min(1, n));
+    return Math.max(0, Math.min(1, clientX / window.innerWidth));
+  }
+  function normFromWrap(clientX) {
+    const rect = wrap.getBoundingClientRect();
+    return Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
   }
 
-  function startScrub() {
-    if (interacting) return;
-    interacting = true;
-    wasPlaying = !video.paused;
-    video.pause();
-  }
-  function endScrub() {
-    interacting = false;
-    if (wasPlaying) tryPlay();
+  // Central input handler — updates targetNorm and scrub state
+  function onPointerInput(clientX, overElement) {
+    if (!ready) return;
+    // When the pointer is over the avatar, map the card's own width 1:1
+    // (full head swing across the element). Otherwise map the whole
+    // viewport width (subtler but still continuous).
+    targetNorm = overElement ? normFromWrap(clientX) : normFromWindow(clientX);
+    lastInput = performance.now();
+    if (!scrubbing) {
+      scrubbing = true;
+      video.pause();
+    }
   }
 
-  // Main RAF loop: ease currentTime toward target while scrubbing,
-  // or let the video autoplay when idle.
-  function loop() {
-    if (interacting && duration > 0) {
+  // RAF loop: always runs; eases currentTime toward targetNorm while
+  // scrubbing; returns to autoplay after IDLE_MS of no mouse movement.
+  function loop(t) {
+    if (!ready) { requestAnimationFrame(loop); return; }
+
+    if (scrubbing) {
       curNorm += (targetNorm - curNorm) * EASE;
-      const t = curNorm * duration;
-      // Avoid overshooting exact duration (some browsers loop weirdly)
-      const safe = Math.max(0, Math.min(duration - 0.05, t));
-      // Only seek if the delta is meaningful — reduces decoder load on mobile
-      if (Math.abs(video.currentTime - safe) > 0.02) {
-        try { video.currentTime = safe; } catch (e) {}
+      const tt = Math.max(0, Math.min(duration - 0.05, curNorm * duration));
+      if (Math.abs(video.currentTime - tt) > 0.015) {
+        try { video.currentTime = tt; } catch (e) {}
       }
+      // Go idle if the mouse hasn't moved for a while
+      if (t - lastInput > IDLE_MS) {
+        scrubbing = false;
+        curNorm = video.currentTime / duration;
+        tryPlay();
+      }
+    } else {
+      // While autoplay loop runs, keep curNorm in sync so the hand-off
+      // back to scrubbing is smooth.
+      curNorm = video.currentTime / duration;
     }
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
 
-  // --- Pointer (mouse + pen + touch via Pointer Events) on the element ---
-  wrap.addEventListener("pointerenter", (e) => {
-    startScrub();
-    targetNorm = normFromClientX(e.clientX);
-    lastInput = performance.now();
-  });
-  wrap.addEventListener("pointermove", (e) => {
-    startScrub();
-    targetNorm = normFromClientX(e.clientX);
-    lastInput = performance.now();
-  });
-  wrap.addEventListener("pointerdown", (e) => {
-    startScrub();
-    wrap.setPointerCapture && wrap.setPointerCapture(e.pointerId);
-    targetNorm = normFromClientX(e.clientX);
-  });
-  wrap.addEventListener("pointerup", (e) => {
-    wrap.releasePointerCapture && wrap.releasePointerCapture(e.pointerId);
-    endScrub();
-  });
-  wrap.addEventListener("pointercancel", endScrub);
-  wrap.addEventListener("pointerleave", endScrub);
-
-  // --- Subtle follow anywhere on the page (desktop, mouse only) ---
+  // Mouse / pen — anywhere on the page
   window.addEventListener("pointermove", (e) => {
-    if (e.pointerType && e.pointerType !== "mouse") return;
-    if (interacting) return;
-    // Only scrub if the video is loaded enough
-    if (duration <= 0) return;
-    targetNorm = normFromWindow(e.clientX);
-    // Nudge the video toward target without fully pausing autoplay
-    const safeT = Math.max(0, Math.min(duration - 0.05, targetNorm * duration));
-    if (Math.abs(video.currentTime - safeT) > 0.15) {
-      try { video.currentTime = safeT; } catch (err) {}
-    }
-    lastInput = performance.now();
+    if (e.pointerType && e.pointerType !== "mouse" && e.pointerType !== "pen") return;
+    const overEl = wrap.contains(e.target) || e.target === wrap;
+    onPointerInput(e.clientX, overEl);
   }, { passive: true });
 
-  // --- Device orientation (mobile tilt fallback) ---
-  window.addEventListener("deviceorientation", (e) => {
-    if (interacting) return;
-    if (e.gamma == null || duration <= 0) return;
-    // gamma is device left-right tilt, roughly -45..45
-    const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 30));
-    const n  = (nx + 1) / 2;
-    const safeT = Math.max(0, Math.min(duration - 0.05, n * duration));
-    if (Math.abs(video.currentTime - safeT) > 0.2) {
-      try { video.currentTime = safeT; } catch (err) {}
+  // Touch — only when the finger is over the avatar (otherwise we'd fight
+  // the page's vertical scroll). Dragging horizontally on the avatar
+  // scrubs the head.
+  wrap.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "touch") {
+      wrap.setPointerCapture && wrap.setPointerCapture(e.pointerId);
     }
-    lastInput = performance.now();
+    onPointerInput(e.clientX, true);
+  });
+  wrap.addEventListener("pointermove", (e) => {
+    if (e.pointerType === "touch") onPointerInput(e.clientX, true);
+  });
+  wrap.addEventListener("pointerup", (e) => {
+    if (e.pointerType === "touch") {
+      wrap.releasePointerCapture && wrap.releasePointerCapture(e.pointerId);
+    }
   });
 
-  // Make sure the video plays once the user first interacts (iOS quirk)
-  const unlock = () => {
-    tryPlay();
-    window.removeEventListener("touchstart", unlock);
-    window.removeEventListener("click", unlock);
-  };
+  // Device orientation — subtle tilt on mobile when the user isn't touching
+  window.addEventListener("deviceorientation", (e) => {
+    if (scrubbing) return;
+    if (e.gamma == null || !ready) return;
+    const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 30));
+    const n  = (nx + 1) / 2;
+    targetNorm = n;
+    lastInput = performance.now();
+    scrubbing = true;
+    video.pause();
+  });
+
+  // iOS autoplay unlock
+  const unlock = () => { tryPlay(); };
   window.addEventListener("touchstart", unlock, { passive: true, once: true });
-  window.addEventListener("click", unlock, { once: true });
+  window.addEventListener("click",      unlock, { once: true });
 })();
