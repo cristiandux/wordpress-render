@@ -404,3 +404,99 @@
   window.addEventListener("scroll", update, { passive: true });
   update();
 })();
+
+/* ---- Hero 3D avatar — mouse-driven rotation ---- */
+(function () {
+  const wrap  = document.getElementById("hero-photo-3d");
+  if (!wrap) return;
+  const stage = wrap.querySelector(".hero-photo-3d-stage");
+  if (!stage) return;
+
+  // Respect reduced motion
+  const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (mql.matches) return;
+
+  const MAX_ROT_Y = 28; // deg, horizontal rotation (yaw)
+  const MAX_ROT_X = 18; // deg, vertical rotation (pitch)
+  const EASE      = 0.12;
+
+  let targetX = 0, targetY = 0;
+  let curX    = 0, curY    = 0;
+  let rafId   = null;
+  let running = false;
+  let hovering = false;
+
+  function setTargetFromPoint(clientX, clientY) {
+    const rect = wrap.getBoundingClientRect();
+    // Normalized -1..1 relative to element center
+    const nx = ((clientX - rect.left) / rect.width)  * 2 - 1;
+    const ny = ((clientY - rect.top)  / rect.height) * 2 - 1;
+    targetY =  nx * MAX_ROT_Y;  // mouse X -> rotateY
+    targetX = -ny * MAX_ROT_X;  // mouse Y -> rotateX (invert so it tilts naturally)
+    ensureRunning();
+  }
+
+  function setTargetFromWindow(clientX, clientY) {
+    // Fallback: use whole viewport when pointer is outside the element
+    const nx = (clientX / window.innerWidth)  * 2 - 1;
+    const ny = (clientY / window.innerHeight) * 2 - 1;
+    targetY =  nx * MAX_ROT_Y * 0.6;
+    targetX = -ny * MAX_ROT_X * 0.6;
+    ensureRunning();
+  }
+
+  function ensureRunning() {
+    if (running) return;
+    running = true;
+    rafId = requestAnimationFrame(loop);
+  }
+
+  function loop() {
+    curX += (targetX - curX) * EASE;
+    curY += (targetY - curY) * EASE;
+    stage.style.transform = `rotateX(${curX.toFixed(2)}deg) rotateY(${curY.toFixed(2)}deg)`;
+
+    const dx = Math.abs(targetX - curX);
+    const dy = Math.abs(targetY - curY);
+    if (dx < 0.05 && dy < 0.05 && !hovering && Math.abs(targetX) < 0.05 && Math.abs(targetY) < 0.05) {
+      running = false;
+      rafId = null;
+      stage.style.transform = `rotateX(0deg) rotateY(0deg)`;
+      return;
+    }
+    rafId = requestAnimationFrame(loop);
+  }
+
+  // Pointer inside the element — stronger effect
+  wrap.addEventListener("pointerenter", () => {
+    hovering = true;
+    wrap.classList.add("is-active");
+  });
+  wrap.addEventListener("pointermove", (e) => {
+    setTargetFromPoint(e.clientX, e.clientY);
+  });
+  wrap.addEventListener("pointerleave", () => {
+    hovering = false;
+    wrap.classList.remove("is-active");
+    targetX = 0;
+    targetY = 0;
+    ensureRunning();
+  });
+
+  // Global pointer move — subtle follow when mouse is anywhere on the page
+  window.addEventListener("pointermove", (e) => {
+    if (hovering) return;
+    setTargetFromWindow(e.clientX, e.clientY);
+  }, { passive: true });
+
+  // Device orientation — subtle tilt on mobile
+  window.addEventListener("deviceorientation", (e) => {
+    if (hovering) return;
+    if (e.beta == null || e.gamma == null) return;
+    const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 45));
+    const ny = Math.max(-1, Math.min(1, ((e.beta  || 0) - 45) / 45));
+    targetY =  nx * MAX_ROT_Y * 0.8;
+    targetX = -ny * MAX_ROT_X * 0.8;
+    ensureRunning();
+  });
+})();
