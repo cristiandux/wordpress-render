@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=3d5">
+  <link rel="stylesheet" href="assets/css/style.css?v=3dv2">
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
@@ -118,16 +118,24 @@
     <div class="hero-photo-wrap fade-in fade-in-delay-2">
       <div class="hero-photo-3d" id="hero-photo-3d" aria-hidden="false">
         <div class="hero-photo-3d-stage">
-          <img src="assets/images/hero-3d.png"
-               alt="Avatar 3D de Cristian"
-               class="hero-photo-3d-img"
-               width="800" height="1000"
-               loading="eager"
-               draggable="false">
+          <video
+            class="hero-photo-3d-video"
+            id="hero-3d-video"
+            src="assets/videos/hero-3d.mp4"
+            poster="assets/images/hero-3d.png"
+            muted
+            loop
+            autoplay
+            playsinline
+            webkit-playsinline="true"
+            preload="auto"
+            aria-label="Avatar 3D de Cristian que gira con el ratón"
+            disablepictureinpicture
+            disableremoteplayback>
+          </video>
           <div class="hero-photo-3d-shadow" aria-hidden="true"></div>
         </div>
-        <!-- SVG chroma-key filter: makes near-white pixels transparent
-             so the avatar floats on the dark background. -->
+        <!-- SVG chroma-key filter: makes near-white pixels transparent. -->
         <svg width="0" height="0" aria-hidden="true" style="position:absolute">
           <filter id="chroma-key-white" color-interpolation-filters="sRGB">
             <feColorMatrix type="matrix" values="
@@ -659,7 +667,7 @@
      SCRIPTS
      ============================================================ -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="assets/js/main.js?v=3d5"></script>
+<script src="assets/js/main.js?v=3dv2"></script>
 
 </body>
 </html>

@@ -405,82 +405,133 @@
   update();
 })();
 
-/* ---- Hero 3D avatar — mouse-driven rotation ---- */
+/* ---- Hero 3D avatar video — mouse-scrubbed head rotation (always on) ---- */
 (function () {
   const wrap  = document.getElementById("hero-photo-3d");
-  if (!wrap) { console.warn("[hero-3d] wrap not found"); return; }
-  const stage = wrap.querySelector(".hero-photo-3d-stage");
-  if (!stage) { console.warn("[hero-3d] stage not found"); return; }
-  console.log("[hero-3d] module loaded");
+  const video = document.getElementById("hero-3d-video");
+  if (!wrap || !video) { console.warn("[hero-3d] wrap or video not found"); return; }
+  console.log("[hero-3d] module loaded (always-on scrub)");
 
-  const MAX_ROT_Y = 32;  // deg, horizontal rotation (yaw)
-  const MAX_ROT_X = 22;  // deg, vertical rotation (pitch)
-  const EASE      = 0.14;
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.controls = false;
 
-  let targetX = 0, targetY = 0;
-  let curX    = 0, curY    = 0;
-  let hovering = false;
-  let lastInput = performance.now();
-  let idleT = 0;
+  // Idle settings
+  const IDLE_MS = 2500;     // after this long with no mouse movement, resume autoplay loop
+  const EASE    = 0.15;     // smoothness of the scrub
 
-  function setTargetFromPoint(clientX, clientY) {
+  let duration   = 0;
+  let targetNorm = 0.5;     // 0..1 — set by mouse X
+  let curNorm    = 0.5;     // eased value
+  let lastInput  = 0;       // time of last pointer movement
+  let scrubbing  = false;   // true when we are actively seeking (paused)
+  let ready      = false;
+
+  function tryPlay() {
+    const p = video.play();
+    if (p && typeof p.catch === "function") p.catch(() => {});
+  }
+
+  video.addEventListener("loadedmetadata", () => {
+    duration = video.duration || 0;
+    ready = duration > 0;
+    // initial seek to middle so the head starts looking forward
+    try { video.currentTime = duration * 0.5; } catch (e) {}
+    tryPlay();
+  });
+  video.addEventListener("canplay", () => { if (!scrubbing) tryPlay(); });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && !scrubbing) tryPlay();
+  });
+
+  function normFromWindow(clientX) {
+    return Math.max(0, Math.min(1, clientX / window.innerWidth));
+  }
+  function normFromWrap(clientX) {
     const rect = wrap.getBoundingClientRect();
-    const nx = ((clientX - rect.left) / rect.width)  * 2 - 1;
-    const ny = ((clientY - rect.top)  / rect.height) * 2 - 1;
-    targetY =  Math.max(-1, Math.min(1, nx)) * MAX_ROT_Y;
-    targetX = -Math.max(-1, Math.min(1, ny)) * MAX_ROT_X;
+    return Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
   }
 
-  function setTargetFromWindow(clientX, clientY) {
-    const nx = (clientX / window.innerWidth)  * 2 - 1;
-    const ny = (clientY / window.innerHeight) * 2 - 1;
-    targetY =  nx * MAX_ROT_Y * 0.7;
-    targetX = -ny * MAX_ROT_X * 0.7;
-  }
-
-  // Single RAF loop — always running. Cheap, and guarantees visible motion.
-  function loop(t) {
-    // Idle orbit if no pointer input for > 1.2s
-    if (!hovering && t - lastInput > 1200) {
-      idleT += 0.015;
-      targetY = Math.sin(idleT) * 14;
-      targetX = Math.cos(idleT * 0.7) * 9;
+  // Central input handler — updates targetNorm and scrub state
+  function onPointerInput(clientX, overElement) {
+    if (!ready) return;
+    // When the pointer is over the avatar, map the card's own width 1:1
+    // (full head swing across the element). Otherwise map the whole
+    // viewport width (subtler but still continuous).
+    targetNorm = overElement ? normFromWrap(clientX) : normFromWindow(clientX);
+    lastInput = performance.now();
+    if (!scrubbing) {
+      scrubbing = true;
+      video.pause();
     }
-    curX += (targetX - curX) * EASE;
-    curY += (targetY - curY) * EASE;
-    stage.style.transform =
-      `translateZ(0) rotateX(${curX.toFixed(2)}deg) rotateY(${curY.toFixed(2)}deg)`;
+  }
+
+  // RAF loop: always runs; eases currentTime toward targetNorm while
+  // scrubbing; returns to autoplay after IDLE_MS of no mouse movement.
+  function loop(t) {
+    if (!ready) { requestAnimationFrame(loop); return; }
+
+    if (scrubbing) {
+      curNorm += (targetNorm - curNorm) * EASE;
+      const tt = Math.max(0, Math.min(duration - 0.05, curNorm * duration));
+      if (Math.abs(video.currentTime - tt) > 0.015) {
+        try { video.currentTime = tt; } catch (e) {}
+      }
+      // Go idle if the mouse hasn't moved for a while
+      if (t - lastInput > IDLE_MS) {
+        scrubbing = false;
+        curNorm = video.currentTime / duration;
+        tryPlay();
+      }
+    } else {
+      // While autoplay loop runs, keep curNorm in sync so the hand-off
+      // back to scrubbing is smooth.
+      curNorm = video.currentTime / duration;
+    }
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
 
-  // Strong effect while the pointer is over the card
-  wrap.addEventListener("pointerenter", () => { hovering = true; });
-  wrap.addEventListener("pointermove", (e) => {
-    lastInput = performance.now();
-    setTargetFromPoint(e.clientX, e.clientY);
-  });
-  wrap.addEventListener("pointerleave", () => { hovering = false; });
-
-  // Subtle follow anywhere on the page
+  // Mouse / pen — anywhere on the page
   window.addEventListener("pointermove", (e) => {
-    lastInput = performance.now();
-    if (!hovering) setTargetFromWindow(e.clientX, e.clientY);
+    if (e.pointerType && e.pointerType !== "mouse" && e.pointerType !== "pen") return;
+    const overEl = wrap.contains(e.target) || e.target === wrap;
+    onPointerInput(e.clientX, overEl);
   }, { passive: true });
 
-  // Device orientation — subtle tilt on mobile
-  window.addEventListener("deviceorientation", (e) => {
-    if (hovering) return;
-    if (e.beta == null || e.gamma == null) return;
-    lastInput = performance.now();
-    const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 45));
-    const ny = Math.max(-1, Math.min(1, ((e.beta  || 0) - 45) / 45));
-    targetY =  nx * MAX_ROT_Y * 0.9;
-    targetX = -ny * MAX_ROT_X * 0.9;
+  // Touch — only when the finger is over the avatar (otherwise we'd fight
+  // the page's vertical scroll). Dragging horizontally on the avatar
+  // scrubs the head.
+  wrap.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "touch") {
+      wrap.setPointerCapture && wrap.setPointerCapture(e.pointerId);
+    }
+    onPointerInput(e.clientX, true);
+  });
+  wrap.addEventListener("pointermove", (e) => {
+    if (e.pointerType === "touch") onPointerInput(e.clientX, true);
+  });
+  wrap.addEventListener("pointerup", (e) => {
+    if (e.pointerType === "touch") {
+      wrap.releasePointerCapture && wrap.releasePointerCapture(e.pointerId);
+    }
   });
 
-  // Initial kick so the 3D effect is obvious on load
-  targetY = 20; targetX = -10;
-  setTimeout(() => { targetY = -15; targetX = 6;  }, 500);
-  setTimeout(() => { targetY = 0;   targetX = 0;  lastInput = performance.now(); }, 1100);
+  // Device orientation — subtle tilt on mobile when the user isn't touching
+  window.addEventListener("deviceorientation", (e) => {
+    if (scrubbing) return;
+    if (e.gamma == null || !ready) return;
+    const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 30));
+    const n  = (nx + 1) / 2;
+    targetNorm = n;
+    lastInput = performance.now();
+    scrubbing = true;
+    video.pause();
+  });
+
+  // iOS autoplay unlock
+  const unlock = () => { tryPlay(); };
+  window.addEventListener("touchstart", unlock, { passive: true, once: true });
+  window.addEventListener("click",      unlock, { once: true });
 })();
