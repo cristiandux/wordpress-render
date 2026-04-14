@@ -405,55 +405,45 @@
   update();
 })();
 
-/* ---- Hero 3D avatar video — mouse-scrubbed head rotation (always on) ---- */
+/* ---- Hero 3D avatar video — mouse-scrubbed head rotation (no autoplay) ---- */
 (function () {
   const wrap  = document.getElementById("hero-photo-3d");
   const video = document.getElementById("hero-3d-video");
   if (!wrap || !video) { console.warn("[hero-3d] wrap or video not found"); return; }
-  console.log("[hero-3d] module loaded (always-on scrub + tilt)");
+  console.log("[hero-3d] module loaded (scrub-only)");
 
+  // Video is ALWAYS paused — we only seek frames. No autoplay, no loop.
   video.muted = true;
-  video.loop = true;
+  video.loop = false;
+  video.autoplay = false;
   video.playsInline = true;
   video.controls = false;
+  video.pause();
 
   const stage = wrap.querySelector(".hero-photo-3d-stage");
 
   // Tuning
-  const IDLE_MS    = 2500;  // after this long with no mouse movement, resume autoplay
-  const EASE       = 0.35;  // scrub smoothness (higher = snappier)
+  const EASE       = 0.28;  // scrub smoothness (higher = snappier)
   const EASE_TILT  = 0.12;  // vertical CSS tilt easing
   const MAX_TILT_X = 10;    // deg — up/down head nod (CSS rotateX)
-  // If mouse direction and head direction are reversed, flip this to -1.
-  // Set to -1 because your render goes from "head right" (t=0) to "head left" (t=end)
-  const X_DIR      = -1;
+  const X_DIR      = -1;    // flip to -1 so mouse-right maps to head-right
 
   let duration    = 0;
-  let targetNorm  = 0.5;
+  let targetNorm  = 0.5;    // 0..1 (mouse X)
   let curNorm     = 0.5;
-  let targetTiltX = 0;      // deg (driven by mouse Y)
+  let targetTiltX = 0;
   let curTiltX    = 0;
-  let lastInput   = 0;
-  let scrubbing   = false;
   let ready       = false;
-
-  function tryPlay() {
-    const p = video.play();
-    if (p && typeof p.catch === "function") p.catch(() => {});
-  }
 
   video.addEventListener("loadedmetadata", () => {
     duration = video.duration || 0;
     ready = duration > 0;
     try { video.currentTime = duration * 0.5; } catch (e) {}
-    tryPlay();
+    video.pause();
   });
-  video.addEventListener("canplay", () => { if (!scrubbing) tryPlay(); });
-  document.addEventListener("visibilitychange", () => {
-    if (!document.hidden && !scrubbing) tryPlay();
-  });
+  // Safety net: if the browser ever starts playing, stop it.
+  video.addEventListener("play", () => video.pause());
 
-  // Apply X_DIR at the end so UX stays consistent regardless of video encoding
   function mapX(rawNorm) {
     return X_DIR > 0 ? rawNorm : (1 - rawNorm);
   }
@@ -465,7 +455,6 @@
     return mapX(Math.max(0, Math.min(1, (clientX - rect.left) / rect.width)));
   }
   function tiltFromY(clientY) {
-    // -1..1 relative to viewport vertical center
     const n = (clientY / window.innerHeight) * 2 - 1;
     return Math.max(-1, Math.min(1, n)) * MAX_TILT_X;
   }
@@ -473,32 +462,19 @@
   function onPointerInput(clientX, clientY, overElement) {
     if (!ready) return;
     targetNorm  = overElement ? normFromWrap(clientX) : normFromWindow(clientX);
-    targetTiltX = -tiltFromY(clientY); // mouse down -> head looks down (negative rotateX = look down)
-    lastInput   = performance.now();
-    if (!scrubbing) { scrubbing = true; video.pause(); }
+    targetTiltX = -tiltFromY(clientY);
   }
 
-  // RAF loop: always runs. Eases currentTime toward target + applies CSS tilt.
-  function loop(t) {
+  // Always-running RAF: eases currentTime toward the mouse target and
+  // applies the CSS vertical tilt. No autoplay fallback.
+  function loop() {
     if (ready) {
-      if (scrubbing) {
-        curNorm += (targetNorm - curNorm) * EASE;
-        const tt = Math.max(0, Math.min(duration - 0.05, curNorm * duration));
-        // Tighter threshold — respond as soon as there's a meaningful delta
-        if (Math.abs(video.currentTime - tt) > 0.008) {
-          try { video.currentTime = tt; } catch (e) {}
-        }
-        if (t - lastInput > IDLE_MS) {
-          scrubbing = false;
-          curNorm = video.currentTime / duration;
-          tryPlay();
-        }
-      } else {
-        curNorm = video.currentTime / duration;
+      curNorm += (targetNorm - curNorm) * EASE;
+      const tt = Math.max(0, Math.min(duration - 0.05, curNorm * duration));
+      if (Math.abs(video.currentTime - tt) > 0.008) {
+        try { video.currentTime = tt; } catch (e) {}
       }
     }
-
-    // CSS tilt (always active so vertical mouse movement is always visible)
     curTiltX += (targetTiltX - curTiltX) * EASE_TILT;
     if (stage) {
       stage.style.transform =
@@ -515,7 +491,7 @@
     onPointerInput(e.clientX, e.clientY, overEl);
   }, { passive: true });
 
-  // Touch — horizontal drag over the avatar scrubs
+  // Touch — horizontal drag over the avatar scrubs; vertical swipe scrolls
   wrap.addEventListener("pointerdown", (e) => {
     if (e.pointerType === "touch") {
       wrap.setPointerCapture && wrap.setPointerCapture(e.pointerId);
@@ -531,23 +507,12 @@
     }
   });
 
-  // Device orientation — subtle tilt on mobile when the user isn't touching
+  // Device orientation — tilt the phone to rotate the head on mobile
   window.addEventListener("deviceorientation", (e) => {
-    if (scrubbing) return;
     if (e.gamma == null || !ready) return;
     const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 30));
-    const n  = (nx + 1) / 2;
-    targetNorm = mapX(n);
-    // Also tilt vertically with beta (front-back tilt)
+    targetNorm = mapX((nx + 1) / 2);
     const ny = Math.max(-1, Math.min(1, ((e.beta || 0) - 45) / 45));
     targetTiltX = -ny * MAX_TILT_X;
-    lastInput = performance.now();
-    scrubbing = true;
-    video.pause();
   });
-
-  // iOS autoplay unlock
-  const unlock = () => { tryPlay(); };
-  window.addEventListener("touchstart", unlock, { passive: true, once: true });
-  window.addEventListener("click",      unlock, { once: true });
 })();

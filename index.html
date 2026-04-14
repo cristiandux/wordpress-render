@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=3dv3">
+  <link rel="stylesheet" href="assets/css/style.css?v=3dv4">
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
@@ -124,8 +124,6 @@
             src="assets/videos/hero-3d.mp4"
             poster="assets/images/hero-3d.png"
             muted
-            loop
-            autoplay
             playsinline
             webkit-playsinline="true"
             preload="auto"
@@ -135,14 +133,25 @@
           </video>
           <div class="hero-photo-3d-shadow" aria-hidden="true"></div>
         </div>
-        <!-- SVG chroma-key filter: makes near-white pixels transparent. -->
+        <!-- Luminance-key filter: kills the light background AND the mid-gray
+             halo baked around the silhouette, leaving only the dark pixels
+             of the avatar opaque. No gray shine leaks through. -->
         <svg width="0" height="0" aria-hidden="true" style="position:absolute">
           <filter id="chroma-key-white" color-interpolation-filters="sRGB">
+            <!-- Step 1: compute alpha = 1 - 0.55·(R+G+B).
+                 white -> 0, mid-gray -> small, dark -> high. RGB untouched. -->
             <feColorMatrix type="matrix" values="
               1 0 0 0 0
               0 1 0 0 0
               0 0 1 0 0
-              -2 -2 -2 5 0"/>
+              -0.55 -0.55 -0.55 0 1"/>
+            <!-- Step 2: sharp alpha threshold.
+                 slope 9, intercept -3 => anything with luminance > ~0.42 becomes
+                 fully transparent, dark pixels stay fully opaque, with a narrow
+                 anti-aliased edge. -->
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="9" intercept="-3"/>
+            </feComponentTransfer>
           </filter>
         </svg>
       </div>
@@ -667,7 +676,7 @@
      SCRIPTS
      ============================================================ -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="assets/js/main.js?v=3dv3"></script>
+<script src="assets/js/main.js?v=3dv4"></script>
 
 </body>
 </html>
