@@ -227,9 +227,10 @@ p { margin-bottom: 0; }
    ============================================ */
 #hero {
   min-height: 100svh;
-  padding-top: var(--nav-h);
+  padding-top: calc(var(--nav-h) + 8px);
+  padding-bottom: 32px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   overflow: hidden;
 }
@@ -413,8 +414,8 @@ p { margin-bottom: 0; }
 .hero-photo-3d {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
-  max-height: 100vh;
+  aspect-ratio: 2/3;
+  max-height: 82vh;
 }
 .hero-photo-3d-stage {
   position: relative;
