@@ -297,7 +297,7 @@ p { margin-bottom: 0; }
   margin: 0 auto;
   padding: 40px 32px;
   display: grid;
-  grid-template-columns: 1fr 360px;
+  grid-template-columns: 1fr 1280px;
   gap: 48px;
   align-items: center;
 }
@@ -413,7 +413,7 @@ p { margin-bottom: 0; }
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
-  max-height: calc(100svh - var(--nav-h) - 80px);
+  max-height: 100vh;
 }
 .hero-photo-3d-stage {
   position: relative;
@@ -1351,7 +1351,7 @@ p { margin-bottom: 0; }
    RESPONSIVE
    ============================================ */
 @media (max-width: 1100px) {
-  .hero-inner { grid-template-columns: 1fr 320px; gap: 36px; }
+  .hero-inner { grid-template-columns: 1fr 900px; gap: 36px; }
   .about-grid { grid-template-columns: 360px 1fr; gap: 48px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1362,9 +1362,9 @@ p { margin-bottom: 0; }
 @media (max-width: 900px) {
   .nav-links, .nav-cta { display: none; }
   .nav-hamburger { display: flex; }
-  .hero-inner { grid-template-columns: 1fr 180px; gap: 20px; padding: 20px 20px; align-items: start; }
-  .hero-photo-wrap { order: 0; max-width: 180px; margin: 0; }
-  .hero-photo-3d { aspect-ratio: 1/1; height: auto; max-height: none; }
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 20px 20px; align-items: start; }
+  .hero-photo-wrap { order: 0; max-width: 100%; margin: 0; }
+  .hero-photo-3d { aspect-ratio: 16/9; height: auto; max-height: 70vh; }
   .hero-photo-badge { display: none; }
   .hero-label { margin-bottom: 12px; padding: 4px 12px; font-size: 0.7rem; }
   .hero-title { font-size: clamp(1.6rem, 5vw, 2.2rem); margin-bottom: 10px; }
@@ -1393,9 +1393,9 @@ p { margin-bottom: 0; }
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
   .section { padding: 56px 0; }
-  .hero-inner { grid-template-columns: 1fr 130px; gap: 16px; padding: 24px 16px 16px; align-items: start; }
-  .hero-photo-wrap { max-width: 130px; }
-  .hero-photo-3d { aspect-ratio: 1/1; }
+  .hero-inner { grid-template-columns: 1fr; gap: 24px; padding: 24px 16px 16px; align-items: start; }
+  .hero-photo-wrap { max-width: 100%; }
+  .hero-photo-3d { aspect-ratio: 16/9; max-height: 60vh; }
   .hero-label { display: none; }
   .hero-title { font-size: clamp(1.3rem, 4.5vw, 1.7rem); margin-bottom: 6px; }
   .hero-desc { font-size: 0.75rem; margin-bottom: 8px; line-height: 1.4; }
