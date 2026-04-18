@@ -878,11 +878,21 @@ p { margin-bottom: 0; }
 }
 /* Empty placeholder card (testimonial content temporarily removed) */
 .testm-card--empty {
-  min-height: 320px;
+  min-height: 240px;
 }
 .testm-card--empty:hover {
   border-color: var(--border);
   box-shadow: none;
+}
+.testm-company {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.testm-rating {
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 2px;
 }
 .testm-quote {
   font-size: 2rem;
