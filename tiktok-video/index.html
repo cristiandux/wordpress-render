@@ -381,7 +381,7 @@
     /* ── WIPES ─────────────────────────────────── */
     .wipe {
       position: absolute;
-      top: 0; left: -1080px;
+      top: 0; left: 0;
       width: 1080px; height: 1920px;
       z-index: 200;
       pointer-events: none;
@@ -691,6 +691,14 @@ window.__timelines["main"] = tl;
   prog.addEventListener("mousedown", function () { scrubbing = true; tl.pause(); playing = false; btn.textContent = "▶ PLAY"; });
   prog.addEventListener("input", function () { tl.seek(prog.value / 1000); label.textContent = (prog.value / 1000).toFixed(1) + "s"; });
   prog.addEventListener("mouseup", function () { scrubbing = false; });
+
+  // Autoplay on load
+  setTimeout(function () {
+    tl.play();
+    playing = true;
+    btn.textContent = "⏸ PAUSA";
+    tick();
+  }, 500);
 })();
 </script>
 </body>
