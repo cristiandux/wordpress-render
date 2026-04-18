@@ -2,25 +2,14 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script src="gsap.min.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
-      width: 100vw;
-      height: 100vh;
+      width: 100%; height: 100%;
       overflow: hidden;
       background: #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #scale-wrapper {
-      width: 1080px;
-      height: 1920px;
-      transform-origin: top center;
-      flex-shrink: 0;
     }
 
     #root {
@@ -28,6 +17,7 @@
       width: 1080px;
       height: 1920px;
       overflow: hidden;
+      transform-origin: top left;
     }
 
     .scene {
@@ -403,7 +393,6 @@
   </style>
 </head>
 <body>
-<div id="scale-wrapper">
 <div id="root" data-composition-id="main" data-width="1080" data-height="1920" data-start="0" data-duration="28">
 
   <!-- ── SCENE 1: HOOK ─────────────────────────── -->
@@ -525,7 +514,6 @@
   <div id="wipe-d" class="wipe"></div>
 
 </div>
-</div><!-- end scale-wrapper -->
 
 <script>
 window.__timelines = window.__timelines || {};
@@ -653,75 +641,62 @@ window.__timelines["main"] = tl;
 // ── STANDALONE PLAYER (opens directly in browser) ──
 (function () {
   var playing = false;
-  var scrubbing = false;
 
+  // Scale #root to fit viewport
+  function scaleToFit() {
+    var sw = window.innerWidth;
+    var sh = window.innerHeight - 60;
+    var scale = Math.min(sw / 1080, sh / 1920);
+    var root = document.getElementById("root");
+    root.style.transform = "scale(" + scale + ")";
+    root.style.transformOrigin = "top left";
+    root.style.marginLeft = ((sw - 1080 * scale) / 2) + "px";
+  }
+  scaleToFit();
+  window.addEventListener("resize", scaleToFit);
+
+  // Player bar
   var bar = document.createElement("div");
   bar.style.cssText = "position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(0,0,0,0.85);padding:14px 20px;display:flex;align-items:center;gap:14px;font-family:sans-serif;";
 
   var btn = document.createElement("button");
   btn.textContent = "▶ PLAY";
-  btn.style.cssText = "background:#FF5200;color:#fff;border:none;padding:10px 22px;font-size:15px;font-weight:700;border-radius:6px;cursor:pointer;letter-spacing:0.05em;";
+  btn.style.cssText = "background:#FF5200;color:#fff;border:none;padding:10px 22px;font-size:15px;font-weight:700;border-radius:6px;cursor:pointer;";
 
   var prog = document.createElement("input");
-  prog.type = "range";
-  prog.min = 0; prog.max = 28000; prog.value = 0; prog.step = 50;
+  prog.type = "range"; prog.min = 0; prog.max = 28000; prog.value = 0; prog.step = 50;
   prog.style.cssText = "flex:1;accent-color:#FF5200;cursor:pointer;";
 
   var label = document.createElement("span");
-  label.style.cssText = "color:#F2EDE4;font-size:13px;min-width:44px;text-align:right;font-variant-numeric:tabular-nums;";
+  label.style.cssText = "color:#F2EDE4;font-size:13px;min-width:44px;text-align:right;";
   label.textContent = "0.0s";
 
-  bar.appendChild(btn);
-  bar.appendChild(prog);
-  bar.appendChild(label);
+  bar.appendChild(btn); bar.appendChild(prog); bar.appendChild(label);
   document.body.appendChild(bar);
 
-  var raf;
-  function tick() {
+  // Use setInterval to sync UI (not RAF — RAF breaks HyperFrames capture)
+  var ticker = setInterval(function () {
     if (!playing) return;
     var t = tl.time();
     prog.value = Math.round(t * 1000);
     label.textContent = t.toFixed(1) + "s";
-    if (t >= 28) { playing = false; btn.textContent = "▶ PLAY"; return; }
-    raf = requestAnimationFrame(tick);
-  }
+    if (t >= 28) { playing = false; btn.textContent = "▶ PLAY"; }
+  }, 50);
 
   btn.addEventListener("click", function () {
     if (playing) {
-      tl.pause();
-      playing = false;
-      btn.textContent = "▶ PLAY";
+      tl.pause(); playing = false; btn.textContent = "▶ PLAY";
     } else {
       if (tl.time() >= 28) tl.seek(0);
-      tl.play();
-      playing = true;
-      btn.textContent = "⏸ PAUSA";
-      tick();
+      tl.play(); playing = true; btn.textContent = "⏸ PAUSA";
     }
   });
 
-  prog.addEventListener("mousedown", function () { scrubbing = true; tl.pause(); playing = false; btn.textContent = "▶ PLAY"; });
+  prog.addEventListener("mousedown", function () { tl.pause(); playing = false; btn.textContent = "▶ PLAY"; });
   prog.addEventListener("input", function () { tl.seek(prog.value / 1000); label.textContent = (prog.value / 1000).toFixed(1) + "s"; });
-  prog.addEventListener("mouseup", function () { scrubbing = false; });
 
-  // Scale to fit viewport
-  function scaleToFit() {
-    var sw = window.innerWidth;
-    var sh = window.innerHeight - 60; // leave room for player bar
-    var scale = Math.min(sw / 1080, sh / 1920);
-    document.getElementById("scale-wrapper").style.transform = "scale(" + scale + ")";
-    document.getElementById("scale-wrapper").style.transformOrigin = "top center";
-  }
-  scaleToFit();
-  window.addEventListener("resize", scaleToFit);
-
-  // Autoplay on load
-  setTimeout(function () {
-    tl.play();
-    playing = true;
-    btn.textContent = "⏸ PAUSA";
-    tick();
-  }, 500);
+  // Autoplay
+  setTimeout(function () { tl.play(); playing = true; btn.textContent = "⏸ PAUSA"; }, 300);
 })();
 </script>
 </body>
