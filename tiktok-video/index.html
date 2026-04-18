@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #080808;
+    }
+
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+    }
+
+    .scene {
+      position: absolute;
+      top: 0; left: 0;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: #080808;
+    }
+
+    .scene-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: 120px 80px;
+      box-sizing: border-box;
+    }
+
+    .bg-glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(120px);
+    }
+
+    .ghost-text {
+      position: absolute;
+      font-family: "Anton", sans-serif;
+      color: rgba(242, 237, 228, 0.03);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .scene-tag {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #FF5200;
+    }
+
+    /* ── SCENE 1: HOOK ─────────────────────────── */
+    #s1-glow {
+      width: 800px; height: 800px;
+      background: rgba(255, 82, 0, 0.18);
+      bottom: -200px; left: 50%;
+      transform: translateX(-50%);
+    }
+    #s1-ghost {
+      font-size: 700px;
+      bottom: -80px; left: -60px;
+    }
+    #s1-content { justify-content: center; gap: 0; }
+    #s1-label { margin-bottom: 50px; }
+    #s1-t1 {
+      font-family: "Anton", sans-serif;
+      font-size: 140px;
+      color: #F2EDE4;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    #s1-t2 {
+      font-family: "Anton", sans-serif;
+      font-size: 220px;
+      color: #FF5200;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+    }
+    #s1-t3 {
+      font-family: "Anton", sans-serif;
+      font-size: 110px;
+      color: #F2EDE4;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    #s1-strip {
+      font-size: 48px;
+      margin-top: 60px;
+      letter-spacing: 0.3em;
+      color: #F2EDE4;
+    }
+
+    /* ── SCENE 2: PROBLEM ──────────────────────── */
+    #s2-glow {
+      width: 700px; height: 500px;
+      background: rgba(200, 30, 0, 0.15);
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+    }
+    #s2-ghost {
+      font-size: 500px;
+      top: 100px; right: -80px;
+      color: rgba(255, 82, 0, 0.04);
+    }
+    #s2-content { justify-content: center; gap: 0; }
+    #s2-t1 {
+      font-family: "Anton", sans-serif;
+      font-size: 100px;
+      color: #F2EDE4;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+    #s2-t2-wrap {
+      position: relative;
+      margin: 8px 0;
+    }
+    #s2-t2 {
+      font-family: "Anton", sans-serif;
+      font-size: 190px;
+      color: #FF5200;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+    }
+    #s2-strike {
+      position: absolute;
+      height: 8px;
+      background: #F2EDE4;
+      top: 50%; left: 0; right: 0;
+      transform-origin: left center;
+      margin-top: -4px;
+    }
+    #s2-divider {
+      height: 3px;
+      background: rgba(242, 237, 228, 0.15);
+      margin: 30px 0;
+      transform-origin: left center;
+    }
+    #s2-t3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 80px;
+      font-weight: 700;
+      color: #F2EDE4;
+      letter-spacing: -0.03em;
+    }
+    #s2-sub {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 34px;
+      font-weight: 400;
+      color: rgba(242, 237, 228, 0.5);
+      margin-top: 20px;
+    }
+
+    /* ── SCENE 3: IDENTITY ─────────────────────── */
+    #s3-glow {
+      width: 900px; height: 900px;
+      background: rgba(255, 82, 0, 0.12);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #s3-ghost {
+      font-size: 380px;
+      top: 50%; left: -40px;
+      transform: translateY(-50%);
+      color: rgba(255, 82, 0, 0.05);
+    }
+    #s3-content { justify-content: center; gap: 0; }
+    #s3-soy {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #FF5200;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    #s3-name1 {
+      font-family: "Anton", sans-serif;
+      font-size: 175px;
+      color: #F2EDE4;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+    }
+    #s3-name2 {
+      font-family: "Anton", sans-serif;
+      font-size: 220px;
+      color: #FF5200;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+    }
+    #s3-rule {
+      height: 5px;
+      background: #FF5200;
+      transform-origin: left center;
+      margin: 28px 0;
+    }
+    #s3-tagline {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 38px;
+      font-weight: 400;
+      color: rgba(242, 237, 228, 0.7);
+      letter-spacing: 0.05em;
+    }
+    #s3-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 40px;
+      background: rgba(255, 82, 0, 0.15);
+      border: 2px solid #FF5200;
+      border-radius: 60px;
+      padding: 16px 32px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #FF5200;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    #s3-dot {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: #00E676;
+      flex-shrink: 0;
+    }
+
+    /* ── SCENE 4: SERVICES ─────────────────────── */
+    #s4-glow {
+      width: 600px; height: 1200px;
+      background: rgba(255, 82, 0, 0.08);
+      top: 50%; left: -100px;
+      transform: translateY(-50%);
+    }
+    #s4-content { justify-content: center; gap: 0; padding-left: 80px; }
+    #s4-header {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: #FF5200;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    #s4-rule {
+      height: 3px;
+      background: rgba(255, 82, 0, 0.4);
+      transform-origin: left;
+      margin-bottom: 48px;
+    }
+    .svc-line {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(242, 237, 228, 0.08);
+    }
+    .svc-num {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #FF5200;
+      min-width: 44px;
+    }
+    .svc-name {
+      font-family: "Anton", sans-serif;
+      font-size: 86px;
+      color: #F2EDE4;
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── SCENE 5: STATS ────────────────────────── */
+    #s5-glow {
+      width: 900px; height: 900px;
+      background: rgba(255, 179, 0, 0.1);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #s5-ghost {
+      font-size: 600px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(255, 179, 0, 0.03);
+    }
+    #s5-content { justify-content: center; gap: 0; }
+    .stat-block { padding: 40px 0; }
+    .stat-num {
+      font-family: "Anton", sans-serif;
+      font-size: 240px;
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+    }
+    .stat-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(242, 237, 228, 0.6);
+      margin-top: 8px;
+    }
+    .stat-sep {
+      height: 2px;
+      background: rgba(242, 237, 228, 0.12);
+      margin: 8px 0;
+    }
+
+    /* ── SCENE 6: CTA ──────────────────────────── */
+    #s6-glow {
+      width: 1000px; height: 1000px;
+      background: rgba(255, 82, 0, 0.2);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #s6-ghost {
+      font-size: 600px;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: rgba(255, 82, 0, 0.04);
+    }
+    #s6-content {
+      justify-content: center;
+      gap: 0;
+      align-items: center;
+      text-align: center;
+    }
+    #s6-t1 {
+      font-family: "Anton", sans-serif;
+      font-size: 120px;
+      color: #F2EDE4;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    #s6-t2 {
+      font-family: "Anton", sans-serif;
+      font-size: 120px;
+      color: #FF5200;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    #s6-t3 {
+      font-family: "Anton", sans-serif;
+      font-size: 110px;
+      color: #F2EDE4;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    #s6-rule {
+      height: 5px;
+      background: #FF5200;
+      width: 200px;
+      margin: 40px auto;
+    }
+    #s6-emoji { font-size: 80px; margin-bottom: 16px; }
+    #s6-url {
+      font-family: "Anton", sans-serif;
+      font-size: 68px;
+      color: #F2EDE4;
+      letter-spacing: 0.02em;
+    }
+    #s6-handle {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 30px;
+      font-weight: 400;
+      color: rgba(242, 237, 228, 0.5);
+      margin-top: 24px;
+    }
+
+    /* ── WIPES ─────────────────────────────────── */
+    .wipe {
+      position: absolute;
+      top: 0; left: -1080px;
+      width: 1080px; height: 1920px;
+      z-index: 200;
+      pointer-events: none;
+    }
+    #wipe-a { background: #FF5200; }
+    #wipe-b { background: #1a1a1a; }
+    #wipe-c { background: #FF5200; }
+    #wipe-d { background: #080808; }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-width="1080" data-height="1920" data-start="0" data-duration="28">
+
+  <!-- ── SCENE 1: HOOK ─────────────────────────── -->
+  <div id="scene1" class="scene">
+    <div id="s1-glow" class="bg-glow"></div>
+    <div id="s1-ghost" class="ghost-text">DUX</div>
+    <div id="s1-content" class="scene-content">
+      <div id="s1-label" class="scene-tag">ATENCIÓN →</div>
+      <div id="s1-t1">¿TU MARCA</div>
+      <div id="s1-t2">PASA</div>
+      <div id="s1-t3">DESAPERCIBIDA?</div>
+      <div id="s1-strip">🎬 🎬 🎬</div>
+    </div>
+  </div>
+
+  <!-- ── SCENE 2: PROBLEM ──────────────────────── -->
+  <div id="scene2" class="scene" style="opacity:0">
+    <div id="s2-glow" class="bg-glow"></div>
+    <div id="s2-ghost" class="ghost-text">NO</div>
+    <div id="s2-content" class="scene-content">
+      <div id="s2-t1">EL CONTENIDO</div>
+      <div id="s2-t2-wrap">
+        <div id="s2-t2">MEDIOCRE</div>
+        <div id="s2-strike"></div>
+      </div>
+      <div id="s2-divider"></div>
+      <div id="s2-t3">no vende.</div>
+      <div id="s2-sub">Tu competencia lo sabe.</div>
+    </div>
+  </div>
+
+  <!-- ── SCENE 3: IDENTITY ──────────────────────── -->
+  <div id="scene3" class="scene" style="opacity:0">
+    <div id="s3-glow" class="bg-glow"></div>
+    <div id="s3-ghost" class="ghost-text">CRISTIAN</div>
+    <div id="s3-content" class="scene-content">
+      <div id="s3-soy">SOY</div>
+      <div id="s3-name1">CRISTIAN</div>
+      <div id="s3-name2">DUX</div>
+      <div id="s3-rule"></div>
+      <div id="s3-tagline">Filmmaker · Branding · IA</div>
+      <div id="s3-badge">
+        <div id="s3-dot"></div>
+        DISPONIBLE
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SCENE 4: SERVICES ─────────────────────── -->
+  <div id="scene4" class="scene" style="opacity:0">
+    <div id="s4-glow" class="bg-glow"></div>
+    <div id="s4-content" class="scene-content">
+      <div id="s4-header">Lo que hago</div>
+      <div id="s4-rule"></div>
+      <div class="svc-line" id="svc1">
+        <span class="svc-num">01</span>
+        <span class="svc-name">FILMMAKING</span>
+      </div>
+      <div class="svc-line" id="svc2">
+        <span class="svc-num">02</span>
+        <span class="svc-name">EDICIÓN</span>
+      </div>
+      <div class="svc-line" id="svc3">
+        <span class="svc-num">03</span>
+        <span class="svc-name">BRANDING</span>
+      </div>
+      <div class="svc-line" id="svc4">
+        <span class="svc-num">04</span>
+        <span class="svc-name">WEB</span>
+      </div>
+      <div class="svc-line" id="svc5">
+        <span class="svc-num">05</span>
+        <span class="svc-name">IA & ADS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SCENE 5: STATS ────────────────────────── -->
+  <div id="scene5" class="scene" style="opacity:0">
+    <div id="s5-glow" class="bg-glow"></div>
+    <div id="s5-ghost" class="ghost-text">50</div>
+    <div id="s5-content" class="scene-content">
+      <div class="stat-block" id="stat1">
+        <div class="stat-num" id="stat1-num" style="color:#F2EDE4">+50</div>
+        <div class="stat-label">PROYECTOS</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-block" id="stat2">
+        <div class="stat-num" id="stat2-num" style="color:#FF5200">2M+</div>
+        <div class="stat-label">REPRODUCCIONES</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat-block" id="stat3">
+        <div class="stat-num" id="stat3-num" style="color:#FFB300">14+</div>
+        <div class="stat-label">AÑOS</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SCENE 6: CTA ────────────────────────── -->
+  <div id="scene6" class="scene" style="opacity:0">
+    <div id="s6-glow" class="bg-glow"></div>
+    <div id="s6-ghost" class="ghost-text">DUX</div>
+    <div id="s6-content" class="scene-content">
+      <div id="s6-t1">CONTENIDOS</div>
+      <div id="s6-t2">QUE CONECTAN</div>
+      <div id="s6-t3">Y CONVIERTEN.</div>
+      <div id="s6-rule"></div>
+      <div id="s6-emoji">👉</div>
+      <div id="s6-url">CRISTIANDUX.COM</div>
+      <div id="s6-handle">@cristian.dux · TikTok</div>
+    </div>
+  </div>
+
+  <!-- ── TRANSITION WIPES ───────────────────────── -->
+  <div id="wipe-a" class="wipe"></div>
+  <div id="wipe-b" class="wipe"></div>
+  <div id="wipe-c" class="wipe"></div>
+  <div id="wipe-d" class="wipe"></div>
+
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+var tl = gsap.timeline({ paused: true });
+
+// ── SCENE 1: HOOK (0–4.1s) ──────────────────────
+tl.to("#s1-glow", { scale: 1.35, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+tl.to("#s1-ghost", { x: -60, duration: 28, ease: "none" }, 0);
+
+tl.from("#s1-label", { y: -40, opacity: 0, duration: 0.5, ease: "expo.out" }, 0.15);
+tl.from("#s1-t1", { x: -120, opacity: 0, duration: 0.5, ease: "expo.out" }, 0.3);
+tl.from("#s1-t2", { x: 100, opacity: 0, scale: 0.85, duration: 0.55, ease: "back.out(1.7)" }, 0.45);
+tl.from("#s1-t3", { y: 80, opacity: 0, duration: 0.5, ease: "expo.out" }, 0.6);
+tl.from("#s1-strip", { opacity: 0, y: 30, duration: 0.4, ease: "power3.out" }, 0.85);
+tl.to("#s1-t2", { scale: 1.04, duration: 0.75, ease: "sine.inOut", yoyo: true, repeat: 2 }, 1.2);
+
+// ── TRANSITION 1→2: Staggered Blocks (4.1–4.5s) ──
+var T1 = 4.1;
+tl.set("#wipe-a", { x: -1080 }, T1 - 0.01);
+tl.set("#wipe-b", { x: -1080 }, T1 - 0.01);
+tl.to("#wipe-a", { x: 0, duration: 0.2, ease: "power3.inOut" }, T1);
+tl.to("#wipe-b", { x: 0, duration: 0.2, ease: "power3.inOut" }, T1 + 0.07);
+tl.set("#scene1", { opacity: 0 }, T1 + 0.18);
+tl.set("#scene2", { opacity: 1 }, T1 + 0.18);
+tl.to("#wipe-a", { x: 1080, duration: 0.2, ease: "power3.inOut" }, T1 + 0.25);
+tl.to("#wipe-b", { x: 1080, duration: 0.2, ease: "power3.inOut" }, T1 + 0.32);
+
+// ── SCENE 2: PROBLEM (4.5–8.2s) ────────────────
+var S2 = 4.7;
+tl.to("#s2-glow", { scale: 1.4, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.1);
+
+tl.from("#s2-t1", { x: -100, opacity: 0, duration: 0.45, ease: "expo.out" }, S2);
+tl.from("#s2-t2", { scale: 0.75, opacity: 0, duration: 0.5, ease: "back.out(1.5)" }, S2 + 0.15);
+tl.from("#s2-strike", { scaleX: 0, duration: 0.5, ease: "power4.out" }, S2 + 0.55);
+tl.from("#s2-divider", { scaleX: 0, duration: 0.4, ease: "power2.out" }, S2 + 0.7);
+tl.from("#s2-t3", { y: 50, opacity: 0, duration: 0.5, ease: "back.out(1.8)" }, S2 + 0.8);
+tl.from("#s2-sub", { opacity: 0, duration: 0.4, ease: "power2.out" }, S2 + 1.1);
+
+// ── TRANSITION 2→3: Zoom Through (8.2–8.7s) ────
+var T2 = 8.2;
+tl.set("#scene3", { opacity: 0, scale: 0.5, filter: "blur(8px)" }, T2 - 0.01);
+tl.to("#scene2", { scale: 2.5, opacity: 0, filter: "blur(8px)", duration: 0.4, ease: "power3.in" }, T2);
+tl.to("#scene3", { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, T2 + 0.15);
+
+// ── SCENE 3: IDENTITY (8.7–12.7s) ──────────────
+var S3 = 8.7;
+tl.to("#s3-glow", { scale: 1.25, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, T2);
+
+tl.from("#s3-soy", { y: -30, opacity: 0, duration: 0.4, ease: "power3.out" }, S3);
+tl.from("#s3-name1", { x: -140, opacity: 0, duration: 0.5, ease: "expo.out" }, S3 + 0.12);
+tl.from("#s3-name2", { x: 120, opacity: 0, scale: 0.88, duration: 0.55, ease: "back.out(1.6)" }, S3 + 0.27);
+tl.from("#s3-rule", { scaleX: 0, duration: 0.45, ease: "power4.out" }, S3 + 0.55);
+tl.from("#s3-tagline", { opacity: 0, y: 30, duration: 0.45, ease: "power3.out" }, S3 + 0.7);
+tl.from("#s3-badge", { scale: 0.7, opacity: 0, duration: 0.5, ease: "back.out(2)" }, S3 + 0.9);
+tl.to("#s3-badge", { scale: 1.03, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 2 }, S3 + 1.6);
+
+// ── TRANSITION 3→4: Staggered Blocks (12.7–13.1s) ──
+var T3 = 12.7;
+tl.set("#wipe-c", { x: -1080 }, T3 - 0.01);
+tl.set("#wipe-d", { x: -1080 }, T3 - 0.01);
+tl.to("#wipe-c", { x: 0, duration: 0.2, ease: "power3.inOut" }, T3);
+tl.to("#wipe-d", { x: 0, duration: 0.2, ease: "power3.inOut" }, T3 + 0.07);
+tl.set("#scene3", { opacity: 0 }, T3 + 0.18);
+tl.set("#scene4", { opacity: 1 }, T3 + 0.18);
+tl.to("#wipe-c", { x: 1080, duration: 0.2, ease: "power3.inOut" }, T3 + 0.25);
+tl.to("#wipe-d", { x: 1080, duration: 0.2, ease: "power3.inOut" }, T3 + 0.32);
+
+// ── SCENE 4: SERVICES (13.1–17.7s) ────────────
+var S4 = 13.2;
+tl.to("#s4-glow", { x: 60, duration: 5, ease: "sine.inOut", yoyo: true, repeat: 0 }, T3);
+
+tl.from("#s4-header", { opacity: 0, y: -20, duration: 0.4, ease: "power2.out" }, S4);
+tl.from("#s4-rule", { scaleX: 0, duration: 0.45, ease: "power3.out" }, S4 + 0.15);
+tl.from(["#svc1", "#svc2", "#svc3", "#svc4", "#svc5"], {
+  x: 120, opacity: 0, duration: 0.45, ease: "expo.out", stagger: 0.1
+}, S4 + 0.35);
+
+// ── TRANSITION 4→5: Vertical Push (17.7–18.05s) ──
+var T4 = 17.7;
+tl.set("#scene5", { opacity: 1, y: 1920 }, T4 - 0.01);
+tl.to("#scene4", { y: -1920, duration: 0.35, ease: "power3.inOut" }, T4);
+tl.to("#scene5", { y: 0, duration: 0.35, ease: "power3.inOut" }, T4);
+
+// ── SCENE 5: STATS (18.05–22.7s) ────────────────
+var S5 = 18.15;
+tl.to("#s5-glow", { scale: 1.3, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, T4);
+
+tl.from("#stat1", { scale: 0, opacity: 0, duration: 0.55, ease: "elastic.out(1, 0.5)" }, S5);
+tl.from(".stat-sep:nth-of-type(1)", { scaleX: 0, duration: 0.4, ease: "power2.out" }, S5 + 0.3);
+tl.from("#stat2", { scale: 0, opacity: 0, duration: 0.55, ease: "elastic.out(1, 0.5)" }, S5 + 0.55);
+tl.from(".stat-sep:nth-of-type(2)", { scaleX: 0, duration: 0.4, ease: "power2.out" }, S5 + 0.85);
+tl.from("#stat3", { scale: 0, opacity: 0, duration: 0.55, ease: "elastic.out(1, 0.5)" }, S5 + 1.1);
+tl.to("#stat1-num", { scale: 1.05, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, S5 + 1.5);
+tl.to("#stat2-num", { scale: 1.05, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, S5 + 1.7);
+tl.to("#stat3-num", { scale: 1.05, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, S5 + 1.9);
+
+// ── TRANSITION 5→6: Blur Crossfade (22.7–23.2s) ──
+var T5 = 22.7;
+tl.to("#scene5", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.5, ease: "power2.inOut" }, T5);
+tl.set("#scene6", { opacity: 0, scale: 0.97, filter: "blur(10px)" }, T5 - 0.01);
+tl.to("#scene6", { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "power2.inOut" }, T5 + 0.1);
+
+// ── SCENE 6: CTA (23.2–28s) ──────────────────────
+var S6 = 23.3;
+tl.to("#s6-glow", { scale: 1.5, opacity: 0.8, duration: 3, ease: "power1.in" }, T5);
+
+tl.from("#s6-t1", { y: -60, opacity: 0, duration: 0.5, ease: "expo.out" }, S6);
+tl.from("#s6-t2", { scale: 0.8, opacity: 0, duration: 0.5, ease: "back.out(1.8)" }, S6 + 0.15);
+tl.from("#s6-t3", { y: 60, opacity: 0, duration: 0.5, ease: "expo.out" }, S6 + 0.3);
+tl.from("#s6-rule", { scaleX: 0, duration: 0.4, ease: "power3.out" }, S6 + 0.55);
+tl.from("#s6-emoji", { scale: 0, rotation: -30, opacity: 0, duration: 0.5, ease: "back.out(2)" }, S6 + 0.7);
+tl.from("#s6-url", { opacity: 0, scale: 0.9, duration: 0.5, ease: "expo.out" }, S6 + 0.9);
+tl.from("#s6-handle", { opacity: 0, duration: 0.4, ease: "power2.out" }, S6 + 1.1);
+tl.to("#s6-url", { scale: 1.04, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 3 }, S6 + 1.5);
+
+// Final fade
+tl.to("#scene6", { opacity: 0, duration: 0.6, ease: "power2.in" }, 27.4);
+
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>
