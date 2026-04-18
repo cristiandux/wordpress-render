@@ -6,11 +6,21 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #scale-wrapper {
       width: 1080px;
       height: 1920px;
-      overflow: hidden;
-      background: #080808;
+      transform-origin: top center;
+      flex-shrink: 0;
     }
 
     #root {
@@ -393,6 +403,7 @@
   </style>
 </head>
 <body>
+<div id="scale-wrapper">
 <div id="root" data-composition-id="main" data-width="1080" data-height="1920" data-start="0" data-duration="28">
 
   <!-- ── SCENE 1: HOOK ─────────────────────────── -->
@@ -514,6 +525,7 @@
   <div id="wipe-d" class="wipe"></div>
 
 </div>
+</div><!-- end scale-wrapper -->
 
 <script>
 window.__timelines = window.__timelines || {};
@@ -691,6 +703,17 @@ window.__timelines["main"] = tl;
   prog.addEventListener("mousedown", function () { scrubbing = true; tl.pause(); playing = false; btn.textContent = "▶ PLAY"; });
   prog.addEventListener("input", function () { tl.seek(prog.value / 1000); label.textContent = (prog.value / 1000).toFixed(1) + "s"; });
   prog.addEventListener("mouseup", function () { scrubbing = false; });
+
+  // Scale to fit viewport
+  function scaleToFit() {
+    var sw = window.innerWidth;
+    var sh = window.innerHeight - 60; // leave room for player bar
+    var scale = Math.min(sw / 1080, sh / 1920);
+    document.getElementById("scale-wrapper").style.transform = "scale(" + scale + ")";
+    document.getElementById("scale-wrapper").style.transformOrigin = "top center";
+  }
+  scaleToFit();
+  window.addEventListener("resize", scaleToFit);
 
   // Autoplay on load
   setTimeout(function () {
