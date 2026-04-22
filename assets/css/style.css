@@ -408,6 +408,32 @@ p { margin-bottom: 0; }
 .hero-photo-wrap {
   position: relative;
 }
+/* ---- Hero floating character (no bg) ---- */
+.hero-float {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  max-height: calc(100svh - var(--nav-h) - 80px);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: heroFloat 5s ease-in-out infinite;
+  will-change: transform;
+}
+.hero-float-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  /* Remove dark bg from video (assumes black bg). Use 'lighten' if white bg */
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-16px); }
+}
 /* ---- Hero video (loop) ---- */
 .hero-video-wrap {
   position: relative;
@@ -1403,13 +1429,11 @@ p { margin-bottom: 0; }
     max-width: 100%;
     margin: 0 0 28px;
   }
-  .hero-photo-3d {
+  .hero-float {
     aspect-ratio: unset !important;
     height: 52svh;
     max-height: 440px;
-    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   }
-  .hero-photo-badge { display: none; }
   .hero-content { padding: 0 24px; }
   .hero-label { margin-bottom: 14px; padding: 5px 14px; font-size: 0.72rem; }
   .hero-title { font-size: clamp(2.6rem, 8.5vw, 3.6rem); margin-bottom: 14px; }
@@ -1438,7 +1462,7 @@ p { margin-bottom: 0; }
 
   /* Hero — sigue 1 columna apilada, video más compacto */
   #hero { padding-bottom: 32px; }
-  .hero-photo-3d {
+  .hero-float {
     height: 46svh !important;
     max-height: 370px;
   }

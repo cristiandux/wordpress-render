@@ -4,7 +4,10 @@
       "Bash(wc -l /c/Users/Cristian/Desktop/WORDPRESS-RENDER/wp-content/themes/olyve/*.php /c/Users/Cristian/Desktop/WORDPRESS-RENDER/wp-content/plugins/dtr-olyve-core/*.php)",
       "Bash(find C:/Users/Cristian/Desktop/WORDPRESS-RENDER -name *.sql -o -name *.xml)",
       "Bash(python3 -c \":*)",
-      "Bash(identify \"C:/Users/Cristian/Desktop/WORDPRESS-RENDER/assets/images/logo.png\")"
+      "Bash(identify \"C:/Users/Cristian/Desktop/WORDPRESS-RENDER/assets/images/logo.png\")",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }
