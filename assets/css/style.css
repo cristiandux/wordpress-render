@@ -297,7 +297,7 @@ p { margin-bottom: 0; }
   margin: 0 auto;
   padding: 40px 32px;
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 1fr 456px;
   gap: 48px;
   align-items: center;
 }
@@ -434,6 +434,8 @@ p { margin-bottom: 0; }
   object-fit: contain;
   object-position: center center;
   background: transparent;
+  /* lighten: page bg (#0e0f0f) > pure black → bg invisible, character intact */
+  mix-blend-mode: lighten;
   pointer-events: none;
 }
 @keyframes heroFloat {
@@ -1425,8 +1427,8 @@ p { margin-bottom: 0; }
     align-items: stretch;
   }
   .hero-inner {
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    grid-template-columns: 45% 55%;
+    gap: 8px;
     padding: 16px;
     align-items: center;
   }
