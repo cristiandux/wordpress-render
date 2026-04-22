@@ -364,10 +364,6 @@
   }
 })();
 
-/* ---- Scroll emoji S-path ---- */
-(function () {
-  const el = document.querySelector(".scroll-emoji");
-  if (!el) return;
 
   // S-curve waypoints: [x vw, y vh]
   const path = [
