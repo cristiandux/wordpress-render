@@ -415,17 +415,14 @@ p { margin-bottom: 0; }
 .hero-float {
   position: relative;
   width: 100%;
-  /* Portrait 4:5 — natural ratio of cris.mp4 (1292×1604) */
   aspect-ratio: 1292 / 1604;
   max-height: calc(100svh - var(--nav-h) - 60px);
   min-height: 360px;
+  /* NO will-change/transform here — would isolate stacking context and break blend */
   background: transparent;
-  /* DEBUG: outline to confirm container renders */
-  /* outline: 2px solid red; */
-  overflow: visible;
-  animation: heroFloat 5s ease-in-out infinite;
-  will-change: transform;
+  overflow: hidden;
 }
+/* Float animation on pseudo-wrapper to avoid stacking context isolation */
 .hero-float-video {
   position: absolute;
   inset: 0;
@@ -434,9 +431,10 @@ p { margin-bottom: 0; }
   object-fit: contain;
   object-position: center center;
   background: transparent;
-  /* lighten: page bg (#0e0f0f) > pure black → bg invisible, character intact */
+  /* lighten blends against actual page bg — pure black video bg becomes invisible */
   mix-blend-mode: lighten;
   pointer-events: none;
+  animation: heroFloat 5s ease-in-out infinite;
 }
 @keyframes heroFloat {
   0%, 100% { transform: translateY(0); }
