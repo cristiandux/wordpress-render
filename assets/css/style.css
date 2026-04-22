@@ -1417,7 +1417,7 @@ p { margin-bottom: 0; }
 
   /* Hero — texto izquierda, personaje absolute derecha full-height */
   #hero {
-    min-height: 100svh;
+    min-height: auto;
     padding-top: var(--nav-h);
     padding-bottom: 0;
     align-items: stretch;
@@ -1426,9 +1426,9 @@ p { margin-bottom: 0; }
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 0;
-    padding: 24px 16px;
-    align-items: center;
-    min-height: calc(100svh - var(--nav-h));
+    padding: 24px 16px 32px;
+    align-items: flex-start;
+    min-height: auto;
     position: relative;
     z-index: 1;
   }
@@ -1486,13 +1486,13 @@ p { margin-bottom: 0; }
   .section { padding: 64px 0; }
 
   /* Hero — personaje absolute full-height, texto izq superpuesto */
-  #hero { min-height: 100svh; padding-bottom: 0; }
+  #hero { min-height: auto; padding-bottom: 0; }
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 0;
-    padding: 20px 16px;
-    min-height: calc(100svh - var(--nav-h));
-    align-items: center;
+    padding: 20px 16px 32px;
+    min-height: auto;
+    align-items: flex-start;
   }
   .hero-photo-wrap {
     width: 58% !important;
