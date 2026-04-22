@@ -1415,33 +1415,35 @@ p { margin-bottom: 0; }
   .nav-logo { width: 120px; height: 56px; }
   .nav-logo img { width: 280px; height: 280px; }
 
-  /* Hero — 2 columnas: texto izquierda, personaje derecha */
+  /* Hero — 2 columnas: texto izquierda, personaje derecha full-height */
   #hero {
-    min-height: auto;
+    min-height: 100svh;
     padding-top: var(--nav-h);
-    padding-bottom: 24px;
+    padding-bottom: 0;
     align-items: stretch;
   }
   .hero-inner {
-    grid-template-columns: 45% 55%;
-    gap: 8px;
-    padding: 16px;
-    align-items: center;
+    grid-template-columns: 50% 50%;
+    gap: 0;
+    padding: 16px 16px 16px 16px;
+    align-items: stretch;
+    min-height: calc(100svh - var(--nav-h));
   }
   .hero-photo-wrap {
     order: 2;
     width: 100%;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    justify-content: center;
+    align-items: stretch;
     margin: 0;
+    align-self: stretch;
   }
   .hero-float {
-    aspect-ratio: 1292 / 1604 !important;
+    aspect-ratio: unset !important;
     width: 100%;
-    height: auto;
-    max-height: 70svh;
-    min-height: 200px;
+    height: 100%;
+    min-height: calc(100svh - var(--nav-h) - 32px);
+    max-height: none;
   }
   .hero-content { padding: 0 8px 0 0; order: 1; }
   .hero-label { margin-bottom: 10px; padding: 4px 12px; font-size: 0.68rem; }
@@ -1469,21 +1471,23 @@ p { margin-bottom: 0; }
   .container { padding: 0 20px; }
   .section { padding: 64px 0; }
 
-  /* Hero — 2 col pequeño, texto izq, personaje der */
-  #hero { padding-bottom: 16px; min-height: auto; }
+  /* Hero — 2 col pequeño, texto izq, personaje der full-height */
+  #hero { min-height: 100svh; padding-bottom: 0; }
   .hero-inner {
-    grid-template-columns: 55% 45%;
-    gap: 8px;
+    grid-template-columns: 52% 48%;
+    gap: 0;
     padding: 12px;
+    min-height: calc(100svh - var(--nav-h));
+    align-items: stretch;
   }
   .hero-float {
-    aspect-ratio: 1292 / 1604 !important;
+    aspect-ratio: unset !important;
     width: 100% !important;
-    height: auto !important;
-    max-height: 65svh !important;
-    min-height: 180px !important;
+    height: 100% !important;
+    min-height: calc(100svh - var(--nav-h) - 24px) !important;
+    max-height: none !important;
   }
-  .hero-content { padding: 0; }
+  .hero-content { padding: 0; align-self: center; }
   .hero-label { margin-bottom: 8px; font-size: 0.62rem; }
   .hero-title { font-size: clamp(1.4rem, 6vw, 2rem) !important; margin-bottom: 8px; white-space: normal; }
   .hero-desc { font-size: 0.8rem; margin-bottom: 12px; line-height: 1.5; }
