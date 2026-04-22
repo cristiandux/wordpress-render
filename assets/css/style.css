@@ -1433,14 +1433,16 @@ p { margin-bottom: 0; }
   }
   .hero-photo-wrap {
     order: -1;
-    max-width: 100%;
-    margin: 0 0 28px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 20px;
   }
   .hero-float {
     aspect-ratio: 9/16 !important;
+    max-width: 160px;
+    max-height: 280px;
     height: auto;
-    max-width: 260px;
-    max-height: none;
   }
   .hero-content { padding: 0 24px; }
   .hero-label { margin-bottom: 14px; padding: 5px 14px; font-size: 0.72rem; }
@@ -1471,7 +1473,8 @@ p { margin-bottom: 0; }
   /* Hero — sigue 1 columna apilada, video más compacto */
   #hero { padding-bottom: 32px; }
   .hero-float {
-    max-width: 200px !important;
+    max-width: 130px !important;
+    max-height: 230px !important;
   }
   .hero-content { padding: 0 20px; }
   .hero-label { margin-bottom: 12px; font-size: 0.68rem; }
