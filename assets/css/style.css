@@ -431,8 +431,6 @@ p { margin-bottom: 0; }
   object-fit: contain;
   object-position: center center;
   background: transparent;
-  /* lighten blends against actual page bg — pure black video bg becomes invisible */
-  mix-blend-mode: lighten;
   pointer-events: none;
   animation: heroFloat 5s ease-in-out infinite;
 }
