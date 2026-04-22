@@ -405,35 +405,15 @@
   update();
 })();
 
-/* ---- Hero video — ping-pong loop (forward → reverse → forward …) ---- */
+/* ---- Hero video — autoplay loop (iOS-safe) ---- */
 (function () {
   const video = document.getElementById("hero-3d-video");
   if (!video) return;
 
   video.muted = true;
-  video.loop = false;
+  video.loop = true;
   video.setAttribute("playsinline", "");
   video.setAttribute("webkit-playsinline", "");
-
-  var reversing = false;
-  var rafId = null;
-  var frameStep = 1 / 24; // ~24fps step
-
-  function reverseStep() {
-    if (!reversing) return;
-    video.currentTime = Math.max(0, video.currentTime - frameStep);
-    if (video.currentTime <= 0.04) {
-      reversing = false;
-      video.play().catch(function () {});
-    } else {
-      rafId = requestAnimationFrame(reverseStep);
-    }
-  }
-
-  video.addEventListener("ended", function () {
-    reversing = true;
-    rafId = requestAnimationFrame(reverseStep);
-  });
 
   function tryPlay() {
     var p = video.play();
@@ -454,6 +434,6 @@
   }
 
   document.addEventListener("visibilitychange", function () {
-    if (!document.hidden && !reversing) tryPlay();
+    if (!document.hidden) tryPlay();
   });
 })();
