@@ -405,22 +405,40 @@
   update();
 })();
 
-/* ---- Hero video — autoplay loop (iOS-safe) ---- */
+/* ---- Hero video — ping-pong loop (forward → reverse → forward …) ---- */
 (function () {
   const video = document.getElementById("hero-3d-video");
   if (!video) return;
 
-  // Force attrs for iOS autoplay
   video.muted = true;
-  video.loop = true;
+  video.loop = false;
   video.setAttribute("playsinline", "");
   video.setAttribute("webkit-playsinline", "");
+
+  var reversing = false;
+  var rafId = null;
+  var frameStep = 1 / 24; // ~24fps step
+
+  function reverseStep() {
+    if (!reversing) return;
+    video.currentTime = Math.max(0, video.currentTime - frameStep);
+    if (video.currentTime <= 0.04) {
+      reversing = false;
+      video.play().catch(function () {});
+    } else {
+      rafId = requestAnimationFrame(reverseStep);
+    }
+  }
+
+  video.addEventListener("ended", function () {
+    reversing = true;
+    rafId = requestAnimationFrame(reverseStep);
+  });
 
   function tryPlay() {
     var p = video.play();
     if (p && typeof p.then === "function") {
       p.catch(function () {
-        // Autoplay blocked (iOS low-power or policy) — play on first touch
         document.addEventListener("touchstart", function handler() {
           video.play().catch(function () {});
           document.removeEventListener("touchstart", handler);
@@ -429,16 +447,13 @@
     }
   }
 
-  // Wait until enough data to play
   if (video.readyState >= 3) {
     tryPlay();
   } else {
-    video.addEventListener("canplaythrough", tryPlay, { once: true });
-    // Fallback if canplaythrough never fires (stalled network)
     video.addEventListener("canplay", tryPlay, { once: true });
   }
 
   document.addEventListener("visibilitychange", function () {
-    if (!document.hidden) tryPlay();
+    if (!document.hidden && !reversing) tryPlay();
   });
 })();

@@ -12,7 +12,15 @@
       "Bash(ffprobe -v quiet -print_format json -show_streams assets/videos/cris.mp4)",
       "Bash(git rm *)",
       "Bash(ffmpeg -i assets/videos/cris.mp4 -vf \"colorkey=0x000000:0.12:0.08,format=yuva420p\" -c:v libvpx-vp9 -b:v 0 -crf 18 -pix_fmt yuva420p -auto-alt-ref 0 assets/videos/cris.webm -y)",
-      "Bash(ffmpeg -i assets/videos/cris.webm -filter_complex \"[0:v]reverse[r];[0:v][r]concat=n=2:v=1[v]\" -map \"[v]\" -c:v libvpx-vp9 -b:v 0 -crf 18 -pix_fmt yuva420p -auto-alt-ref 0 assets/videos/cris-loop.webm -y)"
+      "Bash(ffmpeg -i assets/videos/cris.webm -filter_complex \"[0:v]reverse[r];[0:v][r]concat=n=2:v=1[v]\" -map \"[v]\" -c:v libvpx-vp9 -b:v 0 -crf 18 -pix_fmt yuva420p -auto-alt-ref 0 assets/videos/cris-loop.webm -y)",
+      "Bash(ffprobe -v quiet -print_format json -show_streams assets/videos/cris-loop.webm)",
+      "Bash(ffmpeg -i assets/videos/cris.webm -filter_complex \"[0:v]format=yuva420p,split[f][tmp];[tmp]reverse[r];[f][r]concat=n=2:v=1[v]\" -map \"[v]\" -c:v libvpx-vp9 -b:v 0 -crf 18 -pix_fmt yuva420p -auto-alt-ref 0 assets/videos/cris-loop.webm -y)",
+      "Bash(ffmpeg -i assets/videos/cris.webm -vf \"format=yuva420p,reverse\" -c:v libvpx-vp9 -b:v 0 -crf 18 -pix_fmt yuva420p -auto-alt-ref 0 assets/videos/cris-rev.webm -y)",
+      "Bash(ffprobe -v quiet -print_format json -show_streams assets/videos/cris-rev.webm)",
+      "Bash(ffmpeg -i assets/videos/cris.webm -filter_complex \"[0:v]format=yuva420p,alphaextract[alpha];[0:v]format=yuv420p[rgb];[rgb]reverse[rgb_r];[alpha]reverse[alpha_r];[rgb_r][alpha_r]alphamerge[v_r];[0:v]format=yuva420p[f];[f][v_r]concat=n=2:v=1[v]\" -map \"[v]\" -c:v libvpx-vp9 -b:v 0 -crf 18 -pix_fmt yuva420p -auto-alt-ref 0 assets/videos/cris-loop.webm -y)",
+      "Bash(ffprobe -v quiet -print_format json -show_streams assets/videos/cris.webm)",
+      "Bash(ffprobe -v quiet -show_streams -show_format assets/videos/cris.webm)",
+      "Bash(ffprobe -v quiet -show_streams -show_format assets/videos/cris-loop.webm)"
     ]
   }
 }
