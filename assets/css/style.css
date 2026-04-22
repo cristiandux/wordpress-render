@@ -692,7 +692,8 @@ p { margin-bottom: 0; }
 /* ============================================
    PORTFOLIO
    ============================================ */
-#portfolio { background: var(--bg-secondary); }
+#portfolio { background: var(--bg-secondary); padding-bottom: 72px; }
+#testimonials { padding-top: 72px; }
 .portfolio-header {
   display: flex;
   align-items: flex-end;
