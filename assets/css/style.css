@@ -297,7 +297,7 @@ p { margin-bottom: 0; }
   margin: 0 auto;
   padding: 40px 32px;
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr 380px;
   gap: 48px;
   align-items: center;
 }
@@ -415,11 +415,10 @@ p { margin-bottom: 0; }
 .hero-float {
   position: relative;
   width: 100%;
-  /* Portrait crop of landscape video — fills full hero content height */
-  height: calc(100svh - var(--nav-h) - 80px);
-  max-height: 760px;
-  min-height: 400px;
-  aspect-ratio: unset;
+  /* Portrait 4:5 — natural ratio of cris.mp4 (1292×1604) */
+  aspect-ratio: 1292 / 1604;
+  max-height: calc(100svh - var(--nav-h) - 60px);
+  min-height: 360px;
   background: transparent;
   overflow: hidden;
   animation: heroFloat 5s ease-in-out infinite;
@@ -430,10 +429,10 @@ p { margin-bottom: 0; }
   inset: 0;
   width: 100%;
   height: 100%;
-  /* Contain shows full character — black bg removed by screen blend */
   object-fit: contain;
-  object-position: center bottom;
+  object-position: center center;
   background: transparent;
+  /* screen blend: pure black pixels → transparent */
   mix-blend-mode: screen;
   pointer-events: none;
 }
@@ -1440,11 +1439,11 @@ p { margin-bottom: 0; }
     margin: 0;
   }
   .hero-float {
-    aspect-ratio: unset !important;
+    aspect-ratio: 1292 / 1604 !important;
     width: 100%;
-    height: calc(100svh - var(--nav-h) - 48px);
-    max-height: 600px;
-    min-height: 300px;
+    height: auto;
+    max-height: calc(100svh - var(--nav-h) - 40px);
+    min-height: 240px;
   }
   .hero-content { padding: 0 8px 0 0; order: 1; }
   .hero-label { margin-bottom: 10px; padding: 4px 12px; font-size: 0.68rem; }
@@ -1480,10 +1479,11 @@ p { margin-bottom: 0; }
     padding: 0 12px;
   }
   .hero-float {
-    height: calc(100svh - var(--nav-h) - 32px) !important;
-    max-height: 520px !important;
-    min-height: 260px !important;
+    aspect-ratio: 1292 / 1604 !important;
     width: 100% !important;
+    height: auto !important;
+    max-height: calc(100svh - var(--nav-h) - 24px) !important;
+    min-height: 200px !important;
   }
   .hero-content { padding: 0 4px 0 0; }
   .hero-label { margin-bottom: 8px; font-size: 0.62rem; }

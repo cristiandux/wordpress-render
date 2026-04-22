@@ -7,7 +7,9 @@
       "Bash(identify \"C:/Users/Cristian/Desktop/WORDPRESS-RENDER/assets/images/logo.png\")",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(ffprobe -v quiet -print_format json -show_streams assets/videos/CRIS.mp4)",
+      "Bash(ffprobe -v quiet -print_format json -show_streams assets/videos/cris.mp4)"
     ]
   }
 }
