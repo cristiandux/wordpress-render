@@ -432,8 +432,6 @@ p { margin-bottom: 0; }
   object-fit: contain;
   object-position: center center;
   background: transparent;
-  /* screen blend: pure black pixels → transparent */
-  mix-blend-mode: screen;
   pointer-events: none;
 }
 @keyframes heroFloat {
