@@ -405,24 +405,40 @@
   update();
 })();
 
-/* ---- Hero video — autoplay loop ---- */
+/* ---- Hero video — autoplay loop (iOS-safe) ---- */
 (function () {
   const video = document.getElementById("hero-3d-video");
   if (!video) return;
 
+  // Force attrs for iOS autoplay
   video.muted = true;
   video.loop = true;
-  video.playsInline = true;
+  video.setAttribute("playsinline", "");
+  video.setAttribute("webkit-playsinline", "");
 
   function tryPlay() {
-    const p = video.play();
-    if (p && typeof p.catch === "function") p.catch(() => {});
+    var p = video.play();
+    if (p && typeof p.then === "function") {
+      p.catch(function () {
+        // Autoplay blocked (iOS low-power or policy) — play on first touch
+        document.addEventListener("touchstart", function handler() {
+          video.play().catch(function () {});
+          document.removeEventListener("touchstart", handler);
+        }, { once: true, passive: true });
+      });
+    }
   }
 
-  video.addEventListener("canplay", tryPlay, { once: true });
-  document.addEventListener("visibilitychange", () => {
+  // Wait until enough data to play
+  if (video.readyState >= 3) {
+    tryPlay();
+  } else {
+    video.addEventListener("canplaythrough", tryPlay, { once: true });
+    // Fallback if canplaythrough never fires (stalled network)
+    video.addEventListener("canplay", tryPlay, { once: true });
+  }
+
+  document.addEventListener("visibilitychange", function () {
     if (!document.hidden) tryPlay();
   });
-
-  tryPlay();
 })();
