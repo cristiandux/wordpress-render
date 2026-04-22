@@ -9,12 +9,12 @@
   <meta property="og:url" content="https://www.cristiandux.com">
   <meta property="og:image" content="https://www.cristiandux.com/assets/images/hero-photo.jpg">
   <title>Cristian DUX — Filmmaker & Branding</title>
-  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=2">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=mobile1">
+  <link rel="stylesheet" href="assets/css/style.css?v=3dvB">
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
@@ -79,8 +79,8 @@
       </div>
 
       <h1 class="hero-title fade-in fade-in-delay-1" id="hero-title">
-        Contenidos que<br>
-        <em class="line-accent">conectan</em><br>
+        Contenidos<br>
+        que <em class="line-accent">conectan</em><br>
         y convierten.
       </h1>
 
@@ -116,20 +116,28 @@
     </div>
 
     <div class="hero-photo-wrap fade-in fade-in-delay-2">
-      <div class="hero-video-wrap">
-        <video
-          class="hero-video"
-          src="assets/videos/hero.mp4"
-          autoplay
-          loop
-          muted
-          playsinline
-          webkit-playsinline="true"
-          preload="auto"
-          disablepictureinpicture
-          disableremoteplayback
-          aria-label="Vídeo showreel de Cristian DUX">
-        </video>
+      <div class="hero-photo-3d" id="hero-photo-3d" aria-hidden="false">
+        <div class="hero-photo-3d-stage">
+          <video
+            class="hero-photo-3d-video"
+            id="hero-3d-video"
+            src="assets/videos/hero.mp4"
+            muted
+            autoplay
+            loop
+            playsinline
+            webkit-playsinline="true"
+            preload="auto"
+            aria-label="Avatar 3D de Cristian que gira con el ratón"
+            disablepictureinpicture
+            disableremoteplayback>
+          </video>
+          <div class="hero-photo-3d-shadow" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="hero-photo-badge">
+        <div class="hero-photo-badge-num">DUX</div>
+        <div class="hero-photo-badge-text">Filmmaking · Branding · UX/UI</div>
       </div>
     </div>
   </div>
@@ -462,7 +470,17 @@
       <div class="swiper-wrapper">
 
         <div class="swiper-slide">
-          <article class="testm-card testm-card--empty" aria-label="Testimonio pendiente"></article>
+          <article class="testm-card">
+            <div class="testm-quote">"</div>
+            <p class="testm-text">Profesional dedicado con gran potencial creativo. Propone soluciones innovadoras y trata cada proyecto como si fuese suyo.</p>
+            <div class="testm-author">
+              <div>
+                <div class="testm-name">Laia</div>
+                <div class="testm-company">Quality · Tienda ecológica y lavandería</div>
+                <div class="testm-rating">★★★★★</div>
+              </div>
+            </div>
+          </article>
         </div>
 
         <div class="swiper-slide">
@@ -648,7 +666,7 @@
      SCRIPTS
      ============================================================ -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="assets/js/main.js?v=mobile1"></script>
+<script src="assets/js/main.js?v=3dvA"></script>
 
 </body>
 </html>

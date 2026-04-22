@@ -1385,7 +1385,7 @@ p { margin-bottom: 0; }
   .nav-logo { width: 120px; height: 56px; }
   .nav-logo img { width: 280px; height: 280px; }
 
-  /* Hero — stacked, video prominent */
+  /* Hero — 1 columna: video arriba (prominente), contenido abajo */
   #hero {
     min-height: 100svh;
     padding-top: var(--nav-h);
@@ -1394,7 +1394,6 @@ p { margin-bottom: 0; }
   }
   .hero-inner {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
     gap: 0;
     padding: 0;
     align-items: stretch;
@@ -1402,17 +1401,16 @@ p { margin-bottom: 0; }
   .hero-photo-wrap {
     order: -1;
     max-width: 100%;
-    margin: 0 0 32px;
+    margin: 0 0 28px;
   }
-  .hero-video-wrap {
-    aspect-ratio: unset;
+  .hero-photo-3d {
+    aspect-ratio: unset !important;
     height: 52svh;
-    max-height: 420px;
+    max-height: 440px;
     border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   }
-  .hero-content {
-    padding: 0 24px;
-  }
+  .hero-photo-badge { display: none; }
+  .hero-content { padding: 0 24px; }
   .hero-label { margin-bottom: 14px; padding: 5px 14px; font-size: 0.72rem; }
   .hero-title { font-size: clamp(2rem, 7vw, 2.8rem); margin-bottom: 14px; }
   .hero-desc { font-size: 0.95rem; line-height: 1.65; margin-bottom: 22px; max-width: 100%; }
@@ -1438,16 +1436,15 @@ p { margin-bottom: 0; }
   .container { padding: 0 20px; }
   .section { padding: 64px 0; }
 
-  /* Hero */
-  #hero { min-height: 100svh; padding-bottom: 32px; }
-  .hero-video-wrap {
-    height: 48svh;
-    max-height: 360px;
-    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  /* Hero — sigue 1 columna apilada, video más compacto */
+  #hero { padding-bottom: 32px; }
+  .hero-photo-3d {
+    height: 46svh !important;
+    max-height: 370px;
   }
   .hero-content { padding: 0 20px; }
   .hero-label { margin-bottom: 12px; font-size: 0.68rem; }
-  .hero-title { font-size: clamp(1.8rem, 8vw, 2.4rem); margin-bottom: 10px; }
+  .hero-title { font-size: clamp(1.8rem, 8vw, 2.4rem) !important; margin-bottom: 10px; white-space: normal; }
   .hero-desc { font-size: 0.875rem; margin-bottom: 18px; line-height: 1.6; }
   .hero-actions { flex-direction: row; flex-wrap: wrap; gap: 10px; }
   .hero-actions .btn-primary,
@@ -1456,7 +1453,7 @@ p { margin-bottom: 0; }
   .hero-stat-num { font-size: 1.4rem; }
   .hero-stat-label { font-size: 0.65rem; }
 
-  /* Services */
+  /* Services — 1 columna en móvil */
   .services-grid { grid-template-columns: 1fr; gap: 16px; }
   .service-card { padding: 28px 22px; }
   .service-icon { font-size: 1.4rem; }

@@ -364,6 +364,10 @@
   }
 })();
 
+/* ---- Scroll emoji S-path ---- */
+(function () {
+  const el = document.querySelector(".scroll-emoji");
+  if (!el) return;
 
   // S-curve waypoints: [x vw, y vh]
   const path = [
@@ -401,114 +405,24 @@
   update();
 })();
 
-/* ---- Hero 3D avatar video — mouse-scrubbed head rotation (no autoplay) ---- */
+/* ---- Hero video — autoplay loop ---- */
 (function () {
-  const wrap  = document.getElementById("hero-photo-3d");
   const video = document.getElementById("hero-3d-video");
-  if (!wrap || !video) { console.warn("[hero-3d] wrap or video not found"); return; }
-  console.log("[hero-3d] module loaded (scrub-only)");
+  if (!video) return;
 
-  // Video is ALWAYS paused — we only seek frames. No autoplay, no loop.
   video.muted = true;
-  video.loop = false;
-  video.autoplay = false;
+  video.loop = true;
   video.playsInline = true;
-  video.controls = false;
-  video.pause();
 
-  const stage = wrap.querySelector(".hero-photo-3d-stage");
-
-  // Tuning
-  const EASE       = 0.28;  // scrub smoothness (higher = snappier)
-  const EASE_TILT  = 0.12;  // vertical CSS tilt easing
-  const MAX_TILT_X = 10;    // deg — up/down head nod (CSS rotateX)
-  const X_DIR      = -1;    // flip to -1 so mouse-right maps to head-right
-
-  let duration    = 0;
-  let targetNorm  = 0.5;    // 0..1 (mouse X)
-  let curNorm     = 0.5;
-  let targetTiltX = 0;
-  let curTiltX    = 0;
-  let ready       = false;
-
-  video.addEventListener("loadedmetadata", () => {
-    duration = video.duration || 0;
-    ready = duration > 0;
-    try { video.currentTime = duration * 0.5; } catch (e) {}
-    video.pause();
-  });
-  // Safety net: if the browser ever starts playing, stop it.
-  video.addEventListener("play", () => video.pause());
-
-  function mapX(rawNorm) {
-    return X_DIR > 0 ? rawNorm : (1 - rawNorm);
-  }
-  function normFromWindow(clientX) {
-    return mapX(Math.max(0, Math.min(1, clientX / window.innerWidth)));
-  }
-  function normFromWrap(clientX) {
-    const rect = wrap.getBoundingClientRect();
-    return mapX(Math.max(0, Math.min(1, (clientX - rect.left) / rect.width)));
-  }
-  function tiltFromY(clientY) {
-    const n = (clientY / window.innerHeight) * 2 - 1;
-    return Math.max(-1, Math.min(1, n)) * MAX_TILT_X;
+  function tryPlay() {
+    const p = video.play();
+    if (p && typeof p.catch === "function") p.catch(() => {});
   }
 
-  function onPointerInput(clientX, clientY, overElement) {
-    if (!ready) return;
-    targetNorm  = overElement ? normFromWrap(clientX) : normFromWindow(clientX);
-    targetTiltX = -tiltFromY(clientY);
-  }
-
-  // Always-running RAF: eases currentTime toward the mouse target and
-  // applies the CSS vertical tilt. No autoplay fallback.
-  function loop() {
-    if (ready) {
-      curNorm += (targetNorm - curNorm) * EASE;
-      const tt = Math.max(0, Math.min(duration - 0.05, curNorm * duration));
-      if (Math.abs(video.currentTime - tt) > 0.008) {
-        try { video.currentTime = tt; } catch (e) {}
-      }
-    }
-    curTiltX += (targetTiltX - curTiltX) * EASE_TILT;
-    if (stage) {
-      stage.style.transform =
-        `translateZ(0) rotateX(${curTiltX.toFixed(2)}deg)`;
-    }
-    requestAnimationFrame(loop);
-  }
-  requestAnimationFrame(loop);
-
-  // Mouse / pen — anywhere on the page
-  window.addEventListener("pointermove", (e) => {
-    if (e.pointerType && e.pointerType !== "mouse" && e.pointerType !== "pen") return;
-    const overEl = wrap.contains(e.target) || e.target === wrap;
-    onPointerInput(e.clientX, e.clientY, overEl);
-  }, { passive: true });
-
-  // Touch — horizontal drag over the avatar scrubs; vertical swipe scrolls
-  wrap.addEventListener("pointerdown", (e) => {
-    if (e.pointerType === "touch") {
-      wrap.setPointerCapture && wrap.setPointerCapture(e.pointerId);
-    }
-    onPointerInput(e.clientX, e.clientY, true);
-  });
-  wrap.addEventListener("pointermove", (e) => {
-    if (e.pointerType === "touch") onPointerInput(e.clientX, e.clientY, true);
-  });
-  wrap.addEventListener("pointerup", (e) => {
-    if (e.pointerType === "touch") {
-      wrap.releasePointerCapture && wrap.releasePointerCapture(e.pointerId);
-    }
+  video.addEventListener("canplay", tryPlay, { once: true });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) tryPlay();
   });
 
-  // Device orientation — tilt the phone to rotate the head on mobile
-  window.addEventListener("deviceorientation", (e) => {
-    if (e.gamma == null || !ready) return;
-    const nx = Math.max(-1, Math.min(1, (e.gamma || 0) / 30));
-    targetNorm = mapX((nx + 1) / 2);
-    const ny = Math.max(-1, Math.min(1, ((e.beta || 0) - 45) / 45));
-    targetTiltX = -ny * MAX_TILT_X;
-  });
+  tryPlay();
 })();
