@@ -420,7 +420,9 @@ p { margin-bottom: 0; }
   max-height: calc(100svh - var(--nav-h) - 60px);
   min-height: 360px;
   background: transparent;
-  overflow: hidden;
+  /* DEBUG: outline to confirm container renders */
+  /* outline: 2px solid red; */
+  overflow: visible;
   animation: heroFloat 5s ease-in-out infinite;
   will-change: transform;
 }
