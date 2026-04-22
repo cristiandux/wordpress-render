@@ -1415,17 +1415,17 @@ p { margin-bottom: 0; }
   .nav-logo { width: 120px; height: 56px; }
   .nav-logo img { width: 280px; height: 280px; }
 
-  /* Hero — 2 columnas en móvil: texto izquierda, personaje derecha */
+  /* Hero — 2 columnas: texto izquierda, personaje derecha */
   #hero {
-    min-height: 100svh;
+    min-height: auto;
     padding-top: var(--nav-h);
     padding-bottom: 24px;
-    align-items: center;
+    align-items: stretch;
   }
   .hero-inner {
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    padding: 0 16px;
+    padding: 16px;
     align-items: center;
   }
   .hero-photo-wrap {
@@ -1440,8 +1440,8 @@ p { margin-bottom: 0; }
     aspect-ratio: 1292 / 1604 !important;
     width: 100%;
     height: auto;
-    max-height: calc(100svh - var(--nav-h) - 40px);
-    min-height: 240px;
+    max-height: 70svh;
+    min-height: 200px;
   }
   .hero-content { padding: 0 8px 0 0; order: 1; }
   .hero-label { margin-bottom: 10px; padding: 4px 12px; font-size: 0.68rem; }
@@ -1469,24 +1469,24 @@ p { margin-bottom: 0; }
   .container { padding: 0 20px; }
   .section { padding: 64px 0; }
 
-  /* Hero — 2 col en móvil pequeño, texto izq, personaje der */
-  #hero { padding-bottom: 16px; }
+  /* Hero — 2 col pequeño, texto izq, personaje der */
+  #hero { padding-bottom: 16px; min-height: auto; }
   .hero-inner {
     grid-template-columns: 55% 45%;
     gap: 8px;
-    padding: 0 12px;
+    padding: 12px;
   }
   .hero-float {
     aspect-ratio: 1292 / 1604 !important;
     width: 100% !important;
     height: auto !important;
-    max-height: calc(100svh - var(--nav-h) - 24px) !important;
-    min-height: 200px !important;
+    max-height: 65svh !important;
+    min-height: 180px !important;
   }
-  .hero-content { padding: 0 4px 0 0; }
+  .hero-content { padding: 0; }
   .hero-label { margin-bottom: 8px; font-size: 0.62rem; }
-  .hero-title { font-size: clamp(1.5rem, 6.5vw, 2.2rem) !important; margin-bottom: 8px; white-space: normal; }
-  .hero-desc { font-size: 0.82rem; margin-bottom: 14px; line-height: 1.55; }
+  .hero-title { font-size: clamp(1.4rem, 6vw, 2rem) !important; margin-bottom: 8px; white-space: normal; }
+  .hero-desc { font-size: 0.8rem; margin-bottom: 12px; line-height: 1.5; }
   .hero-actions { flex-direction: row; flex-wrap: wrap; gap: 10px; }
   .hero-actions .btn-primary,
   .hero-actions .btn-ghost { padding: 11px 20px; font-size: 0.8rem; }
