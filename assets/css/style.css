@@ -289,6 +289,9 @@ p { margin-bottom: 0; }
   height: 100%;
   opacity: 0.45;
 }
+@media (max-width: 767px) {
+  #hero-particles { display: none; }
+}
 .hero-inner {
   position: relative;
   z-index: 1;
@@ -1480,6 +1483,8 @@ p { margin-bottom: 0; }
   .hero-stat-num { font-size: 1.5rem; }
   .hero-stat-label { font-size: 0.68rem; }
   .hero-scroll { display: none; }
+  /* Improve hero video fill on small screens to avoid letterboxing */
+  .hero-float-video { object-fit: cover; }
 
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
   .about-images { order: 2; }
@@ -1494,6 +1499,13 @@ p { margin-bottom: 0; }
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
   .section { padding: 64px 0; }
+
+  /* Remove heavy GPU effects on mobile */
+  .service-card,
+  .testm-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 
   /* Hero — personaje absolute full-height, texto izq superpuesto */
   #hero { min-height: auto; padding-bottom: 0; background: #000; }

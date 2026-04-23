@@ -5,6 +5,7 @@
 
 /* ---- Hero particles ---- */
 (function () {
+  if (window.innerWidth < 768) return;
   const canvas = document.getElementById("hero-particles");
   if (!canvas) return;
   const ctx = canvas.getContext("2d");
@@ -405,21 +406,18 @@
   update();
 })();
 
-/* ---- Hero video — autoplay loop (iOS-safe) ---- */
+/* ---- Hero video — autoplay loop (iOS/Android-safe) ---- */
 (function () {
-  const video = document.getElementById("hero-3d-video");
+  var video = document.getElementById("hero-3d-video");
   if (!video) return;
 
-  // iOS/Safari detection — VP9 alpha WebM unreliable, force mp4
-  const ua = navigator.userAgent;
-  const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+  var ua = navigator.userAgent;
+  var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var isSafari = /^((?!chrome|android).)*safari/i.test(ua);
 
   if (isIOS || isSafari) {
-    // Remove webm source so Safari picks mp4 directly
-    const webmSource = video.querySelector('source[type="video/webm"]');
+    var webmSource = video.querySelector('source[type="video/webm"]');
     if (webmSource) webmSource.remove();
-    // Force reload with mp4 only
     video.load();
   }
 
@@ -433,34 +431,51 @@
   video.removeAttribute("controls");
 
   function tryPlay() {
+    if (!video.paused) return;
     var p = video.play();
     if (p && typeof p.then === "function") {
-      p.catch(function () {
-        // Fallback: play on first user interaction
-        const resume = function () {
-          video.play().catch(function () {});
-          document.removeEventListener("touchstart", resume);
-          document.removeEventListener("click", resume);
-          document.removeEventListener("scroll", resume);
-        };
-        document.addEventListener("touchstart", resume, { once: true, passive: true });
-        document.addEventListener("click", resume, { once: true });
-        document.addEventListener("scroll", resume, { once: true, passive: true });
-      });
+      p.catch(function () {});
+    }
+  }
+
+  function attachGestureFallback() {
+    function onGesture() {
+      tryPlay();
+      document.removeEventListener("touchstart", onGesture);
+      document.removeEventListener("pointerdown", onGesture);
+      document.removeEventListener("scroll", onGesture);
+    }
+    document.addEventListener("touchstart", onGesture, { once: true, passive: true });
+    document.addEventListener("pointerdown", onGesture, { once: true, passive: true });
+    document.addEventListener("scroll", onGesture, { once: true, passive: true });
+  }
+
+  function start() {
+    var p = video.play();
+    if (p && typeof p.then === "function") {
+      p.catch(attachGestureFallback);
     }
   }
 
   if (video.readyState >= 2) {
-    tryPlay();
+    start();
   } else {
-    video.addEventListener("loadeddata", tryPlay, { once: true });
-    video.addEventListener("canplay", tryPlay, { once: true });
+    video.addEventListener("canplay", start, { once: true });
   }
 
-  document.addEventListener("visibilitychange", function () {
-    if (!document.hidden) tryPlay();
+  // Loop failsafe: if `loop` attr ignored (some Android WebViews)
+  video.addEventListener("ended", function () {
+    video.currentTime = 0;
+    tryPlay();
   });
 
-  // Retry on window load as last resort
-  window.addEventListener("load", tryPlay);
+  // Resume when tab becomes visible
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden && video.paused) tryPlay();
+  });
+
+  // bfcache: iOS back-navigation restores page without firing load events
+  window.addEventListener("pageshow", function (e) {
+    if (e.persisted && video.paused) tryPlay();
+  });
 })();

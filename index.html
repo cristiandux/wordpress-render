@@ -124,11 +124,12 @@
           autoplay
           loop
           playsinline
-          webkit-playsinline="true"
-          preload="auto"
+          webkit-playsinline
+          preload="metadata"
           aria-label="Avatar 3D de Cristian flotando"
           disablepictureinpicture
-          disableremoteplayback>
+          disableremoteplayback
+          poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=">
           <source src="assets/videos/cris-loop.webm" type="video/webm">
           <source src="assets/videos/cris-loop.mp4" type="video/mp4">
         </video>
@@ -152,7 +153,7 @@
 
       <div class="about-images fade-in">
         <div class="about-img-main">
-          <video autoplay loop muted playsinline>
+          <video autoplay loop muted playsinline preload="none">
             <source src="assets/videos/demo-reel.mp4" type="video/mp4">
           </video>
         </div>
