@@ -1426,6 +1426,7 @@ p { margin-bottom: 0; }
 
   /* Hero — texto izquierda, personaje absolute derecha full-height */
   #hero {
+    background: #000;
     min-height: auto;
     padding-top: var(--nav-h);
     padding-bottom: 0;
@@ -1495,7 +1496,7 @@ p { margin-bottom: 0; }
   .section { padding: 64px 0; }
 
   /* Hero — personaje absolute full-height, texto izq superpuesto */
-  #hero { min-height: auto; padding-bottom: 0; }
+  #hero { min-height: auto; padding-bottom: 0; background: #000; }
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 0;
