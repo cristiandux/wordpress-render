@@ -410,30 +410,57 @@
   const video = document.getElementById("hero-3d-video");
   if (!video) return;
 
+  // iOS/Safari detection — VP9 alpha WebM unreliable, force mp4
+  const ua = navigator.userAgent;
+  const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+
+  if (isIOS || isSafari) {
+    // Remove webm source so Safari picks mp4 directly
+    const webmSource = video.querySelector('source[type="video/webm"]');
+    if (webmSource) webmSource.remove();
+    // Force reload with mp4 only
+    video.load();
+  }
+
   video.muted = true;
+  video.defaultMuted = true;
   video.loop = true;
+  video.playsInline = true;
+  video.setAttribute("muted", "");
   video.setAttribute("playsinline", "");
-  video.setAttribute("webkit-playsinline", "");
+  video.setAttribute("webkit-playsinline", "true");
+  video.removeAttribute("controls");
 
   function tryPlay() {
     var p = video.play();
     if (p && typeof p.then === "function") {
       p.catch(function () {
-        document.addEventListener("touchstart", function handler() {
+        // Fallback: play on first user interaction
+        const resume = function () {
           video.play().catch(function () {});
-          document.removeEventListener("touchstart", handler);
-        }, { once: true, passive: true });
+          document.removeEventListener("touchstart", resume);
+          document.removeEventListener("click", resume);
+          document.removeEventListener("scroll", resume);
+        };
+        document.addEventListener("touchstart", resume, { once: true, passive: true });
+        document.addEventListener("click", resume, { once: true });
+        document.addEventListener("scroll", resume, { once: true, passive: true });
       });
     }
   }
 
-  if (video.readyState >= 3) {
+  if (video.readyState >= 2) {
     tryPlay();
   } else {
+    video.addEventListener("loadeddata", tryPlay, { once: true });
     video.addEventListener("canplay", tryPlay, { once: true });
   }
 
   document.addEventListener("visibilitychange", function () {
     if (!document.hidden) tryPlay();
   });
+
+  // Retry on window load as last resort
+  window.addEventListener("load", tryPlay);
 })();
