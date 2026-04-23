@@ -1494,8 +1494,12 @@ p { margin-bottom: 0; }
   .hero-stat-num { font-size: 1.5rem; }
   .hero-stat-label { font-size: 0.68rem; }
   .hero-scroll { display: none; }
-  /* Improve hero video fill on small screens to avoid letterboxing */
-  .hero-float-video { object-fit: cover; }
+  /* Mobile MP4 has baked-in black bg (no alpha). Screen blend drops
+     pure-black pixels against the #000 hero, leaving just the character. */
+  .hero-float-video {
+    object-fit: cover;
+    mix-blend-mode: screen;
+  }
 
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
   .about-images { order: 2; }
