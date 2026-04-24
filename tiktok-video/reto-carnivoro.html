@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <script src="gsap.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #00FF00;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── CARD ──────────────────────────────────── */
+    #card {
+      width: 1460px;
+      height: 340px;
+      background: linear-gradient(135deg, rgba(55,80,55,0.88) 0%, rgba(40,62,40,0.92) 100%);
+      border: 1.5px solid rgba(255,255,255,0.22);
+      border-radius: 28px;
+      display: flex;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+    }
+
+    /* ── LEFT PANEL ────────────────────────────── */
+    #left-panel {
+      width: 270px;
+      flex-shrink: 0;
+      background: linear-gradient(160deg, rgba(35,60,35,0.95) 0%, rgba(25,48,25,0.98) 100%);
+      border-right: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 0 32px;
+    }
+    #days-num {
+      font-family: "Anton", sans-serif;
+      font-size: 96px;
+      color: #ffffff;
+      line-height: 0.85;
+      letter-spacing: -0.02em;
+    }
+    #days-label {
+      font-family: "Anton", sans-serif;
+      font-size: 46px;
+      color: #ffffff;
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+    #challenge-name {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    /* ── RIGHT PANEL ───────────────────────────── */
+    #right-panel {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 40px;
+    }
+
+    /* ── CONNECTOR LINES ───────────────────────── */
+    .connector-line {
+      position: absolute;
+      top: 50%;
+      height: 2px;
+      margin-top: -1px;
+    }
+    #line1 { left: 215px;  width: 230px; }
+    #line2 { left: 535px;  width: 230px; }
+    #line3 { left: 855px;  width: 230px; }
+
+    .line-dash {
+      position: absolute;
+      inset: 0;
+      border-top: 2px dashed rgba(255,255,255,0.18);
+    }
+    .line-fill {
+      position: absolute;
+      top: -1px; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #e53030, #ff6040);
+      transform-origin: left center;
+      transform: scaleX(0);
+    }
+
+    /* ── STEP ──────────────────────────────────── */
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .circle-wrap {
+      position: relative;
+      width: 118px;
+      height: 118px;
+    }
+
+    .circle-bg {
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Red glow ring — starts hidden */
+    .circle-glow {
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 3px solid #e53030;
+      box-shadow:
+        0 0 0 2px rgba(229,48,48,0.25),
+        0 0 20px 8px rgba(229,48,48,0.45),
+        inset 0 0 14px rgba(229,48,48,0.15);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Active circle bg tint */
+    .circle-active-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(229,48,48,0.12);
+      opacity: 0;
+    }
+
+    .step-icon {
+      font-size: 44px;
+      line-height: 1;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    .step-num {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+    }
+
+    .step-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.72);
+      text-align: center;
+      max-width: 128px;
+      line-height: 1.35;
+    }
+  </style>
+</head>
+<body>
+
+<div id="root" data-composition-id="main" data-width="1920" data-height="1080" data-start="0" data-duration="11">
+
+  <div id="card">
+
+    <!-- LEFT -->
+    <div id="left-panel">
+      <div id="days-num">21</div>
+      <div id="days-label">DÍAS</div>
+      <div id="challenge-name">Reto Carnívoro</div>
+    </div>
+
+    <!-- RIGHT -->
+    <div id="right-panel">
+
+      <!-- Connector lines -->
+      <div class="connector-line" id="line1">
+        <div class="line-dash"></div>
+        <div class="line-fill" id="fill1"></div>
+      </div>
+      <div class="connector-line" id="line2">
+        <div class="line-dash"></div>
+        <div class="line-fill" id="fill2"></div>
+      </div>
+      <div class="connector-line" id="line3">
+        <div class="line-dash"></div>
+        <div class="line-fill" id="fill3"></div>
+      </div>
+
+      <!-- STEP 1: Carnes -->
+      <div class="step" id="step1">
+        <div class="circle-wrap">
+          <div class="circle-bg">
+            <div class="circle-active-bg" id="abg1"></div>
+            <span class="step-icon">🥩</span>
+          </div>
+          <div class="circle-glow" id="glow1"></div>
+        </div>
+        <div class="step-num">01</div>
+        <div class="step-label">Carnes de calidad</div>
+      </div>
+
+      <!-- STEP 2: Agua / Nutrición -->
+      <div class="step" id="step2">
+        <div class="circle-wrap">
+          <div class="circle-bg">
+            <div class="circle-active-bg" id="abg2"></div>
+            <svg class="step-icon" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.72)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+            </svg>
+          </div>
+          <div class="circle-glow" id="glow2"></div>
+        </div>
+        <div class="step-num">02</div>
+        <div class="step-label">Nutrición real y completa</div>
+      </div>
+
+      <!-- STEP 3: Energía -->
+      <div class="step" id="step3">
+        <div class="circle-wrap">
+          <div class="circle-bg">
+            <div class="circle-active-bg" id="abg3"></div>
+            <svg class="step-icon" width="44" height="44" viewBox="0 0 24 24" fill="rgba(255,255,255,0.72)">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <div class="circle-glow" id="glow3"></div>
+        </div>
+        <div class="step-num">03</div>
+        <div class="step-label">Energía sostenida</div>
+      </div>
+
+      <!-- STEP 4: Resultados -->
+      <div class="step" id="step4">
+        <div class="circle-wrap">
+          <div class="circle-bg">
+            <div class="circle-active-bg" id="abg4"></div>
+            <svg class="step-icon" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.72)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+              <path d="M4 22h16"/>
+              <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+              <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+              <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/>
+            </svg>
+          </div>
+          <div class="circle-glow" id="glow4"></div>
+        </div>
+        <div class="step-num">04</div>
+        <div class="step-label">Resultados reales</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+var tl = gsap.timeline({ paused: true });
+
+// ── CARD ENTRANCE ───────────────────────────────
+tl.from("#card", { y: 50, opacity: 0, scale: 0.94, duration: 0.75, ease: "expo.out" }, 0.2);
+tl.from("#days-num",       { x: -30, opacity: 0, duration: 0.5, ease: "power3.out" }, 0.55);
+tl.from("#days-label",     { x: -30, opacity: 0, duration: 0.45, ease: "power3.out" }, 0.68);
+tl.from("#challenge-name", { opacity: 0, duration: 0.4, ease: "power2.out" }, 0.82);
+tl.from(["#step1","#step2","#step3","#step4"], {
+  y: 28, opacity: 0, duration: 0.5, ease: "back.out(1.6)", stagger: 0.1
+}, 0.9);
+
+// ── STEP 1 ACTIVE (t=2.0) ──────────────────────
+tl.to("#glow1",  { opacity: 1, scale: 1.06, duration: 0.45, ease: "back.out(2)" }, 2.0);
+tl.to("#abg1",   { opacity: 1, duration: 0.4, ease: "power2.out" }, 2.0);
+// Pulse
+tl.to("#glow1",  { scale: 1, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 3, overwrite: "auto" }, 2.35);
+
+// Line 1 draws
+tl.to("#fill1",  { scaleX: 1, duration: 0.55, ease: "power2.inOut" }, 3.5);
+
+// ── STEP 2 ACTIVE (t=4.1) ──────────────────────
+tl.to(["#glow1","#abg1"], { opacity: 0, scale: 1, duration: 0.3, ease: "power2.in" }, 4.0);
+tl.to("#glow2",  { opacity: 1, scale: 1.06, duration: 0.45, ease: "back.out(2)" }, 4.1);
+tl.to("#abg2",   { opacity: 1, duration: 0.4, ease: "power2.out" }, 4.1);
+tl.to("#glow2",  { scale: 1, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 3, overwrite: "auto" }, 4.45);
+
+// Line 2 draws
+tl.to("#fill2",  { scaleX: 1, duration: 0.55, ease: "power2.inOut" }, 5.6);
+
+// ── STEP 3 ACTIVE (t=6.2) ──────────────────────
+tl.to(["#glow2","#abg2"], { opacity: 0, scale: 1, duration: 0.3, ease: "power2.in" }, 6.1);
+tl.to("#glow3",  { opacity: 1, scale: 1.06, duration: 0.45, ease: "back.out(2)" }, 6.2);
+tl.to("#abg3",   { opacity: 1, duration: 0.4, ease: "power2.out" }, 6.2);
+tl.to("#glow3",  { scale: 1, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 3, overwrite: "auto" }, 6.55);
+
+// Line 3 draws
+tl.to("#fill3",  { scaleX: 1, duration: 0.55, ease: "power2.inOut" }, 7.7);
+
+// ── STEP 4 ACTIVE (t=8.3) — TROPHY FINAL ───────
+tl.to(["#glow3","#abg3"], { opacity: 0, scale: 1, duration: 0.3, ease: "power2.in" }, 8.2);
+tl.to("#glow4",  { opacity: 1, scale: 1.12, duration: 0.55, ease: "back.out(2.5)" }, 8.3);
+tl.to("#abg4",   { opacity: 1, duration: 0.4, ease: "power2.out" }, 8.3);
+// Big celebration pulse
+tl.to("#glow4",  { scale: 0.98, duration: 0.55, ease: "sine.inOut", yoyo: true, repeat: 3, overwrite: "auto" }, 8.75);
+// Previous glows appear softly as "completed"
+tl.to(["#glow1","#glow2","#glow3"], { opacity: 0.28, scale: 1, duration: 0.6, ease: "power2.out" }, 9.2);
+
+window.__timelines["main"] = tl;
+
+// ── STANDALONE PLAYER ───────────────────────────
+(function () {
+  var playing = false;
+
+  function scaleToFit() {
+    var scale = Math.min(window.innerWidth / 1920, (window.innerHeight - 56) / 1080);
+    var el = document.getElementById("root");
+    el.style.transformOrigin = "top left";
+    el.style.transform = "scale(" + scale + ")";
+    el.style.marginLeft = ((window.innerWidth - 1920 * scale) / 2) + "px";
+  }
+  scaleToFit();
+  window.addEventListener("resize", scaleToFit);
+
+  var bar = document.createElement("div");
+  bar.style.cssText = "position:fixed;bottom:0;left:0;right:0;height:56px;z-index:9999;background:rgba(0,0,0,0.88);display:flex;align-items:center;gap:14px;padding:0 20px;font-family:sans-serif;";
+
+  var btn = document.createElement("button");
+  btn.textContent = "▶ PLAY";
+  btn.style.cssText = "background:#e53030;color:#fff;border:none;padding:9px 20px;font-size:14px;font-weight:700;border-radius:6px;cursor:pointer;";
+
+  var prog = document.createElement("input");
+  prog.type = "range"; prog.min = 0; prog.max = 11000; prog.value = 0; prog.step = 50;
+  prog.style.cssText = "flex:1;accent-color:#e53030;cursor:pointer;";
+
+  var lbl = document.createElement("span");
+  lbl.textContent = "0.0s";
+  lbl.style.cssText = "color:#fff;font-size:13px;min-width:40px;text-align:right;";
+
+  bar.appendChild(btn); bar.appendChild(prog); bar.appendChild(lbl);
+  document.body.appendChild(bar);
+
+  setInterval(function () {
+    if (!playing) return;
+    var t = tl.time();
+    prog.value = Math.round(t * 1000);
+    lbl.textContent = t.toFixed(1) + "s";
+    if (t >= 11) { playing = false; btn.textContent = "▶ PLAY"; }
+  }, 50);
+
+  btn.addEventListener("click", function () {
+    if (playing) { tl.pause(); playing = false; btn.textContent = "▶ PLAY"; }
+    else { if (tl.time() >= 11) tl.seek(0); tl.play(); playing = true; btn.textContent = "⏸ PAUSA"; }
+  });
+  prog.addEventListener("mousedown", function () { tl.pause(); playing = false; btn.textContent = "▶ PLAY"; });
+  prog.addEventListener("input", function () { tl.seek(prog.value / 1000); lbl.textContent = (prog.value / 1000).toFixed(1) + "s"; });
+
+  setTimeout(function () { tl.play(); playing = true; btn.textContent = "⏸ PAUSA"; }, 400);
+})();
+</script>
+</body>
+</html>
